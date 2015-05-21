@@ -61,6 +61,7 @@
     <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Kevin.aspx" />
     <Content Include="Sample.aspx" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Styles\bootstrap-theme.css.map" />
@@ -98,6 +99,13 @@
     </Compile>
     <Compile Include="InstaKG.Master.designer.cs">
       <DependentUpon>InstaKG.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Kevin.aspx.cs">
+      <DependentUpon>Kevin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kevin.aspx.designer.cs">
+      <DependentUpon>Kevin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sample.aspx.cs">
