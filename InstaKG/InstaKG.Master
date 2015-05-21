@@ -14,6 +14,48 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+
+    <nav class="navbar navbar-default">
+        <!-- Mobile friendly navbar -->
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">InstaKilogram</a>
+            </div>
+
+            <!-- Full sized navbar -->
+            <div class="collapse navbar-collapse" id="nav-collapse">
+                <!-- Left-side of navbar -->
+                <ul class="nav navbar-nav">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Browse Images</a></li>
+                            <li><a href="#">Search Images</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Upload</a></li>
+                </ul>
+
+                <!-- Right-side of navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">View Profile</a></li>
+                            <li><a href="#">Report User</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <form id="form1" runat="server">
     <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
