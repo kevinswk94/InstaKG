@@ -17,7 +17,7 @@ namespace InstaKG
         protected void Button1_Click(object sender, EventArgs e)
         {
             Session["username"] = "Kevin";
-            Response.Redirect("Test.aspx");
+            Response.Redirect("TestNavBar.aspx");
         }
     }
 }
