@@ -65,6 +65,7 @@
                                     <li><a href="#">Report User</a></li>
                                 </ul>
                             </li>
+                            <li><a href="#">Logout</a></li>
                     <%
                         }    
                     %>
