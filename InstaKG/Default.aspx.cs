@@ -39,11 +39,13 @@ namespace InstaKG
         {
             SqlConnection con = new SqlConnection(strConnString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("insert into [Commentary] (commentaryID,commentaryAuthor,commentaryContent,commentaryDateTime) values(@subject,@userName,@comment,@postedDate)", con);
-            cmd.Parameters.AddWithValue("@subject", txtSubject.Text);
-            cmd.Parameters.AddWithValue("@userName", txtName.Text);
-            cmd.Parameters.AddWithValue("@comment", txtComment.Text);
+            SqlCommand cmd = new SqlCommand
+                ("insert into [Comment] (commentID,commentDateTime,commentContent,commentAuthor,imageID) values(@commentID,@postedDate,@comment,@userName,@imageID)", con);
+            cmd.Parameters.AddWithValue("@commentID", "3");
             cmd.Parameters.AddWithValue("@postedDate", DateTime.Now);
+            cmd.Parameters.AddWithValue("@comment", txtComment.Text);
+            cmd.Parameters.AddWithValue("@userName", txtName.Text);
+            cmd.Parameters.AddWithValue("@imageID", "3");
             cmd.ExecuteNonQuery();
             con.Close();
             txtName.Text = string.Empty;
@@ -54,7 +56,7 @@ namespace InstaKG
         {
             SqlConnection con = new SqlConnection(strConnString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from [Commentary] Order By commentaryDateTime desc", con);
+            SqlCommand cmd = new SqlCommand("select * from [Comment] Order By commentDateTime desc", con);
             DataSet ds = new DataSet();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(ds);

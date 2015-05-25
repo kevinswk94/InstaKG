@@ -36,11 +36,6 @@
                             <asp:TextBox ID="txtName" runat="server" /></td>
                     </tr>
                     <tr>
-                        <td>Subject: </td>
-                        <td>
-                            <asp:TextBox ID="txtSubject" runat="server" /></td>
-                    </tr>
-                    <tr>
                         <td>Comments:</td>
                         <td>
                             <asp:TextBox ID="txtComment" runat="server" Rows="5" Columns="20"
@@ -60,14 +55,14 @@
                         <table style="border: 1px solid #df5015; width: 500px">
                             <tr style="background-color: #df5015; color: White">
                                 <td colspan="2">
-                                    <b>Comment section</b>
+                                    <b>Comments</b>
                                 </td>
                             </tr>
                     </HeaderTemplate>
                     <ItemTemplate>
                         <tr>
                             <td>
-                                <asp:Label ID="lblComment" runat="server" Text='<%#Eval("commentaryContent") %>' />
+                                <asp:Label ID="lblComment" runat="server" Text='<%#Eval("commentContent") %>' />
                             </td>
                         </tr>
                         <tr>
@@ -75,8 +70,8 @@
                                 <table style="background-color: #808080; border-top: 1px dotted #df5015; border-bottom: 1px solid #df5015; width: 500px">
                                     <tr>
                                         <td>Post By:
-                                        <asp:Label ID="lblUser" runat="server" Font-Bold="true" Text='<%#Eval("commentaryAuthor") %>' /></td>
-                                        <td>Created Date:<asp:Label ID="lblDate" runat="server" Font-Bold="true" Text='<%#Eval("commentaryDateTime") %>' /></td>
+                                        <asp:Label ID="lblUser" runat="server" Font-Bold="true" Text='<%#Eval("commentAuthor") %>' /></td>
+                                        <td>Created Date:<asp:Label ID="lblDate" runat="server" Font-Bold="true" Text='<%#Eval("commentDateTime") %>' /></td>
                                     </tr>
                                 </table>
                             </td>
