@@ -32,8 +32,6 @@ namespace InstaKG
                 BindRepeaterData();
             }
 
-
-
         }
 
 
