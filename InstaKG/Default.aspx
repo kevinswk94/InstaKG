@@ -2,10 +2,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <!--
+   <%-- 
         Author: Erics Giovano
-        Admin: 130650H
-        -->
+        Admin: 130650H--%>
+        
 
     <style>
 

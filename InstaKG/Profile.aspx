@@ -2,11 +2,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <!--Light Gallery Animation-->
+    <%--Light Gallery Animation--%>
     <link href="Styles/lightGallery.css" rel="stylesheet" />
     <script src="Scripts/lightGallery.js"></script>
 
-    <!--WOW Animation-->
+   <%-- WOW Animation--%>
     <link href="Styles/animate.css" rel="stylesheet" />
     <script src="Scripts/wow.min.js"></script>
 
@@ -38,7 +38,7 @@
 
         <div class="row">
 
-                <h1 class="page-header">Erics' Gallery</h1>
+                <h1 class="page-header">Erics Gallery</h1>
          
                 <ul id="lightGallery" class="gallery">
                     <li class="col-lg-3 col-md-4 col-xs-6 animated fadeInUp" data-src="DummyData/Img/cS-1.jpg">
