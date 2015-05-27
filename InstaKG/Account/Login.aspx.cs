@@ -36,6 +36,7 @@ namespace InstaKG
                     if (AuthenticateUser(tb_username.Text, tb_password.Text, salt))
                     {
                         // Perform a redirect to Home page
+                        Session["username"] = tb_username.Text;
                         FormsAuthentication.RedirectFromLoginPage(tb_username.Text, true);
 
                         alert_placeholder.Visible = true;
