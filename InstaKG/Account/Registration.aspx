@@ -79,7 +79,11 @@
                     </div>
                 </div>
 
-                <asp:ValidationSummary ID="vs_all" ForeColor="Red" runat="server" />
+                <div class="form-group">
+                    <div class="col-lg-offset-3">
+                        <asp:ValidationSummary ID="vs_all" ForeColor="Red" runat="server" />
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <div class="col-lg-4 col-lg-offset-7">
