@@ -20,7 +20,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse">
         <!-- Mobile friendly navbar -->
         <div class="container">
             <div class="navbar-header">
