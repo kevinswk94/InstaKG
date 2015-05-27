@@ -36,6 +36,8 @@ namespace InstaKG
                     {
                         // Perform a redirect to Home page
 
+                        Response.Redirect("Home.aspx");
+
                         alert_placeholder.Visible = true;
                         alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";
                         alertText.Text = "Login successful!";
