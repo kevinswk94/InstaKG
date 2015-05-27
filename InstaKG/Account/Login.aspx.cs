@@ -9,6 +9,7 @@ using System.Data;
 using System.Configuration;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.Security;
 
 namespace InstaKG
 {
@@ -35,6 +36,7 @@ namespace InstaKG
                     if (AuthenticateUser(tb_username.Text, tb_password.Text, salt))
                     {
                         // Perform a redirect to Home page
+                        FormsAuthentication.RedirectFromLoginPage(tb_username.Text, true);
 
                         alert_placeholder.Visible = true;
                         alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";

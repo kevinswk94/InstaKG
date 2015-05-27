@@ -62,7 +62,7 @@
     <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Login.aspx" />
+    <Content Include="Account\Login.aspx" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Scripts\SqlDatabaseScripts.txt" />
     <Content Include="Styles\bootstrap-theme.css.map" />
@@ -73,6 +73,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="InstaKG.Master" />
+    <Content Include="Account\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -109,11 +110,11 @@
     <Compile Include="InstaKG.Master.designer.cs">
       <DependentUpon>InstaKG.Master</DependentUpon>
     </Compile>
-    <Compile Include="Login.aspx.cs">
+    <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Login.aspx.designer.cs">
+    <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
