@@ -75,7 +75,5 @@ namespace InstaKG.Account
             tb_password.Text = String.Empty;
             tb_rePassword.Text = String.Empty;
         }
-
-        
     }
 }
