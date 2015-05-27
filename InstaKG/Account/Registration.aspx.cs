@@ -40,20 +40,6 @@ namespace InstaKG.Account
                     var hash = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(salt+tb_password.Text));
                     string hashedPwd = Convert.ToBase64String(hash);
 
-                    //SqlParameter username = new SqlParameter("@Username", tb_username.Text);
-                    //SqlParameter fName = new SqlParameter("@FirstName", tb_fName.Text);
-                    //SqlParameter lName = new SqlParameter("@LastName", tb_lName.Text);
-                    //SqlParameter email = new SqlParameter("@Email", tb_email.Text);
-                    //SqlParameter passwordSalt = new SqlParameter("@PasswordSalt", salt);
-                    //SqlParameter passwordHash = new SqlParameter("@PasswordHash", hashedPwd);
-
-                    //cmd.Parameters.Add(username);
-                    //cmd.Parameters.Add(fName);
-                    //cmd.Parameters.Add(lName);
-                    //cmd.Parameters.Add(email);
-                    //cmd.Parameters.Add(passwordSalt);
-                    //cmd.Parameters.Add(passwordHash);
-
                     cmd.Parameters.AddWithValue("@Username", tb_username.Text);
                     cmd.Parameters.AddWithValue("@FirstName", tb_fName.Text);
                     cmd.Parameters.AddWithValue("@LastName", tb_lName.Text);
