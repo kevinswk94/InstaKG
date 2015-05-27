@@ -52,7 +52,7 @@
                         if (Session["username"] == null)
                         {
                     %>
-                            <li><a href="#">Register</a></li>
+                            <li><a href="/Account/Registration.aspx">Register</a></li>
                             <li><a href="#">Login</a></li>
                     <%
                         }
