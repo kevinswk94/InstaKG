@@ -13,5 +13,15 @@ namespace InstaKG.Account
         {
 
         }
+
+        protected void btn_submit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btn_cancel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
