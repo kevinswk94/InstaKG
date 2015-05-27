@@ -84,6 +84,13 @@
     <Content Include="Styles\bootstrap.min.css" />
     <Content Include="Styles\custom.css" />
     <Content Include="TestNavBar.aspx" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InstaKG.Master.cs">
