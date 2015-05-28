@@ -87,6 +87,7 @@
     <Content Include="Styles\bootstrap.min.css" />
     <Content Include="Styles\custom.css" />
     <Content Include="TestNavBar.aspx" />
+    <Content Include="UploadImg.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -132,6 +133,12 @@
     </Compile>
     <Compile Include="TestNavBar.aspx.designer.cs">
       <DependentUpon>TestNavBar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadImg.aspx.cs">
+      <DependentUpon>UploadImg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadImg.aspx.designer.cs">
+      <DependentUpon>UploadImg.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>
