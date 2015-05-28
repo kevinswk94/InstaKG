@@ -25,7 +25,7 @@
     <br />
     <br />
     Image Description:
-    <asp:TextBox ID="tb_ImageDescription" runat="server"></asp:TextBox>
+    <asp:TextBox ID="tb_ImageDescription" runat="server" TextMode="MultiLine"></asp:TextBox>
     <br />
     <br />
     <img id="file" src="#" Height="20%" Width="20%"/>
