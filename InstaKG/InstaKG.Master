@@ -52,8 +52,8 @@
                         if (Session["username"] == null)
                         {
                     %>
-                            <li><a href="#">Register</a></li>
-                            <li><a href="#">Login</a></li>
+                            <li><a href="/Account/Registration.aspx">Register</a></li>
+                            <li><a href="/Account/Login.aspx">Login</a></li>
                     <%
                         }
                         else
@@ -65,7 +65,7 @@
                                     <li><a href="#">Report User</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Logout</a></li>
+                            <li><a runat="server" onserverclick="logout">Logout</a></li>
                     <%
                         }    
                     %>

@@ -11,12 +11,12 @@ namespace InstaKG
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Session["username"] = "Kevin";
+            Session["username"] = "kevin";
             Response.Redirect("TestNavBar.aspx");
         }
     }
