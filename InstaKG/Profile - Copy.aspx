@@ -32,7 +32,57 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="container">
-        <asp:DataList ID="DataList" runat="server"
+
+
+        <table>
+
+            <tr>
+                <td colspan="3">
+                    <asp:Label ID="Label5" runat="server" Text="C#" Font-Names="Arial" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <asp:Label ID="Label6" runat="server" Text="JPEG" Font-Names="Arial"></asp:Label></td>
+                <td align="center">
+                    <asp:Label ID="Label7" runat="server" Text="JPEG" Font-Names="Arial"></asp:Label></td>
+                <td align="center">
+                    <asp:Label ID="Label8" runat="server" Text="JPEG" Font-Names="Arial"></asp:Label></td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <asp:Image ToolTip="ASP Image Control" ID="Image4" runat="server" ImageUrl="ImageCSharp.aspx?AccountID=1" Height="156px" Width="174px"></asp:Image></td>
+                <td align="center">
+                    <asp:Image ToolTip="ASP Image Control" ID="Image5" runat="server" ImageUrl="ImageCSharp.aspx?AccountID=1" Height="156px" Width="174px"></asp:Image></td>
+                <td align="center">
+                    <asp:Image ToolTip="ASP Image Control" ID="Image6" runat="server" ImageUrl="ImageCSharp.aspx?AccountID=1" Height="156px" Width="174px"></asp:Image></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+        </table>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+    <div class="container">
+
+        <asp:DataList ID="DataList1" runat="server"
             RepeatColumns="3" RepeatDirection="Horizontal">
             <ItemTemplate>
                 <table>
@@ -43,6 +93,7 @@
             </ItemTemplate>
         </asp:DataList>
     </div>
+
 
     <div class="container">
 

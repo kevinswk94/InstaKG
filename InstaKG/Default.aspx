@@ -2,24 +2,16 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-   <%-- 
+    <%--
         Author: Erics Giovano
         Admin: 130650H--%>
-        
 
     <style>
-
         div {
-        margin: 10px;
-        
+            margin: 10px;
         }
-
     </style>
-
-
 </asp:Content>
-
-
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -85,9 +77,6 @@
                     </FooterTemplate>
                 </asp:Repeater>
             </div>
-
         </div>
     </div>
-
-
 </asp:Content>

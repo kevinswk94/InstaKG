@@ -1,39 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-
-
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace InstaKG
 {
     public partial class Default : System.Web.UI.Page
     {
-
-        string strConnString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-        SqlCommand cmd;
+        private string strConnString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        private SqlCommand cmd;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
                 BindRepeaterData();
             }
-
         }
-
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -52,6 +35,7 @@ namespace InstaKG
             txtComment.Text = string.Empty;
             BindRepeaterData();
         }
+
         protected void BindRepeaterData()
         {
             SqlConnection con = new SqlConnection(strConnString);
@@ -73,7 +57,5 @@ namespace InstaKG
 
             con.Close();
         }
-
-
     }
 }
