@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
+    <%--Small Change for testing on Stream 11--%>
+
     <%--Light Gallery Animation--%>
     <link href="Styles/lightGallery.css" rel="stylesheet" />
     <script src="Scripts/lightGallery.js"></script>
