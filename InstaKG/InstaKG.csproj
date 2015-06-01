@@ -57,8 +57,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Default.aspx" />
-    <Content Include="DummyData\Database.js" />
     <Content Include="Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Fonts\glyphicons-halflings-regular.woff" />
@@ -94,13 +92,15 @@
     <Content Include="DummyData\Img\Thumb\cS-7.jpg" />
     <Content Include="DummyData\Img\Thumb\cS-8.jpg" />
     <Content Include="DummyData\Img\Thumb\cS-9.jpg" />
-    <Content Include="Profile.aspx" />
+    <Content Include="Profile - Copy %282%29.aspx" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Scripts\lightGallery.js" />
     <Content Include="Scripts\wow.min.js" />
     <Content Include="Styles\animate.css" />
     <Content Include="Styles\bootstrap-theme.css.map" />
     <Content Include="Styles\bootstrap.css.map" />
+    <Content Include="Handler.ashx" />
+    <Content Include="WebForm1.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -132,12 +132,17 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Content Include="AspectRatio.cs" />
+    <Content Include="ImageHandler.cs" />
+    <Compile Include="DataBaseHelper.cs">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="InstaKG.Master.cs">
       <DependentUpon>InstaKG.Master</DependentUpon>
@@ -146,12 +151,12 @@
     <Compile Include="InstaKG.Master.designer.cs">
       <DependentUpon>InstaKG.Master</DependentUpon>
     </Compile>
-    <Compile Include="Profile.aspx.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
+    <Compile Include="Profile - Copy %282%29.aspx.cs">
+      <DependentUpon>Profile - Copy %282%29.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Profile.aspx.designer.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
+    <Compile Include="Profile - Copy %282%29.aspx.designer.cs">
+      <DependentUpon>Profile - Copy %282%29.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
