@@ -30,7 +30,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">InstaKilogram</a>
+                <a class="navbar-brand" href="Home.aspx">InstaKilogram</a>
             </div>
 
             <!-- Full sized navbar -->
