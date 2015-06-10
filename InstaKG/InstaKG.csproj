@@ -92,17 +92,16 @@
     <Content Include="DummyData\Img\Thumb\cS-7.jpg" />
     <Content Include="DummyData\Img\Thumb\cS-8.jpg" />
     <Content Include="DummyData\Img\Thumb\cS-9.jpg" />
-    <Content Include="ImageViewer.aspx" />
-    <Content Include="Profile - Copy %282%29.aspx" />
-    <Content Include="ProfileFinal.aspx" />
+    <Content Include="Profile.aspx" />
+    <Content Include="ProfileStatic.aspx" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Scripts\lightGallery.js" />
     <Content Include="Scripts\wow.min.js" />
     <Content Include="Styles\animate.css" />
     <Content Include="Styles\bootstrap-theme.css.map" />
     <Content Include="Styles\bootstrap.css.map" />
-    <Content Include="Handler.ashx" />
-    <Content Include="WebForm1.aspx" />
+    <Content Include="HandlerBeta.ashx" />
+    <Content Include="ImageViewerHandler.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -134,31 +133,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ImageViewer.aspx.cs">
-      <DependentUpon>ImageViewer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ImageViewer.aspx.designer.cs">
-      <DependentUpon>ImageViewer.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ProfileFinal.aspx.cs">
-      <DependentUpon>ProfileFinal.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProfileFinal.aspx.designer.cs">
-      <DependentUpon>ProfileFinal.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
     <Content Include="AspectRatio.cs" />
-    <Content Include="ImageHandler.cs" />
     <Compile Include="DataBaseHelper.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ImageViewerHandler.ashx.cs">
+      <DependentUpon>ImageViewerHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="InstaKG.Master.cs">
       <DependentUpon>InstaKG.Master</DependentUpon>
@@ -167,12 +147,19 @@
     <Compile Include="InstaKG.Master.designer.cs">
       <DependentUpon>InstaKG.Master</DependentUpon>
     </Compile>
-    <Compile Include="Profile - Copy %282%29.aspx.cs">
-      <DependentUpon>Profile - Copy %282%29.aspx</DependentUpon>
+    <Compile Include="Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Profile - Copy %282%29.aspx.designer.cs">
-      <DependentUpon>Profile - Copy %282%29.aspx</DependentUpon>
+    <Compile Include="Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileStatic.aspx.cs">
+      <DependentUpon>ProfileStatic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfileStatic.aspx.designer.cs">
+      <DependentUpon>ProfileStatic.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

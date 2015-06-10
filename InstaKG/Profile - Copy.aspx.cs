@@ -73,29 +73,6 @@ namespace InstaKG
         //}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         private void BindDataList()
         {
             string sqlCmd = "SELECT 1 FROM Image";

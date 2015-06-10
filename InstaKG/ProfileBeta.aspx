@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
+    <%--Small Change for testing on Stream 11--%>
+
     <%--Light Gallery Animation--%>
     <link href="Styles/lightGallery.css" rel="stylesheet" />
     <script src="Scripts/lightGallery.js"></script>
@@ -32,72 +34,17 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="container">
-        
-
-
-
-
-
-         <asp:DropDownList ID="ddlImages" runat="server" AppendDataBoundItems="true" AutoPostBack="true"
-        OnSelectedIndexChanged="FetchImage">
-        <asp:ListItem Text="Select Image" Value="0" />
-    </asp:DropDownList>
-    <hr />
-    <asp:Image ID="Image1" runat="server" Visible="false" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <asp:DataList ID="DataList" runat="server"
+            RepeatColumns="3" RepeatDirection="Horizontal">
+            <ItemTemplate>
+                <table>
+                    <tr>
+                        <td valign="middle" align="center" style="background-color: #cccccc; border: 1px solid gray; width: 150px; height: 150px;"><%#DataBinder.Eval(Container.DataItem, "images") %></td>
+                    </tr>
+                </table>
+            </ItemTemplate>
+        </asp:DataList>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <div class="container">
 

@@ -10,24 +10,15 @@
 namespace InstaKG {
     
     
-    public partial class Profile {
+    public partial class Profile1 {
         
         /// <summary>
-        /// ddlImages control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlImages;
-        
-        /// <summary>
-        /// Image1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }
