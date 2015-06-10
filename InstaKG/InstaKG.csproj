@@ -92,7 +92,9 @@
     <Content Include="DummyData\Img\Thumb\cS-7.jpg" />
     <Content Include="DummyData\Img\Thumb\cS-8.jpg" />
     <Content Include="DummyData\Img\Thumb\cS-9.jpg" />
+    <Content Include="ImageViewer.aspx" />
     <Content Include="Profile - Copy %282%29.aspx" />
+    <Content Include="ProfileFinal.aspx" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Scripts\lightGallery.js" />
     <Content Include="Scripts\wow.min.js" />
@@ -132,6 +134,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImageViewer.aspx.cs">
+      <DependentUpon>ImageViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImageViewer.aspx.designer.cs">
+      <DependentUpon>ImageViewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileFinal.aspx.cs">
+      <DependentUpon>ProfileFinal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfileFinal.aspx.designer.cs">
+      <DependentUpon>ProfileFinal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
