@@ -7,6 +7,7 @@ namespace InstaKG
 {
     public partial class Profile1 : System.Web.UI.Page
     {
+        private string con = ConfigurationManager.ConnectionStrings["InstaKGConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -18,10 +19,9 @@ namespace InstaKG
 
         private DataTable FetchAllImagesInfo()
         {
-            SqlConnection con = new
-            SqlConnection(ConfigurationManager.ConnectionStrings["InstaKGConnectionString"].ToString());
-            
-            string sql = "Select * from Image";
+            string accId= "2";
+            string sql = "Select * from Image where accountID=" + accId;
+            //sqlCmd.Parameters.AddWithValue("@ID", accountID.ToString());
             SqlDataAdapter da = new SqlDataAdapter(sql, con);
             DataTable dt = new DataTable();
             da.Fill(dt);

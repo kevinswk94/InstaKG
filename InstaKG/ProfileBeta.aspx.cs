@@ -27,7 +27,8 @@ namespace InstaKG
 
         private void BindDataList()
         {
-            string sqlCmd = "SELECT imageID FROM Image";
+            string sqlCmd = "SELECT imageID FROM Image where accountID= @ID";
+            sqlCmd.Parameters.AddWithValue("@ID", accountID.ToString());
             DataBaseHelper DBHelper = new DataBaseHelper();
             DataTable dt = DBHelper.GetTable(sqlCmd);
             //adding new column to disply image
