@@ -11,12 +11,12 @@
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <asp:Literal runat="server" ID="alertText" />
         </div>
-
+        
         <div class="well">
             <fieldset class="form-horizontal">
-
-                <legend>Register a new account</legend>
-
+                <div class="row">
+                    <legend class="col-lg-offset-2 col-lg-3">Register a new account</legend>
+                </div>
                 <div class="form-group">
                     <asp:Label ID="lbl_username" CssClass="col-lg-3 control-label" runat="server">Username:</asp:Label>
                     <div class="col-lg-6">
@@ -64,7 +64,7 @@
                         <asp:TextBox ID="tb_password" CssClass="form-control" TextMode="Password" runat="server"></asp:TextBox>
                     </div>
                     <div class="col-lg-1">
-                         <asp:RequiredFieldValidator ID="rfv_password" runat="server" ErrorMessage="Password Required" ControlToValidate="tb_password" ForeColor="Red">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfv_password" runat="server" ErrorMessage="Password Required" ControlToValidate="tb_password" ForeColor="Red">*</asp:RequiredFieldValidator>
                         <asp:CompareValidator ID="cv_passwords" runat="server" ErrorMessage="Passwords do not match" ControlToValidate="tb_password" ControlToCompare="tb_rePassword" Type="String" Operator="Equal" ForeColor="Red" Display="Dynamic">*</asp:CompareValidator>
                     </div>
                 </div>
@@ -91,6 +91,7 @@
                         <asp:Button ID="btn_submit" CssClass="btn btn-primary" Text="Submit" runat="server" OnClick="btn_submit_Click" />
                     </div>
                 </div>
+
             </fieldset>
         </div>
     </div>

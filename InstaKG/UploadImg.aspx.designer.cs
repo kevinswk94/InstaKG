@@ -13,6 +13,15 @@ namespace InstaKG {
     public partial class UploadImg {
         
         /// <summary>
+        /// lbl_ImageTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ImageTitle;
+        
+        /// <summary>
         /// tb_ImageTitle control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,24 @@ namespace InstaKG {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tb_ImageTitle;
+        
+        /// <summary>
+        /// rfv_ImageTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_ImageTitle;
+        
+        /// <summary>
+        /// lbl_ImageDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ImageDescription;
         
         /// <summary>
         /// tb_ImageDescription control.
@@ -31,6 +58,15 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.TextBox tb_ImageDescription;
         
         /// <summary>
+        /// lblImageUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblImageUpload;
+        
+        /// <summary>
         /// FileUpload1 control.
         /// </summary>
         /// <remarks>
@@ -40,13 +76,13 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
         
         /// <summary>
-        /// btn_Upload control.
+        /// lbl_imagePreview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_Upload;
+        protected global::System.Web.UI.WebControls.Label lbl_imagePreview;
         
         /// <summary>
         /// lb_EndInfo control.
@@ -56,5 +92,23 @@ namespace InstaKG {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lb_EndInfo;
+        
+        /// <summary>
+        /// btn_cancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_cancel;
+        
+        /// <summary>
+        /// btn_Upload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_Upload;
     }
 }

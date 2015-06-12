@@ -43,7 +43,7 @@
                             <li><a href="#">Search Images</a></li>
                         </ul>
                     </li>
-                    <li><a href="UploadImg.aspx">Upload</a></li>
+                    <li><a href="/UploadImg.aspx">Upload</a></li>
                 </ul>
 
                 <!-- Right-side of navbar -->

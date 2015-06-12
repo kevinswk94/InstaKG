@@ -93,5 +93,10 @@ namespace InstaKG
                 lb_EndInfo.Text = "Please Select Image!";
             }
         }
+
+        protected void btn_cancel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

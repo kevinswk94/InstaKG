@@ -13,8 +13,10 @@
 
         <div class="well">
             <fieldset class="form-horizontal">
-                <legend>Member's Login</legend>
-
+                <div class="row">
+                    <legend class="col-lg-offset-2 col-lg-3">Member's Login</legend>
+                </div>
+                
                 <div class="form-group">
                     <asp:Label ID="lbl_username" CssClass="col-lg-4 control-label" runat="server">Username:</asp:Label>
                     <div class="col-lg-4">
@@ -47,7 +49,9 @@
                         <asp:Button ID="btn_submit" CssClass="btn btn-primary" Text="Login" runat="server" OnClick="btn_submit_Click" />
                     </div>
                 </div>
+
             </fieldset>
         </div>
+        
     </div>
 </asp:Content>
