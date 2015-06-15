@@ -93,14 +93,12 @@
     <Content Include="DummyData\Img\Thumb\cS-8.jpg" />
     <Content Include="DummyData\Img\Thumb\cS-9.jpg" />
     <Content Include="Profile.aspx" />
-    <Content Include="ProfileStatic.aspx" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Scripts\lightGallery.js" />
     <Content Include="Scripts\wow.min.js" />
     <Content Include="Styles\animate.css" />
     <Content Include="Styles\bootstrap-theme.css.map" />
     <Content Include="Styles\bootstrap.css.map" />
-    <Content Include="HandlerBeta.ashx" />
     <Content Include="ImageViewerHandler.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -133,10 +131,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AspectRatio.cs" />
-    <Compile Include="DataBaseHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="ImageViewerHandler.ashx.cs">
       <DependentUpon>ImageViewerHandler.ashx</DependentUpon>
     </Compile>
@@ -153,13 +147,6 @@
     </Compile>
     <Compile Include="Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ProfileStatic.aspx.cs">
-      <DependentUpon>ProfileStatic.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProfileStatic.aspx.designer.cs">
-      <DependentUpon>ProfileStatic.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
