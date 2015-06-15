@@ -1,19 +1,53 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/InstaKG.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="InstaKG.Profile1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <%--Light Gallery Animation--%>
+    <link href="Styles/lightGallery.css" rel="stylesheet" />
+    <script src="Scripts/lightGallery.js"></script>
+
+    <%-- WOW Animation--%>
+    <link href="Styles/animate.css" rel="stylesheet" />
+    <script src="Scripts/wow.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#lightGallery").lightGallery();
+        });
+    </script>
+
+    <style>
+        /*Gallery*/
+        ul {
+            list-style: none outside none;
+        }
+
+        .gallery li {
+            display: block;
+            float: left;
+        }
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <asp:GridView ID="GridView1" runat="server">
-        <Columns>
-            <asp:TemplateField>
-                <ItemTemplate>
-                    <asp:Image ID="Image" runat="server" ImageUrl='<%#"ImageViewerHandler.ashx?id=" + Eval("imageID")%>' />
-                    <%--<asp:Image ID="Image" runat="server" ImageUrl='<%#"ImageViewerHandler.ashx?id=" + Eval("accountID")%>' />--%>
-                </ItemTemplate>
-            </asp:TemplateField>
-        </Columns>
-    </asp:GridView>
+    <div class="container">
+        <div class="row">
 
+            <asp:Repeater ID="Repeater1" runat="server">
+
+                <HeaderTemplate>
+                    <ul id="lightGallery" class="gallery">
+                </HeaderTemplate>
+                <ItemTemplate>
+
+                    <li class="col-lg-3 col-md-4 col-xs-6 animated fadeInUp" data-src='<%#"ImageViewerHandler.ashx?id=" + Eval("imageID")%>'>
+                        <asp:Image ID="Image" runat="server" class="thumbnail img-responsive" ImageUrl='<%#"ImageViewerHandler.ashx?id=" + Eval("imageID")%>' />
+                    </li>
+                </ItemTemplate>
+                <FooterTemplate>
+                    </ul>
+                </FooterTemplate>
+            </asp:Repeater>
+        </div>
+    </div>
 </asp:Content>
