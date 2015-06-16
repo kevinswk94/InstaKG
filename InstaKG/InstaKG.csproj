@@ -108,6 +108,7 @@
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -136,6 +137,7 @@
     </Compile>
     <Compile Include="UploadImg.aspx.cs">
       <DependentUpon>UploadImg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UploadImg.aspx.designer.cs">
       <DependentUpon>UploadImg.aspx</DependentUpon>

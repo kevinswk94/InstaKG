@@ -79,7 +79,9 @@ namespace InstaKG.Account
 
                         alert_placeholder.Visible = true;
                         alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";
-                        alertText.Text = "User account successfully created!";
+                        alertText.Text = "User account successfully created! You will be redirected to the login page shortly.";
+
+                        Response.AddHeader("REFRESH", "3;URL=/Account/Login.aspx");
                     }
                 }
                 else if (usernameValid + emailValid == 2)
