@@ -24,13 +24,13 @@ namespace InstaKG
             SqlConnection con = new SqlConnection(constr);
             SqlDataAdapter sda = new SqlDataAdapter();
 
-            //Dummy data of a particular user id
-            string accId = "1";
+            //Dummy session of a particular user id
+            Session["accountID"] = 1;
+            int accId = (int)(Session["accountID"]);
             string strQuery = "Select * from Image where accountID= @ID";
 
             SqlCommand cmd = new SqlCommand(strQuery);
-            cmd.Parameters.AddWithValue("@ID", accId.Trim());
-            //("@ID", accId.Text.Trim()
+            cmd.Parameters.AddWithValue("@ID", accId);
             cmd.CommandType = CommandType.Text;
             cmd.Connection = con;
 
