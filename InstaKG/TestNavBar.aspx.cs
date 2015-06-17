@@ -11,7 +11,9 @@ namespace InstaKG
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            alert_placeholder.Visible = true;
+            alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";
+            alertText.Text = "Account ID is " + Session["accountID"].ToString();
         }
 
         protected void Button1_Click(object sender, EventArgs e)

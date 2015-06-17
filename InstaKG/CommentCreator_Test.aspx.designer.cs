@@ -10,7 +10,7 @@
 namespace InstaKG {
     
     
-    public partial class Test {
+    public partial class CommentCreator_Test {
         
         /// <summary>
         /// alert_placeholder control.
@@ -31,12 +31,30 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.Literal alertText;
         
         /// <summary>
-        /// Button1 control.
+        /// lbl_username control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Label lbl_username;
+        
+        /// <summary>
+        /// tb_username control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_username;
+        
+        /// <summary>
+        /// rfv_username control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_username;
     }
 }

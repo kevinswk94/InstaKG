@@ -29,7 +29,7 @@ namespace InstaKG
                 {
                     alert_placeholder.Visible = true;
                     alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
-                    alertText.Text = "Username or password is incorrect";
+                    alertText.Text = "Username or password is incorrect.";
                 }
                 else
                 {
@@ -37,17 +37,18 @@ namespace InstaKG
                     {
                         // Perform a redirect to Home page
                         Session["username"] = tb_username.Text;
+                        Session["accountID"] = GetAccountID(tb_username.Text, tb_password.Text, salt);
                         FormsAuthentication.RedirectFromLoginPage(tb_username.Text, true);
 
                         //alert_placeholder.Visible = true;
                         //alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";
-                        //alertText.Text = "Login successful!";
+                        //alertText.Text = "Login successful! Account ID is " + Session["accountID"].ToString();
                     }
                     else
                     {
                         alert_placeholder.Visible = true;
                         alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
-                        alertText.Text = "Username or password is incorrect";
+                        alertText.Text = "Username or password is incorrect.";
                     }
                 }
             }
@@ -95,6 +96,30 @@ namespace InstaKG
                     isValid = false;
             }
             return isValid;
+        }
+
+        private static int GetAccountID(string username, string password, string salt)
+        {
+            int accountID = 0;
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString))
+            {
+                //Generate hash from salted password
+                var hash = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(salt + password));
+                string hashedPwd = Convert.ToBase64String(hash);
+
+                string sql = "SELECT accountID FROM dbo.AccCreds WHERE username=@username AND passwordHash=@passwordHash";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@passwordHash", hashedPwd);
+
+                con.Open();
+                int result = int.Parse(cmd.ExecuteScalar().ToString());
+                if (result != null)
+                    accountID = result;
+                else
+                    accountID = 0;
+            }
+            return accountID;
         }
 
         protected void btn_clear_Click(object sender, EventArgs e)

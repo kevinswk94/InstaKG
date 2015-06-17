@@ -55,7 +55,7 @@ namespace InstaKG
                     cmd.Parameters.Add("@imgData", SqlDbType.Image, imgData.Length).Value = imgData;
                     cmd.Parameters.AddWithValue("@imgtype", FileUpload1.PostedFile.ContentType);
                     cmd.Parameters.AddWithValue("@uploadDT", dt);
-                    cmd.Parameters.AddWithValue("@accID", 1);
+                    cmd.Parameters.AddWithValue("@accID", Session["accountID"].ToString());
 
                     try
                     {
@@ -66,8 +66,6 @@ namespace InstaKG
                         FileUpload1.SaveAs(Server.MapPath(filePath));
                        // Response.Write(filePath);
                       
-                        
-
                     }
                     catch (Exception ex)
                     {
