@@ -59,6 +59,7 @@
   <ItemGroup>
     <Content Include="Account\Registration.aspx" />
     <Content Include="CommentCreator_Test.aspx" />
+    <Content Include="CommentViewer_Test.aspx" />
     <Content Include="Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Fonts\glyphicons-halflings-regular.woff" />
@@ -113,6 +114,13 @@
     </Compile>
     <Compile Include="CommentCreator_Test.aspx.designer.cs">
       <DependentUpon>CommentCreator_Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CommentViewer_Test.aspx.cs">
+      <DependentUpon>CommentViewer_Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CommentViewer_Test.aspx.designer.cs">
+      <DependentUpon>CommentViewer_Test.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

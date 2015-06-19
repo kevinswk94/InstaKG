@@ -17,9 +17,11 @@ namespace InstaKG
 
         protected void logout(Object sender, EventArgs e)
         {
-            Session["username"] = null;
             FormsAuthentication.SignOut();
-            Response.Redirect("/Account/Login.aspx");
+            //Session["username"] = null;
+            //Session["accountID"] = null;
+            Session.RemoveAll();
+            Response.Redirect("/Account/Login.aspx", true);
         }
     }
 }

@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-using System.Data.SqlClient;
-using System.Data;
 using System.Configuration;
-using System.Web.Security;
+using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.UI;
 
 namespace InstaKG.Account
 {
@@ -74,7 +67,8 @@ namespace InstaKG.Account
 
                         con.Open();
                         cmd.ExecuteNonQuery();
-                        cmd.Clone();
+                        con.Close();
+                        con.Dispose();
                         cmd.Dispose();
 
                         alert_placeholder.Visible = true;
@@ -136,6 +130,7 @@ namespace InstaKG.Account
 
                 con.Close();
                 con.Dispose();
+                cmd.Dispose();
             }
             return valid;
         }
@@ -159,6 +154,7 @@ namespace InstaKG.Account
 
                 con.Close();
                 con.Dispose();
+                cmd.Dispose();
             }
             return valid;
         }
@@ -177,6 +173,7 @@ namespace InstaKG.Account
                 result = int.Parse(cmd.ExecuteScalar().ToString());
                 con.Close();
                 con.Dispose();
+                cmd.Dispose();
             }
             return result;
         }
