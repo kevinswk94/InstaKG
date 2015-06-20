@@ -20,7 +20,9 @@
                 <div class="form-group">
                     <asp:Label ID="lbl_username" CssClass="col-lg-4 control-label" runat="server">Username:</asp:Label>
                     <div class="col-lg-4">
-                        <asp:TextBox ID="tb_username" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:Panel ID="pan_username" runat="server" DefaultButton="btn_submit">
+                            <asp:TextBox ID="tb_username" CssClass="form-control" runat="server"></asp:TextBox>
+                        </asp:Panel>
                     </div>
                     <div class="col-lg-1">
                         <asp:RequiredFieldValidator ID="rfv_username" runat="server" ErrorMessage="Username required" ControlToValidate="tb_username" ForeColor="Red">*</asp:RequiredFieldValidator>
@@ -30,7 +32,9 @@
                 <div class="form-group">
                     <asp:Label ID="lbl_password" CssClass="col-lg-4 control-label" runat="server">Password:</asp:Label>
                     <div class="col-lg-4">
-                        <asp:TextBox ID="tb_password" TextMode="Password" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:Panel ID="pan_password" runat="server" DefaultButton="btn_submit">
+                            <asp:TextBox ID="tb_password" TextMode="Password" CssClass="form-control" runat="server"></asp:TextBox>
+                        </asp:Panel>
                     </div>
                     <div class="col-lg-1">
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Password required" ControlToValidate="tb_password" ForeColor="Red">*</asp:RequiredFieldValidator>
