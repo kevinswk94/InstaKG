@@ -32,9 +32,9 @@ namespace InstaKG
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            var ex = Server.GetLastError();
-            var exception = ex as Exception;
-            Response.Redirect("Error.aspx");
+            //var ex = Server.GetLastError();
+            //var exception = ex as Exception;
+            //Response.Redirect("Error.aspx");
         }
 
         protected void Session_End(object sender, EventArgs e)
