@@ -1,2 +1,33 @@
-﻿body {
+﻿.initial
+{
+    display:block;
+    padding: 4px 18px 4px 18px;
+    color:#ea6d05;
+    float:left;
+    /*background-color:black;*/
+    font-family: 'Karla', sans-serif;
+}
+
+.initial:hover
+{
+    background: black;
+    color:#2B65EC;
+}
+
+.clicked
+{
+    float:left;
+    display:block;
+    padding:4px 18px 4px 18px;
+    color:orange;
+    font-weight:bold;
+    color:black;
+    /*background-color:black;*/
+}
+
+.viewTable
+{
+    clear:left; 
+    width:100%;
+    margin-top:2%;
 }
