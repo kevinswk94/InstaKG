@@ -72,7 +72,9 @@
                 <div class="form-group">
                     <asp:Label ID="lbl_rePassword" CssClass="col-lg-3 control-label" runat="server">Re-enter Password:</asp:Label>
                     <div class="col-lg-6">
-                        <asp:TextBox ID="tb_rePassword" CssClass="form-control" TextMode="Password" runat="server"></asp:TextBox>
+                        <asp:Panel ID="pan_password" runat="server" DefaultButton="btn_submit">
+                            <asp:TextBox ID="tb_rePassword" CssClass="form-control" TextMode="Password" runat="server"></asp:TextBox>
+                        </asp:Panel>
                     </div>
                     <div class="col-lg-1">
                         <asp:RequiredFieldValidator ID="rfv_rePassword" runat="server" ErrorMessage="Re-enter password" ControlToValidate="tb_rePassword" ForeColor="Red" Display="Dynamic">*</asp:RequiredFieldValidator>
