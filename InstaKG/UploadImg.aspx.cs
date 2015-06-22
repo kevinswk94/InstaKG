@@ -57,9 +57,13 @@ namespace InstaKG
                     {
                         con.Open();
                         cmd.ExecuteNonQuery();
-                        lb_EndInfo.Text = "Successfully uploaded!";
-                        String filePath = "~/images/" + FileUpload1.FileName;
-                        FileUpload1.SaveAs(Server.MapPath(filePath));
+                        alert_placeholder.Visible = true;
+                        alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";
+                        alertText.Text = "Successfully Uploaded!";
+
+                        //lb_EndInfo.Text = "Successfully uploaded!";
+                        //String filePath = "~/images/" + FileUpload1.FileName;
+                        //FileUpload1.SaveAs(Server.MapPath(filePath));
                        // Response.Write(filePath);
                       
                     }
@@ -77,14 +81,20 @@ namespace InstaKG
                 }
                 else
                 {
-                    lb_EndInfo.Text = "You can only upload jpg or png file.";
+                    alert_placeholder.Visible = true;
+                    alert_placeholder.Attributes["class"] = "alert alert-warning alert-dismissable";
+                    alertText.Text = "You can only upload jpg or png file.";
+                    //lb_EndInfo.Text = "You can only upload jpg or png file.";
                 }
 
 
             }
             else
             {
-                lb_EndInfo.Text = "Please Select Image!";
+                alert_placeholder.Visible = true;
+                alert_placeholder.Attributes["class"] = "alert alert-warning alert-dismissable";
+                alertText.Text = "Please select image!";
+                //lb_EndInfo.Text = "Please Select Image!";
             }
         }
 
