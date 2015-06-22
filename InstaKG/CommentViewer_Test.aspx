@@ -32,7 +32,7 @@
                                 <HeaderStyle CssClass="text-center" />
                                 <ItemStyle CssClass="col-lg-2 col-md-2 col-sm-2 text-center"/>
                                 </asp:BoundField>
-                                <asp:BoundField DataField="commentContent" HeaderText="Content" SortExpression="commentContent" >
+                                <asp:BoundField DataField="commentContent" HtmlEncode="false" HeaderText="Content" SortExpression="commentContent" >
                                 <ItemStyle CssClass="col-lg-8 col-md-8 col-sm-8" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="fName" HeaderText="Author" SortExpression="fName" >

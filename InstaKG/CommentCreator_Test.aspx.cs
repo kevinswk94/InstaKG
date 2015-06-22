@@ -23,10 +23,11 @@ namespace InstaKG
                 using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString))
                 {
                     string sql = "INSERT INTO dbo.Comment(commentDateTime, commentContent, commentAuthor, flag, imageID) VALUES (@CommentDateTime, @CommentContent, @CommentAuthor, @Flag, @ImageID)";
+                    string commentContent = Server.HtmlEncode(tb_commentContent.Text);
 
                     SqlCommand cmd = new SqlCommand(sql, con);
                     cmd.Parameters.AddWithValue("@CommentDateTime", DateTime.Now);
-                    cmd.Parameters.AddWithValue("@CommentContent", tb_commentContent.Text);
+                    cmd.Parameters.AddWithValue("@CommentContent", commentContent);
                     cmd.Parameters.AddWithValue("@CommentAuthor", Session["accountID"].ToString());
                     cmd.Parameters.AddWithValue("@Flag", 0);
                     cmd.Parameters.AddWithValue("@ImageID", ddl_imageTitle.SelectedValue);
