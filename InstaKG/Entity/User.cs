@@ -83,6 +83,21 @@ namespace InstaKG.Entity
         }
 
 
+        public string retrieveUsernameByID(int id)
+        {
+            string name = null;
+
+            foreach(User item in retrieveUserList())
+            {
+                if(item.AccountID.Equals(id))
+                {
+                    name = item.Username;
+                }
+            }
+
+            return name;
+        }
+
         public List<User> retrieveUserList()
         {
             return UserList;

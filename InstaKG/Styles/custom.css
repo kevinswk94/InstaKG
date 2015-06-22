@@ -6,6 +6,7 @@
     float:left;
     /*background-color:black;*/
     font-family: 'Karla', sans-serif;
+    font-size:15px;
 }
 
 .initial:hover
@@ -22,12 +23,42 @@
     color:orange;
     font-weight:bold;
     color:black;
+    font-size:15px;
     /*background-color:black;*/
 }
+
+/* ////////////////////////////////////////////////////////////////// */
 
 .viewTable
 {
     clear:left; 
     width:100%;
     margin-top:2%;
+}
+
+.lbl_title
+{    
+    font-size:18px;
+}
+
+.lbl_desc
+{
+    font-style:italic;
+    font-size:14px;
+}
+
+.lb_fontSize
+{
+    font-size:15px;
+}
+
+.btn_nextPrevious
+{
+    width:10%;
+    font-size:14px;
+}
+
+.lbl_creator
+{
+    text-align:right;
 }

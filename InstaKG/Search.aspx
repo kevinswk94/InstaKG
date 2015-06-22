@@ -14,7 +14,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     
     <div class="container">
         <div id="alert_placeholder" runat="server" visible="false">
@@ -45,7 +45,22 @@
                                             <table class="viewTable">
                                                 <tr>
                                                     <td>
-                                                        <asp:ListView ID="lv_ImageResult" runat="server" GroupItemCount="3">
+                                                        <asp:ListView ID="lv_ImageResult" runat="server" GroupItemCount="1">
+                                                            <AlternatingItemTemplate>
+                                                                <td runat="server" class="danger" style="width:65%;">
+                                                                    <asp:Label ID="ImageTitleLabel" runat="server" Text='<%# Eval("ImageTitle") %>' CssClass="lbl_title" />
+                                                                    <br />
+                                                                    <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' CssClass="lbl_desc" />
+                                                                    <br />
+                                                                    <div class="lbl_creator">By:</div
+                                                                </td>
+                                                                    
+                                                                <td runat="server" class="danger" style="text-align:center">
+                                                                    <asp:Label ID="ContentLabel" runat="server" Text='<%# Eval("Content") %>' />
+                                                                    <br />
+                                                                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="lb_fontSize">View User Profile</asp:LinkButton>
+                                                                </td>
+                                                            </AlternatingItemTemplate>
                                                             <EmptyDataTemplate>
                                                                 <table runat="server" style="">
                                                                     <tr>
@@ -62,29 +77,30 @@
                                                                 </tr>
                                                             </GroupTemplate>
                                                             <ItemTemplate>
-                                                                <td runat="server" style="border: 1px solid grey;width:70%">
+                                                                <td runat="server" style="width:65%;" class="active">                                                                    
+                                                                    <asp:Label ID="ImageTitleLabel" runat="server" Text='<%# Eval("ImageTitle") %>' CssClass="lbl_title" />
                                                                     <br />
-                                                                    <b>ImageTitle:</b>
-                                                                    <asp:Label ID="ImageTitleLabel" runat="server" Text='<%# Eval("ImageTitle") %>' />
+                                                                    <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' CssClass="lbl_desc" />
                                                                     <br />
-                                                                    <b>Description:</b>
-                                                                    <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
-                                                                    <br />
+                                                                    <div class="lbl_creator">By:</div>
+                                                                    <%--
                                                                     <b>Creation:</b>
                                                                     <asp:Label ID="CreationLabel" runat="server" Text='<%# Eval("Creation") %>' />
                                                                     <br />
+                                                                    --%>
                                                                 </td>
 
-                                                                <td style="border: 1px solid grey;width:70%">
-                                                                    <b>Content:</b>
+                                                                <td runat="server" style="text-align:center" class="active">
                                                                     <asp:Label ID="ContentLabel" runat="server" Text='<%# Eval("Content") %>' />
+                                                                    <br />
+                                                                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="lb_fontSize">View User Profile</asp:LinkButton>
                                                                 </td>
                                                             </ItemTemplate>
                                                             <LayoutTemplate>
-                                                                <table runat="server" style=" width: 100%">
-                                                                    <tr runat="server" style="border: 1px solid white">
-                                                                        <td runat="server" style="border: 1px solid yellow">
-                                                                            <table id="groupPlaceholderContainer" runat="server" border="0" style="">
+                                                                <table runat="server" style="width:100%;">
+                                                                    <tr runat="server" style="">
+                                                                        <td runat="server" style="">
+                                                                            <table id="groupPlaceholderContainer" runat="server" border="0" style="" class="table table-striped table-hover">
                                                                                 <tr id="groupPlaceholder" runat="server">
                                                                                 </tr>
                                                                             </table>
@@ -95,7 +111,7 @@
                                                                             <asp:DataPager ID="DataPager1" runat="server" PageSize="10" >
                                                                                 <Fields>
                                                                                     <asp:TemplatePagerField></asp:TemplatePagerField>
-                                                                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
+                                                                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" ButtonCssClass="btn_nextPrevious"/>
                                                                                 </Fields>
                                                                             </asp:DataPager>
                                                                         </td>
@@ -133,7 +149,18 @@
                                             <table class="viewTable">
                                                 <tr>
                                                     <td>
-                                                        <asp:ListView ID="lv_UserResult" runat="server" GroupItemCount="3"> <%-- DataSourceID="src_UserList" --%>
+                                                        <asp:ListView ID="lv_UserResult" runat="server" GroupItemCount="1"> <%-- DataSourceID="src_UserList" --%>
+                                                            <AlternatingItemTemplate>
+                                                                <td runat="server" style="" class="danger">
+                                                                    <div class="lbl_title">Username: </div>
+                                                                    <asp:Label ID="UsernameLabel" runat="server" Text='<%# Eval("Username") %>' CssClass="lbl_desc"/>
+                                                                </td>
+
+                                                                <td runat="server" style="text-align:center" class="danger">
+                                                                    <asp:Button ID="Button2" runat="server" Text="Add as Friend" CssClass="btn btn-default" />
+                                                                    <asp:Button ID="Button4" runat="server" Text="View Profile" CssClass="btn btn-default"/>
+                                                                </td>
+                                                            </AlternatingItemTemplate>
                                                             <EmptyDataTemplate>
                                                                 <table runat="server" style="">
                                                                     <tr>
@@ -150,27 +177,31 @@
                                                                 </tr>
                                                             </GroupTemplate>
                                                             <ItemTemplate>
-                                                                <td runat="server" style="">
-                                                                    Username:
-                                                                    <asp:Label ID="UsernameLabel" runat="server" Text='<%# Eval("Username") %>' />
-                                                                    <br />
+                                                                <td runat="server" style="width:65%;" class="active">
+                                                                    <div class="lbl_title">Username: </div>
+                                                                    <asp:Label ID="UsernameLabel" runat="server" Text='<%# Eval("Username") %>' CssClass="lbl_desc"/>
+                                                                </td>
+
+                                                                <td runat="server" style="text-align:center" class="active">
+                                                                    <asp:Button ID="Button1" runat="server" Text="Add as friend" CssClass="btn btn-warning" />
+                                                                    <asp:Button ID="Button3" runat="server" Text="View Profile" CssClass="btn btn-warning" />
                                                                 </td>
                                                             </ItemTemplate>
                                                             <LayoutTemplate>
-                                                                <table runat="server">
-                                                                    <tr runat="server">
+                                                                <table runat="server" style="width:100%;">
+                                                                    <tr runat="server" style="">
                                                                         <td runat="server">
-                                                                            <table id="groupPlaceholderContainer" runat="server" border="0" style="">
-                                                                                <tr id="groupPlaceholder" runat="server">
+                                                                            <table id="groupPlaceholderContainer" runat="server" style="width:100%;" class="table table-striped table-hover">
+                                                                                <tr id="groupPlaceholder" runat="server" style="" >
                                                                                 </tr>
                                                                             </table>
                                                                         </td>
                                                                     </tr>
-                                                                    <tr runat="server">
+                                                                    <tr runat="server" style="text-align:center">
                                                                         <td runat="server" style="">
-                                                                            <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
+                                                                            <asp:DataPager ID="DataPager1" runat="server" PageSize="10">
                                                                                 <Fields>
-                                                                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
+                                                                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" ButtonCssClass="btn_nextPrevious"/>
                                                                                 </Fields>
                                                                             </asp:DataPager>
                                                                         </td>
@@ -207,4 +238,5 @@
             </fieldset>
         </div>
     </div>
+
 </asp:Content>
