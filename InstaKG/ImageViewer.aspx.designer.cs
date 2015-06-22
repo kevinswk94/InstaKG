@@ -10,25 +10,7 @@
 namespace InstaKG {
     
     
-    public partial class CommentViewer_Test {
-        
-        /// <summary>
-        /// alert_placeholder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alert_placeholder;
-        
-        /// <summary>
-        /// alertText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal alertText;
+    public partial class ImageViewer {
         
         /// <summary>
         /// lbl_imageTitle control.
@@ -49,13 +31,13 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.DropDownList ddl_imageTitle;
         
         /// <summary>
-        /// gv_comments control.
+        /// gv_Image control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_comments;
+        protected global::System.Web.UI.WebControls.GridView gv_Image;
         
         /// <summary>
         /// sds_Images control.
@@ -67,12 +49,12 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.SqlDataSource sds_Images;
         
         /// <summary>
-        /// sds_Comments control.
+        /// sds_Image control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sds_Comments;
+        protected global::System.Web.UI.WebControls.SqlDataSource sds_Image;
     }
 }

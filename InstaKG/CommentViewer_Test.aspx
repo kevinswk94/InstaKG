@@ -26,7 +26,7 @@
                 <br />
                 <div class="form-group">
                     <div class="col-lg-offset-1">
-                        <asp:GridView ID="GridView1" runat="server" CssClass="table table-responsive" AutoGenerateColumns="False" DataSourceID="sds_Comments" DataKeyNames="accountID">
+                        <asp:GridView ID="gv_comments" runat="server" CssClass="table table-responsive" AutoGenerateColumns="False" DataSourceID="sds_Comments" DataKeyNames="accountID">
                             <Columns>
                                 <asp:BoundField DataField="commentDateTime" HeaderText="Timestamp" SortExpression="commentDateTime" >
                                 <HeaderStyle CssClass="text-center" />
