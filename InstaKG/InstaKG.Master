@@ -20,7 +20,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse">
         <!-- Mobile friendly navbar -->
         <div class="container">
             <div class="navbar-header">
@@ -30,7 +30,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">InstaKilogram</a>
+                <a class="navbar-brand" href="Home.aspx">InstaKilogram</a>
             </div>
 
             <!-- Full sized navbar -->
@@ -43,19 +43,38 @@
                             <li><a href="#">Search Images</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Upload</a></li>
+                    <li><a href="/UploadImg.aspx">Upload</a></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Comments <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/CommentCreator_Test.aspx">Comment Creator</a></li>
+                            <li><a href="/CommentViewer_Test.aspx">Comment Viewer</a></li>
+                        </ul>
+                    </li>
                 </ul>
 
                 <!-- Right-side of navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">View Profile</a></li>
-                            <li><a href="#">Report User</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Register</a></li>
-                    <li><a href="#">Login</a></li>
+                    <%
+                        if (Session["username"] == null)
+                        {
+                    %>
+                            <li><a href="/Account/Registration.aspx">Register</a></li>
+                            <li><a href="/Account/Login.aspx">Login</a></li>
+                    <%
+                        }
+                        else
+                        {
+                    %>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><% =(string)Session["username"] %> <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">View Profile</a></li>
+                                    <li><a href="#">Report User</a></li>
+                                </ul>
+                            </li>
+                            <li><button type="button" id="btn_logout" runat="server" class="btn btn-danger btn-sm navbar-btn" causesvalidation="false" onserverclick="logout">Logout</button></li>
+                    <%
+                        }    
+                    %>
                 </ul>
             </div>
         </div>

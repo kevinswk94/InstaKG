@@ -10,42 +10,51 @@
 namespace InstaKG {
     
     
-    public partial class InstaKG {
+    public partial class ImageViewer {
         
         /// <summary>
-        /// head control.
+        /// lbl_imageTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Label lbl_imageTitle;
         
         /// <summary>
-        /// btn_logout control.
+        /// ddl_imageTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btn_logout;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_imageTitle;
         
         /// <summary>
-        /// form1 control.
+        /// gv_Image control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.GridView gv_Image;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// sds_Images control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.SqlDataSource sds_Images;
+        
+        /// <summary>
+        /// sds_Image control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sds_Image;
     }
 }
