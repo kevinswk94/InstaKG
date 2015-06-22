@@ -25,7 +25,7 @@ namespace InstaKG
             SqlDataAdapter sda = new SqlDataAdapter();
 
             //Dummy session of a particular user id
-            Session["accountID"] = 1;
+            //Session["accountID"] = 1;
             int accId = (int)(Session["accountID"]);
             string strQuery = "Select * from Image where accountID= @ID";
 
@@ -46,9 +46,6 @@ namespace InstaKG
                 Response.Write(ex.Message);
                 return null;
             }
-
         }
-
-
     }
 }

@@ -11,39 +11,44 @@
             <asp:Literal runat="server" ID="alertText" />
         </div>
 
-        <div class="well">
-            <fieldset class="form-horizontal">
-                <div class="row">
-                    <legend class="col-lg-offset-2 col-lg-5">Viewing comments from images:</legend>
-                </div>
+        <fieldset class="form-horizontal">
+            <div class="row">
+                <legend class="col-lg-offset-2 col-lg-5">Viewing comments from images:</legend>
+            </div>
 
-                <div class="form-group">
-                    <asp:Label ID="lbl_imageTitle" CssClass="col-lg-3 control-label" runat="server">Image:</asp:Label>
-                    <div class="col-lg-3">
-                        <asp:DropDownList ID="ddl_imageTitle" runat="server" CssClass="form-control" AutoPostBack="True" DataSourceID="sds_Images" DataTextField="imageTitle" DataValueField="imageID"></asp:DropDownList>
-                    </div>
+            <div class="form-group">
+                <asp:Label ID="lbl_imageTitle" CssClass="col-lg-3 control-label" runat="server">Image:</asp:Label>
+                <div class="col-lg-3">
+                    <asp:DropDownList ID="ddl_imageTitle" runat="server" CssClass="form-control" AutoPostBack="True" DataSourceID="sds_Images" DataTextField="imageTitle" DataValueField="imageID"></asp:DropDownList>
                 </div>
-                <br />
-                <div class="form-group">
-                    <div class="col-lg-offset-1">
-                        <asp:GridView ID="gv_comments" runat="server" CssClass="table table-responsive" AutoGenerateColumns="False" DataSourceID="sds_Comments" DataKeyNames="accountID">
-                            <Columns>
-                                <asp:BoundField DataField="commentDateTime" HeaderText="Timestamp" SortExpression="commentDateTime" >
-                                <HeaderStyle CssClass="text-center" />
-                                <ItemStyle CssClass="col-lg-2 col-md-2 col-sm-2 text-center"/>
-                                </asp:BoundField>
-                                <asp:BoundField DataField="commentContent" HtmlEncode="false" HeaderText="Content" SortExpression="commentContent" >
-                                <ItemStyle CssClass="col-lg-8 col-md-8 col-sm-8" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="fName" HeaderText="Author" SortExpression="fName" >
-                                <HeaderStyle CssClass="text-center" />
-                                <ItemStyle CssClass="col-lg-2 col-md-2 col-sm-2 text-center" />
-                                </asp:BoundField>
-                            </Columns>
-                        </asp:GridView>
+            </div>
+        </fieldset>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Comments Section</div>
+            <div class="panel-body">
+                <fieldset class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-lg-offset-1">
+                            <asp:GridView ID="gv_comments" runat="server" CssClass="table table-responsive" AutoGenerateColumns="False" DataSourceID="sds_Comments" DataKeyNames="accountID">
+                                <Columns>
+                                    <asp:BoundField DataField="commentDateTime" HeaderText="Timestamp" SortExpression="commentDateTime">
+                                        <HeaderStyle CssClass="text-center" />
+                                        <ItemStyle CssClass="col-lg-2 col-md-2 col-sm-2 text-center" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="commentContent" HtmlEncode="false" HeaderText="Content" SortExpression="commentContent">
+                                        <ItemStyle CssClass="col-lg-8 col-md-8 col-sm-8" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="fName" HeaderText="Author" SortExpression="fName">
+                                        <HeaderStyle CssClass="text-center" />
+                                        <ItemStyle CssClass="col-lg-2 col-md-2 col-sm-2 text-center" />
+                                    </asp:BoundField>
+                                </Columns>
+                            </asp:GridView>
+                        </div>
                     </div>
-                </div>
-            </fieldset>
+                </fieldset>
+            </div>
         </div>
     </div>
 

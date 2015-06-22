@@ -31,15 +31,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="container">
-        <div class="row">
-
-            <asp:Repeater ID="Repeater1" runat="server">
-
-                <HeaderTemplate>
+        <asp:Repeater ID="Repeater1" runat="server">
+            <HeaderTemplate>
                     <ul id="lightGallery" class="gallery">
                 </HeaderTemplate>
                 <ItemTemplate>
-
                     <li class="col-lg-3 col-md-4 col-xs-6 animated fadeInUp" data-src='<%#"ImageViewerHandler.ashx?id=" + Eval("imageID")%>'>
                         <asp:Image ID="Image" runat="server" class="thumbnail img-responsive" ImageUrl='<%#"ImageViewerHandler.ashx?id=" + Eval("imageID")%>' />
                     </li>
@@ -47,7 +43,9 @@
                 <FooterTemplate>
                     </ul>
                 </FooterTemplate>
-            </asp:Repeater>
-        </div>
+        </asp:Repeater>
+        <%--<div class="row">
+            
+        </div>--%>
     </div>
 </asp:Content>
