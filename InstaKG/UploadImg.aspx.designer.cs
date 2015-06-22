@@ -13,6 +13,24 @@ namespace InstaKG {
     public partial class UploadImg {
         
         /// <summary>
+        /// alert_placeholder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alert_placeholder;
+        
+        /// <summary>
+        /// alertText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal alertText;
+        
+        /// <summary>
         /// lbl_ImageTitle control.
         /// </summary>
         /// <remarks>
