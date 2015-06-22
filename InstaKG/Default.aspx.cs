@@ -7,7 +7,7 @@ namespace InstaKG
 {
     public partial class Default : System.Web.UI.Page
     {
-        private string strConnString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        private string strConnString = ConfigurationManager.ConnectionStrings["InstaKGConnectionString"].ConnectionString;
         private SqlCommand cmd;
 
         protected void Page_Load(object sender, EventArgs e)
