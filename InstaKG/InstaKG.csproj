@@ -60,12 +60,15 @@
     <Content Include="Account\Registration.aspx" />
     <Content Include="CommentCreator_Test.aspx" />
     <Content Include="CommentViewer_Test.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Account\Login.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
+    <Content Include="Images\reddit404d.png" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Styles\bootstrap-theme.css.map" />
     <Content Include="Styles\bootstrap.css.map" />
@@ -121,6 +124,16 @@
     </Compile>
     <Compile Include="CommentViewer_Test.aspx.designer.cs">
       <DependentUpon>CommentViewer_Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
