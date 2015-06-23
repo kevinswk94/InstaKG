@@ -42,6 +42,16 @@
                 </div>
 
                 <div class="form-group">
+                    <asp:Label ID="Label1" CssClass="col-lg-4 control-label" runat="server"></asp:Label>
+                    <div class="col-lg-4">
+                        <a href="/ForgetPassword.aspx">Forget Password</a>
+                    </div>
+                    <div class="col-lg-1">
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Username required" ControlToValidate="tb_username" ForeColor="Red">*</asp:RequiredFieldValidator>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <div class="col-lg-offset-4">
                         <asp:ValidationSummary ID="vs_all" runat="server" ForeColor="Red" />
                     </div>
