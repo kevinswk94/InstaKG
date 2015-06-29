@@ -22,6 +22,13 @@
                     <asp:DropDownList ID="ddl_imageTitle" runat="server" CssClass="form-control" AutoPostBack="True" DataSourceID="sds_Images" DataTextField="imageTitle" DataValueField="imageID"></asp:DropDownList>
                 </div>
             </div>
+
+            <div class="form-group">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <asp:Image ID="img_selectedImage" runat="server" CssClass="img-responsive center-block" style="max-height:500px;"/>
+                        <%--<asp:Image ID="img_selectedImage" runat="server" CssClass="img-responsive" ImageUrl='<%#"~/ImageViewerHandler.ashx?id=" + ddl_imageTitle.SelectedValue%>' />--%>
+                    </div>
+                </div>
         </fieldset>
 
         <div class="panel panel-default">

@@ -44,12 +44,8 @@
                         </ul>
                     </li>
                     <li><a href="/UploadImg.aspx">Upload</a></li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Comments <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/CommentCreator_Test.aspx">Comment Creator</a></li>
-                            <li><a href="/CommentViewer_Test.aspx">Comment Viewer</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="/CommentViewer_Test.aspx">Comment Viewer</a></li>
+                    <li><a href="/ImageViewer.aspx">Image Viewer</a></li>
                     <li><a href="/Chat.aspx">Chat</a></li>
                 </ul>
 

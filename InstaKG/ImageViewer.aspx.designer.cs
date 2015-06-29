@@ -31,13 +31,13 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.DropDownList ddl_imageTitle;
         
         /// <summary>
-        /// gv_Image control.
+        /// img_selectedImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_Image;
+        protected global::System.Web.UI.WebControls.Image img_selectedImage;
         
         /// <summary>
         /// sds_Images control.
@@ -47,14 +47,5 @@ namespace InstaKG {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource sds_Images;
-        
-        /// <summary>
-        /// sds_Image control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sds_Image;
     }
 }

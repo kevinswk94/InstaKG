@@ -17,7 +17,8 @@
                 </div>
                 <div class="form-group">
                     <div class="col-lg-offset-1">
-                        <asp:GridView ID="gv_Image" runat="server"></asp:GridView>
+                        <asp:Image ID="img_selectedImage" runat="server" CssClass="img-responsive center-block" style="max-width:800px;"/>
+                        <%--<asp:Image ID="img_selectedImage" runat="server" CssClass="img-responsive" ImageUrl='<%#"~/ImageViewerHandler.ashx?id=" + ddl_imageTitle.SelectedValue%>' />--%>
                     </div>
                 </div>
             </fieldset>
@@ -25,5 +26,4 @@
     </div>
 
     <asp:SqlDataSource ID="sds_Images" runat="server" ConnectionString="<%$ ConnectionStrings:InstaKG %>" SelectCommand="SELECT DISTINCT [imageID], [imageTitle] FROM [Image] ORDER BY [imageID]"></asp:SqlDataSource>
-    <asp:SqlDataSource ID="sds_Image" runat="server"></asp:SqlDataSource>
 </asp:Content>

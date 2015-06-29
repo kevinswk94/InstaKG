@@ -49,6 +49,15 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.DropDownList ddl_imageTitle;
         
         /// <summary>
+        /// img_selectedImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image img_selectedImage;
+        
+        /// <summary>
         /// gv_comments control.
         /// </summary>
         /// <remarks>

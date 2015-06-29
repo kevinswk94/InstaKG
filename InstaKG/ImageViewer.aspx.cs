@@ -11,7 +11,8 @@ namespace InstaKG
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string imageUrl = "~/ImageViewerHandler.ashx?id=" + ddl_imageTitle.SelectedValue.ToString();
+            img_selectedImage.ImageUrl = Page.ResolveUrl(imageUrl);
         }
     }
 }

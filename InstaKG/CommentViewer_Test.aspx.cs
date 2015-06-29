@@ -13,7 +13,8 @@ namespace InstaKG
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string imageUrl = "~/ImageViewerHandler.ashx?id=" + ddl_imageTitle.SelectedValue.ToString();
+            img_selectedImage.ImageUrl = Page.ResolveUrl(imageUrl);
         }
 
         protected void btn_submit_Click(object sender, EventArgs e)
@@ -40,6 +41,7 @@ namespace InstaKG
                     alert_placeholder.Visible = true;
                     alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";
                     alertText.Text = "Comment successfully posted!";
+                    this.gv_comments.DataBind();
 
                     tb_commentContent.Text = String.Empty;
                 }
