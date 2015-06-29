@@ -13,7 +13,7 @@
 
         <fieldset class="form-horizontal">
             <div class="row">
-                <legend class="col-lg-offset-2 col-lg-5">Viewing comments from images:</legend>
+                <legend class="col-lg-offset-2 col-lg-5">Viewing Comments From Image:</legend>
             </div>
 
             <div class="form-group">
@@ -29,7 +29,7 @@
             <div class="panel-body">
                 <fieldset class="form-horizontal">
                     <div class="form-group">
-                        <div class="col-lg-offset-1">
+                        <div>
                             <asp:GridView ID="gv_comments" runat="server" CssClass="table table-responsive" AutoGenerateColumns="False" DataSourceID="sds_Comments" DataKeyNames="accountID">
                                 <Columns>
                                     <asp:BoundField DataField="commentDateTime" HeaderText="Timestamp" SortExpression="commentDateTime">
@@ -50,6 +50,25 @@
                 </fieldset>
             </div>
         </div>
+
+        <fieldset class="form-horizontal">
+            <div class="form-group">
+                <asp:Label ID="lbl_commentContent" CssClass="col-lg-3 control-label" runat="server">Comment:</asp:Label>
+                <div class="col-lg-6">
+                    <asp:TextBox ID="tb_commentContent" CssClass="form-control" TextMode="MultiLine" Rows="4" runat="server" placeholder="Write a comment here"></asp:TextBox>
+                </div>
+                <div class="col-lg-1">
+                    <asp:RequiredFieldValidator ID="rfv_commentContent" runat="server" ErrorMessage="Comment required" ControlToValidate="tb_commentContent" ForeColor="Red"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-4 col-lg-offset-7">
+                    <asp:Button ID="btn_cancel" CssClass="btn btn-default" Text="Cancel" runat="server" OnClick="btn_cancel_Click" CausesValidation="false" />
+                    <asp:Button ID="btn_submit" CssClass="btn btn-primary" Text="Submit" runat="server" OnClick="btn_submit_Click" />
+                </div>
+            </div>
+        </fieldset>
     </div>
 
     <asp:SqlDataSource ID="sds_Images" runat="server" ConnectionString="<%$ ConnectionStrings:InstaKG %>" SelectCommand="SELECT DISTINCT [imageID], [imageTitle] FROM [Image] ORDER BY [imageID]"></asp:SqlDataSource>
