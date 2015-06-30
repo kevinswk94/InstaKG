@@ -98,8 +98,8 @@ namespace InstaKG
             _toUser_otr_session_manager = new OTRSessionManager(_toUser_unique_id);
             _fromUser_otr_session_manager = new OTRSessionManager(_fromUser_unique_id);
 
-            _toUser_otr_session_manager.OnOTREvent += new OTREventHandler(OnToUserOTRMangerEventHandler);
-            _fromUser_otr_session_manager.OnOTREvent += new OTREventHandler(OnFromUserOTRMangerEventHandler);
+            //_toUser_otr_session_manager.OnOTREvent += new OTREventHandler(OnToUserOTRMangerEventHandler);
+            //_fromUser_otr_session_manager.OnOTREvent += new OTREventHandler(OnFromUserOTRMangerEventHandler);
 
             //OTR creates random keys, both do not have DSA Keys
 
@@ -121,146 +121,146 @@ namespace InstaKG
             }
         }
 
-        private void OnToUserOTRMangerEventHandler(object source, OTREventArgs e)
-        {
+        //private void OnToUserOTRMangerEventHandler(object source, OTREventArgs e)
+        //{
 
-            switch (e.GetOTREvent())
-            {
-                case OTR_EVENT.MESSAGE:
+        //    switch (e.GetOTREvent())
+        //    {
+        //        case OTR_EVENT.MESSAGE:
 
-                    Console.WriteLine("{0}: {1} \n", e.GetSessionID(), e.GetMessage());
+        //            Console.WriteLine("{0}: {1} \n", e.GetSessionID(), e.GetMessage());
 
 
-                    if (_bob_convo_pos < _bob_convo_array.Length)
-                    {
+        //            if (_bob_convo_pos < _bob_convo_array.Length)
+        //            {
 
-                        _bob_convo_pos++;
-                        _toUser_otr_session_manager.EncryptMessage(_toUser_buddy_unique_id, _bob_convo_array[_bob_convo_pos - 1]);
-                    }
+        //                _bob_convo_pos++;
+        //                _toUser_otr_session_manager.EncryptMessage(_toUser_buddy_unique_id, _bob_convo_array[_bob_convo_pos - 1]);
+        //            }
 
-                    break;
+        //            break;
 
-                case OTR_EVENT.SEND:
+        //        case OTR_EVENT.SEND:
 
 
-                    SendDataOnNetwork(_toUser_unique_id, e.GetMessage());
+        //            SendDataOnNetwork(_toUser_unique_id, e.GetMessage());
 
-                    break;
-                case OTR_EVENT.ERROR:
+        //            break;
+        //        case OTR_EVENT.ERROR:
 
-                    Console.WriteLine("Bob: OTR Error: {0} \n", e.GetErrorMessage());
-                    Console.WriteLine("Bob: OTR Error Verbose: {0} \n", e.GetErrorVerbose());
+        //            Console.WriteLine("Bob: OTR Error: {0} \n", e.GetErrorMessage());
+        //            Console.WriteLine("Bob: OTR Error Verbose: {0} \n", e.GetErrorVerbose());
 
-                    break;
-                case OTR_EVENT.READY:
+        //            break;
+        //        case OTR_EVENT.READY:
 
 
-                    Console.WriteLine("Bob: Encrypted OTR session with {0} established \n", e.GetSessionID());
+        //            Console.WriteLine("Bob: Encrypted OTR session with {0} established \n", e.GetSessionID());
 
 
-                    break;
-                case OTR_EVENT.DEBUG:
+        //            break;
+        //        case OTR_EVENT.DEBUG:
 
-                    Console.WriteLine("Bob: " + e.GetMessage() + "\n");
+        //            Console.WriteLine("Bob: " + e.GetMessage() + "\n");
 
-                    break;
-                case OTR_EVENT.EXTRA_KEY_REQUEST:
+        //            break;
+        //        case OTR_EVENT.EXTRA_KEY_REQUEST:
 
 
-                    break;
-                case OTR_EVENT.SMP_MESSAGE:
+        //            break;
+        //        case OTR_EVENT.SMP_MESSAGE:
 
 
-                    Console.WriteLine("Bob: " + e.GetMessage() + "\n");
+        //            Console.WriteLine("Bob: " + e.GetMessage() + "\n");
 
 
 
-                    break;
-                case OTR_EVENT.CLOSED:
+        //            break;
+        //        case OTR_EVENT.CLOSED:
 
 
 
-                    Console.WriteLine("Bob: Encrypted OTR session with {0} closed \n", e.GetSessionID());
+        //            Console.WriteLine("Bob: Encrypted OTR session with {0} closed \n", e.GetSessionID());
 
 
-                    break;
+        //            break;
 
-            }
+        //    }
 
-        }
+        //}
 
-        private void OnFromUserOTRMangerEventHandler(object source, OTREventArgs e)
-        {
+        //private void OnFromUserOTRMangerEventHandler(object source, OTREventArgs e)
+        //{
 
-            switch (e.GetOTREvent())
-            {
-                case OTR_EVENT.MESSAGE:
+        //    switch (e.GetOTREvent())
+        //    {
+        //        case OTR_EVENT.MESSAGE:
 
-                    Console.WriteLine("{0}: {1} \n", e.GetSessionID(), e.GetMessage());
+        //            Console.WriteLine("{0}: {1} \n", e.GetSessionID(), e.GetMessage());
 
-                    if (_alice_convo_pos < _alice_convo_array.Length)
-                    {
-                        _alice_convo_pos++;
-                        _fromUser_otr_session_manager.EncryptMessage(_fromUser_buddy_unique_id, _alice_convo_array[_alice_convo_pos - 1]);
-                    }
+        //            if (_alice_convo_pos < _alice_convo_array.Length)
+        //            {
+        //                _alice_convo_pos++;
+        //                _fromUser_otr_session_manager.EncryptMessage(_fromUser_buddy_unique_id, _alice_convo_array[_alice_convo_pos - 1]);
+        //            }
 
 
-                    break;
+        //            break;
 
-                case OTR_EVENT.SEND:
+        //        case OTR_EVENT.SEND:
 
 
-                    SendDataOnNetwork(_fromUser_unique_id, e.GetMessage());
+        //            SendDataOnNetwork(_fromUser_unique_id, e.GetMessage());
 
-                    break;
-                case OTR_EVENT.ERROR:
+        //            break;
+        //        case OTR_EVENT.ERROR:
 
-                    Console.WriteLine("Alice: OTR Error: {0} \n", e.GetErrorMessage());
-                    Console.WriteLine("Alice: OTR Error Verbose: {0} \n", e.GetErrorVerbose());
+        //            Console.WriteLine("Alice: OTR Error: {0} \n", e.GetErrorMessage());
+        //            Console.WriteLine("Alice: OTR Error Verbose: {0} \n", e.GetErrorVerbose());
 
-                    break;
-                case OTR_EVENT.READY:
+        //            break;
+        //        case OTR_EVENT.READY:
 
 
-                    Console.WriteLine("Alice: Encrypted OTR session with {0} established \n", e.GetSessionID());
+        //            Console.WriteLine("Alice: Encrypted OTR session with {0} established \n", e.GetSessionID());
 
 
 
-                    _alice_convo_pos++;
-                    _fromUser_otr_session_manager.EncryptMessage(_fromUser_buddy_unique_id, _alice_convo_array[_alice_convo_pos - 1]);
+        //            _alice_convo_pos++;
+        //            _fromUser_otr_session_manager.EncryptMessage(_fromUser_buddy_unique_id, _alice_convo_array[_alice_convo_pos - 1]);
 
 
 
-                    break;
-                case OTR_EVENT.DEBUG:
+        //            break;
+        //        case OTR_EVENT.DEBUG:
 
-                    Console.WriteLine("Alice: " + e.GetMessage() + "\n");
+        //            Console.WriteLine("Alice: " + e.GetMessage() + "\n");
 
-                    break;
-                case OTR_EVENT.EXTRA_KEY_REQUEST:
+        //            break;
+        //        case OTR_EVENT.EXTRA_KEY_REQUEST:
 
 
-                    break;
-                case OTR_EVENT.SMP_MESSAGE:
+        //            break;
+        //        case OTR_EVENT.SMP_MESSAGE:
 
 
-                    Console.WriteLine("Alice: " + e.GetMessage() + "\n");
+        //            Console.WriteLine("Alice: " + e.GetMessage() + "\n");
 
 
 
-                    break;
-                case OTR_EVENT.CLOSED:
+        //            break;
+        //        case OTR_EVENT.CLOSED:
 
 
 
-                    Console.WriteLine("Alice: Encrypted OTR session with {0} closed \n", e.GetSessionID());
+        //            Console.WriteLine("Alice: Encrypted OTR session with {0} closed \n", e.GetSessionID());
 
 
-                    break;
+        //            break;
 
-            }
+        //    }
 
-        }
+        //}
 
 
         private void SendDataOnNetwork(string my_unique_id, string otr_data)
