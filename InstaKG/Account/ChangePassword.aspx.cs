@@ -46,12 +46,13 @@ namespace InstaKG.Account
                         }
                         else
                         {
-                            alert_placeholder.Visible = true;
-                            alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
-                            alertText.Text = "ERROR! Please try again later.";
-                            tb_CurrentPassword.Text = string.Empty;
-                            tb_NewPassword.Text = string.Empty;
-                            tb_ConfirmPassword.Text = string.Empty;
+                            Response.Redirect("Error.aspx");
+                            //alert_placeholder.Visible = true;
+                            //alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
+                            //alertText.Text = "ERROR! Please try again later.";
+                            //tb_CurrentPassword.Text = string.Empty;
+                            //tb_NewPassword.Text = string.Empty;
+                            //tb_ConfirmPassword.Text = string.Empty;
                         }
                     }
                     else
