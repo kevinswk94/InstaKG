@@ -1,17 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
 namespace InstaKG
 {
     public partial class BrowseImages : System.Web.UI.Page
     {
+        public string test = "1";
         protected void Page_Load(object sender, EventArgs e)
         {
+            gv_browseImages.DataSource = RetrieveImages();
+            gv_browseImages.DataBind();
+        }
 
+        private DataTable RetrieveImages()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString);
+
+            DataTable dt = new DataTable();
+            SqlDataAdapter sda = new SqlDataAdapter();
+
+            string sql = "SELECT DISTINCT [imageID], [imageTitle], [uploadDateTime], [accountID] FROM [Image] ORDER BY [uploadDateTime]";
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            con.Open();
+            sda.SelectCommand = cmd;
+            sda.Fill(dt);
+
+            sda.Dispose();
+            cmd.Dispose();
+            con.Close();
+            return dt;
         }
     }
 }
