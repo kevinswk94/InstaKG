@@ -22,7 +22,7 @@ namespace InstaKG
             DataTable dt = new DataTable();
             SqlDataAdapter sda = new SqlDataAdapter();
 
-            string sql = "SELECT DISTINCT [imageID], [imageTitle], [uploadDateTime], [accountID] FROM [Image] ORDER BY [uploadDateTime]";
+            string sql = "SELECT DISTINCT Image.imageID, Image.imageTitle, Image.uploadDateTime, Account.fName FROM Image INNER JOIN Account ON Image.accountID = Account.accountID ORDER BY uploadDateTime";
             SqlCommand cmd = new SqlCommand(sql, con);
 
             con.Open();
