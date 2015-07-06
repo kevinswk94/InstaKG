@@ -49,6 +49,13 @@
                 </div>
 
                 <div class="form-group">
+                    <asp:Label ID="lbl_Watermarking" CssClass="col-lg-3 control-label" runat="server">Watermarking Text:</asp:Label>
+                    <div class="col-lg-6">
+                        <asp:TextBox ID="tb_watermark" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <asp:Label ID="lblImageUpload" CssClass="col-lg-3 control-label" runat="server">Upload File:</asp:Label>
                     <div class="col-lg-6">
                         <asp:FileUpload ID="FileUpload1" runat="server" onchange="readURL(this)" />

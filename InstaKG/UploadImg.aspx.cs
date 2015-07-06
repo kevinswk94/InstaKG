@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Web;
 
@@ -36,6 +37,22 @@ namespace InstaKG
                 //get file extension
                 string ext = Path.GetExtension(FileUpload1.FileName);
 
+                //watermark the image
+                string fn = Guid.NewGuid() + Path.GetExtension(FileUpload1.PostedFile.FileName);
+                Image upImage = Image.FromStream(FileUpload1.PostedFile.InputStream);
+                using (Graphics g = Graphics.FromImage(upImage))
+                {
+                    //for transparency 
+                    int opacity = 128;
+                    
+                    SolidBrush brush = new SolidBrush(Color.FromArgb(opacity, Color.White));
+                    Font font = new Font("Haettenschweiler", 16);
+                    g.DrawString(tb_watermark.Text.Trim(), font, brush, new PointF(0, 0));
+                    //upImage.Save(Path.Combine(Server.MapPath("~/WaterMarking"), fn));
+                    //Image1.ImageUrl = "~/WaterMarking" + "//" + fn;
+                }
+
+                // Saving the iamge to DB
                 if (ext.Equals(".jpg") || ext.Equals(".JPG") || ext.Equals(".PNG") || ext.Equals(".png"))
                 {
                     string sql = "Insert into Image(imageTitle, imageDescription, imageData, imageType, uploadDateTime, accountID)";
@@ -48,7 +65,7 @@ namespace InstaKG
                     //set up parameters
                     cmd.Parameters.AddWithValue("@imgTitle", tb_ImageTitle.Text);
                     cmd.Parameters.AddWithValue("@imgDescription", tb_ImageDescription.Text);
-                    cmd.Parameters.Add("@imgData", SqlDbType.Image, imgData.Length).Value = imgData;
+                    cmd.Parameters.Add("@imgData", SqlDbType.Image, imgData.Length).Value = imgData; // YP, you're probably saving the unwatermarked image to the DB, not the watermarked version. May be wrong.
                     cmd.Parameters.AddWithValue("@imgtype", FileUpload1.PostedFile.ContentType);
                     cmd.Parameters.AddWithValue("@uploadDT", dt);
                     cmd.Parameters.AddWithValue("@accID", Session["accountID"].ToString());
@@ -86,8 +103,6 @@ namespace InstaKG
                     alertText.Text = "You can only upload jpg or png file.";
                     //lb_EndInfo.Text = "You can only upload jpg or png file.";
                 }
-
-
             }
             else
             {
