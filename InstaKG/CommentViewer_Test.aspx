@@ -13,15 +13,17 @@
 
         <fieldset class="form-horizontal">
             <div class="row">
-                <legend class="col-lg-offset-2 col-lg-5">Viewing Comments From Image:</legend>
+                <%--<legend class="col-lg-offset-2 col-lg-7">Viewing Comments From <span id="span_title"><%= imageTitle %></span>:</legend>--%>
+                <h3 class="col-lg-offset-2 col-lg-6">Viewing Comments From <span><%= imageTitle %></span>:</h3>
             </div>
+            <br />
 
-            <div class="form-group">
+            <%--<div class="form-group">
                 <asp:Label ID="lbl_imageTitle" CssClass="col-lg-3 control-label" runat="server">Image:</asp:Label>
                 <div class="col-lg-3">
                     <asp:DropDownList ID="ddl_imageTitle" runat="server" CssClass="form-control" AutoPostBack="True" DataSourceID="sds_Images" DataTextField="imageTitle" DataValueField="imageID"></asp:DropDownList>
                 </div>
-            </div>
+            </div>--%>
 
             <div class="form-group">
                     <div class="col-lg-8 col-lg-offset-2">
@@ -32,7 +34,7 @@
         </fieldset>
 
         <div class="panel panel-default">
-            <div class="panel-heading">Comments Section</div>
+            <div class="panel-heading">Comments Section<span class="pull-right">Uploader: <span><%= fName %></span></span></div>
             <div class="panel-body">
                 <fieldset class="form-horizontal">
                     <div class="form-group">
@@ -78,10 +80,11 @@
         </fieldset>
     </div>
 
-    <asp:SqlDataSource ID="sds_Images" runat="server" ConnectionString="<%$ ConnectionStrings:InstaKG %>" SelectCommand="SELECT DISTINCT [imageID], [imageTitle] FROM [Image] ORDER BY [imageID]"></asp:SqlDataSource>
+    <%--<asp:SqlDataSource ID="sds_Images" runat="server" ConnectionString="<%$ ConnectionStrings:InstaKG %>" SelectCommand="SELECT DISTINCT [imageID], [imageTitle] FROM [Image] ORDER BY [imageID]"></asp:SqlDataSource>--%>
     <asp:SqlDataSource ID="sds_Comments" runat="server" ConnectionString="<%$ ConnectionStrings:InstaKG %>" SelectCommand="SELECT Comment.commentDateTime, Comment.commentContent, Comment.commentAuthor, Account.accountID, Account.fName FROM Comment INNER JOIN Account ON Comment.commentAuthor = Account.accountID WHERE (Comment.imageID = @imageID) ORDER BY Comment.commentDateTime DESC">
         <SelectParameters>
-            <asp:ControlParameter ControlID="ddl_imageTitle" DefaultValue="1" Name="imageID" PropertyName="SelectedValue" Type="Int32" />
+            <%--<asp:ControlParameter ControlID="ddl_imageTitle" DefaultValue="1" Name="imageID" PropertyName="SelectedValue" Type="Int32" />--%>
+            <asp:QueryStringParameter DefaultValue="1" Name="imageID" QueryStringField="imageID" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
 </asp:Content>

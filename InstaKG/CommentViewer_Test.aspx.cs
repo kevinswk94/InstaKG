@@ -11,10 +11,29 @@ namespace InstaKG
 {
     public partial class CommentViewer_Test : System.Web.UI.Page
     {
+        string imageID = "";
+        protected string imageTitle = "";
+        protected string fName = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            string imageUrl = "~/ImageViewerHandler.ashx?id=" + ddl_imageTitle.SelectedValue.ToString();
+            imageID = Request.QueryString["imageID"];
+            //string imageUrl = "~/ImageViewerHandler.ashx?id=" + ddl_imageTitle.SelectedValue.ToString();
+            string imageUrl = "~/ImageViewerHandler.ashx?id=" + imageID;
             img_selectedImage.ImageUrl = Page.ResolveUrl(imageUrl);
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString);
+            con.Open();
+            string sql = "SELECT Image.imageTitle, Image.accountID, Account.accountID, Account.fName FROM Image INNER JOIN Account ON Image.accountID = Account.accountID WHERE (Image.imageID = @ImageID)";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("ImageID", imageID);
+            //cmd.Prepare();
+            SqlDataReader dr = cmd.ExecuteReader();
+            dr.Read();
+            imageTitle = dr["imageTitle"].ToString();
+            fName = dr["fName"].ToString();
+            dr.Close();
+            cmd.Dispose();
+            con.Close();
         }
 
         protected void btn_submit_Click(object sender, EventArgs e)
@@ -31,7 +50,7 @@ namespace InstaKG
                     cmd.Parameters.AddWithValue("@CommentContent", commentContent);
                     cmd.Parameters.AddWithValue("@CommentAuthor", Session["accountID"].ToString());
                     cmd.Parameters.AddWithValue("@Flag", 0);
-                    cmd.Parameters.AddWithValue("@ImageID", ddl_imageTitle.SelectedValue);
+                    cmd.Parameters.AddWithValue("@ImageID", imageID);
 
                     con.Open();
                     cmd.ExecuteNonQuery();
