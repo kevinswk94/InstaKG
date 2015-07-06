@@ -13,15 +13,15 @@
         <asp:GridView ID="gv_browseImages" CssClass="table table-responsive" runat="server" AutoGenerateColumns="False">
             <Columns>
                 <asp:BoundField DataField="imageID" HeaderText="imageID" InsertVisible="False" ReadOnly="True" SortExpression="imageID" Visible="false" />
-                <asp:BoundField DataField="imageTitle" HeaderText="imageTitle" SortExpression="imageTitle" />
+                <asp:BoundField DataField="imageTitle" HeaderText="Title" SortExpression="imageTitle" />
                 <asp:TemplateField>
                     <ItemTemplate>
                         <a href="<%#"CommentViewer.aspx?imageID=" + Eval("imageID") %>"><asp:Image ID="img_Photo" CssClass="img-responsive" style="max-height:200px;" runat="server" ImageUrl='<%#"ImageViewerHandler.ashx?id=" + Eval("imageID")%>' /></a>
                         
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="uploadDateTime" HeaderText="uploadDateTime" SortExpression="uploadDateTime" />
-                <asp:BoundField DataField="accountID" HeaderText="accountID" SortExpression="accountID" />
+                <asp:BoundField DataField="uploadDateTime" HeaderText="Upload Date" SortExpression="uploadDateTime" />
+                <asp:BoundField DataField="accountID" HeaderText="Uploader" SortExpression="accountID" />
             </Columns>
         </asp:GridView>
     </div>
