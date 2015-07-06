@@ -95,6 +95,7 @@
   <ItemGroup>
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Registration.aspx" />
+    <Content Include="BrowseImages.aspx" />
     <Content Include="Chat.aspx" />
     <Content Include="CommentCreator_Test.aspx" />
     <Content Include="CommentViewer_Test.aspx" />
@@ -144,7 +145,6 @@
     <Content Include="Images\nyp.jpg" />
     <Content Include="Images\reddit404d.png" />
     <Content Include="Images\showbiz-jeremy-clarkson-3.jpg" />
-    <Content Include="ImageViewer.aspx" />
     <None Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.js" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.min.js" />
@@ -369,6 +369,13 @@
     <Compile Include="Account\Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BrowseImages.aspx.cs">
+      <DependentUpon>BrowseImages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BrowseImages.aspx.designer.cs">
+      <DependentUpon>BrowseImages.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Chat.aspx.cs">
       <DependentUpon>Chat.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -419,13 +426,6 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ImageViewer.aspx.cs">
-      <DependentUpon>ImageViewer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ImageViewer.aspx.designer.cs">
-      <DependentUpon>ImageViewer.aspx</DependentUpon>
     </Compile>
     <Compile Include="ImageViewerHandler.ashx.cs">
       <DependentUpon>ImageViewerHandler.ashx</DependentUpon>
