@@ -31,22 +31,13 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.Literal alertText;
         
         /// <summary>
-        /// lbl_imageTitle control.
+        /// img_selectedImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_imageTitle;
-        
-        /// <summary>
-        /// ddl_imageTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_imageTitle;
+        protected global::System.Web.UI.WebControls.Image img_selectedImage;
         
         /// <summary>
         /// gv_comments control.
@@ -58,13 +49,49 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.GridView gv_comments;
         
         /// <summary>
-        /// sds_Images control.
+        /// lbl_commentContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sds_Images;
+        protected global::System.Web.UI.WebControls.Label lbl_commentContent;
+        
+        /// <summary>
+        /// tb_commentContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_commentContent;
+        
+        /// <summary>
+        /// rfv_commentContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_commentContent;
+        
+        /// <summary>
+        /// btn_cancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_cancel;
+        
+        /// <summary>
+        /// btn_submit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_submit;
         
         /// <summary>
         /// sds_Comments control.

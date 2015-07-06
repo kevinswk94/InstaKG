@@ -96,9 +96,10 @@
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Registration.aspx" />
+    <Content Include="BrowseImages.aspx" />
     <Content Include="Chat.aspx" />
     <Content Include="CommentCreator_Test.aspx" />
-    <Content Include="CommentViewer_Test.aspx" />
+    <Content Include="CommentViewer.aspx" />
     <Content Include="DummyData\Img\cS-1.jpg" />
     <Content Include="DummyData\Img\cS-10.jpg" />
     <Content Include="DummyData\Img\cS-11.jpg" />
@@ -145,7 +146,6 @@
     <Content Include="Images\nyp.jpg" />
     <Content Include="Images\reddit404d.png" />
     <Content Include="Images\showbiz-jeremy-clarkson-3.jpg" />
-    <Content Include="ImageViewer.aspx" />
     <None Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.js" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.min.js" />
@@ -377,6 +377,13 @@
     <Compile Include="Account\Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BrowseImages.aspx.cs">
+      <DependentUpon>BrowseImages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BrowseImages.aspx.designer.cs">
+      <DependentUpon>BrowseImages.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Chat.aspx.cs">
       <DependentUpon>Chat.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -392,12 +399,12 @@
     <Compile Include="CommentCreator_Test.aspx.designer.cs">
       <DependentUpon>CommentCreator_Test.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CommentViewer_Test.aspx.cs">
-      <DependentUpon>CommentViewer_Test.aspx</DependentUpon>
+    <Compile Include="CommentViewer.aspx.cs">
+      <DependentUpon>CommentViewer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CommentViewer_Test.aspx.designer.cs">
-      <DependentUpon>CommentViewer_Test.aspx</DependentUpon>
+    <Compile Include="CommentViewer.aspx.designer.cs">
+      <DependentUpon>CommentViewer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Common\MessageDetail.cs" />
     <Compile Include="Common\UserDetail.cs" />
@@ -427,13 +434,6 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ImageViewer.aspx.cs">
-      <DependentUpon>ImageViewer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ImageViewer.aspx.designer.cs">
-      <DependentUpon>ImageViewer.aspx</DependentUpon>
     </Compile>
     <Compile Include="ImageViewerHandler.ashx.cs">
       <DependentUpon>ImageViewerHandler.ashx</DependentUpon>
