@@ -93,7 +93,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="ChangePassword.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Registration.aspx" />
     <Content Include="BrowseImages.aspx" />
@@ -356,11 +356,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account\ChangePassword.aspx.cs">
+    <Compile Include="ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+    <Compile Include="ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Login.aspx.cs">
