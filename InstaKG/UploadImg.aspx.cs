@@ -44,13 +44,24 @@ namespace InstaKG
                 {
                     //for transparency 
                     int opacity = 128;
-                    
                     SolidBrush brush = new SolidBrush(Color.FromArgb(opacity, Color.White));
                     Font font = new Font("Haettenschweiler", 16);
                     g.DrawString(tb_watermark.Text.Trim(), font, brush, new PointF(0, 0));
-                    //upImage.Save(Path.Combine(Server.MapPath("~/WaterMarking"), fn));
+                    upImage.Save(Path.Combine(Server.MapPath("~/WaterMarking"), fn));
+                    string pathName = Path.Combine(Server.MapPath("~/WaterMarking"), fn);
+                    Session["path"] = pathName;
                     //Image1.ImageUrl = "~/WaterMarking" + "//" + fn;
                 }
+
+                // Read the file and convert it to Byte Array
+                string filePath = Session["path"].ToString();
+                string filename = Path.GetFileName(filePath);
+
+                FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+                Byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                br.Close();
+                fs.Close();
 
                 // Saving the iamge to DB
                 if (ext.Equals(".jpg") || ext.Equals(".JPG") || ext.Equals(".PNG") || ext.Equals(".png"))
@@ -65,7 +76,8 @@ namespace InstaKG
                     //set up parameters
                     cmd.Parameters.AddWithValue("@imgTitle", tb_ImageTitle.Text);
                     cmd.Parameters.AddWithValue("@imgDescription", tb_ImageDescription.Text);
-                    cmd.Parameters.Add("@imgData", SqlDbType.Image, imgData.Length).Value = imgData; // YP, you're probably saving the unwatermarked image to the DB, not the watermarked version. May be wrong.
+                    //cmd.Parameters.Add("@imgData", SqlDbType.Image, imgData.Length).Value = imgData; // YP, you're probably saving the unwatermarked image to the DB, not the watermarked version. May be wrong.
+                    cmd.Parameters.Add("@imgData", SqlDbType.Binary).Value = bytes;
                     cmd.Parameters.AddWithValue("@imgtype", FileUpload1.PostedFile.ContentType);
                     cmd.Parameters.AddWithValue("@uploadDT", dt);
                     cmd.Parameters.AddWithValue("@accID", Session["accountID"].ToString());
