@@ -63,7 +63,7 @@
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><% =(string)Session["username"] %> <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="/Profile.aspx">View Profile</a></li>
-                                    <li><a href="#">Report User</a></li>
+                                    <li><a href="/ChangePassword.aspx">Change Password</a></li>
                                 </ul>
                             </li>
                             <li><button type="button" id="btn_logout" runat="server" class="btn btn-danger btn-sm navbar-btn" causesvalidation="false" onserverclick="logout">Logout</button></li>
