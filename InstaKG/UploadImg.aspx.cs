@@ -89,11 +89,12 @@ namespace InstaKG
                         alert_placeholder.Visible = true;
                         alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";
                         alertText.Text = "Successfully Uploaded!";
-
-                        //lb_EndInfo.Text = "Successfully uploaded!";
-                        //String filePath = "~/images/" + FileUpload1.FileName;
-                        //FileUpload1.SaveAs(Server.MapPath(filePath));
-                       // Response.Write(filePath);
+                        //delete file from folder
+                        FileInfo file = new FileInfo(filePath);
+                        if (file.Exists)//check file exsit or not
+                        {
+                            file.Delete();
+                        }
                       
                     }
                     catch (Exception ex)
@@ -128,6 +129,22 @@ namespace InstaKG
         protected void btn_cancel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void clearFolder(string FolderName)
+        {
+            DirectoryInfo dir = new DirectoryInfo(FolderName);
+
+            foreach (FileInfo fi in dir.GetFiles())
+            {
+                fi.Delete();
+            }
+
+            foreach (DirectoryInfo di in dir.GetDirectories())
+            {
+                clearFolder(di.FullName);
+                di.Delete();
+            }
         }
     }
 }
