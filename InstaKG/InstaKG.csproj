@@ -137,6 +137,7 @@
     <Content Include="Fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Account\ForgetPassword.aspx" />
+    <Content Include="FriendFinder.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="Images\lky.jpg" />
@@ -424,6 +425,13 @@
     </Compile>
     <Compile Include="Account\ForgetPassword.aspx.designer.cs">
       <DependentUpon>ForgetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FriendFinder.aspx.cs">
+      <DependentUpon>FriendFinder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FriendFinder.aspx.designer.cs">
+      <DependentUpon>FriendFinder.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/InstaKG.Master" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="InstaKG.Account.ChangePassword" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="container">
+    <div class="container">
 
         <!-- Alert placeholder, alter attributes in CodeBehind -->
         <div id="alert_placeholder" runat="server" visible="false">
@@ -43,7 +44,7 @@
                         <asp:RequiredFieldValidator ID="rfv_ConfirmPassword" runat="server" ErrorMessage="Please re-enter new password" ControlToValidate="tb_ConfirmPassword" ForeColor="Red">*</asp:RequiredFieldValidator>
                     </div>
                 </div>
-                 <div class="form-group">
+                <div class="form-group">
                     <div class="col-lg-offset-4">
                         <asp:ValidationSummary ID="vs_all" runat="server" ForeColor="Red" />
                     </div>
@@ -51,7 +52,7 @@
                 <div class="form-group">
                     <div class="col-lg-4 col-lg-offset-3">
                         <asp:Button ID="btn_Change" runat="server" OnClick="btn_Change_Click" Text="Change Password" class="btn btn-primary" />
-                    <asp:Label ID="lb_EndInfo" runat="server" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="lb_EndInfo" runat="server" ForeColor="Red"></asp:Label>
                     </div>
                 </div>
             </fieldset>

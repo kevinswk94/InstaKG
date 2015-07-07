@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data.SqlClient;
-using System.Data;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web.Security;
+using System.Web.UI;
 
 namespace InstaKG.Account
 {
@@ -17,7 +11,6 @@ namespace InstaKG.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void btn_Change_Click(object sender, EventArgs e)
@@ -162,14 +155,12 @@ namespace InstaKG.Account
                     con.Close();
                     con.Dispose();
                 }
-
                 else
                 {
                     isValid = false;
                     con.Close();
                     con.Dispose();
                 }
-
             }
 
             return isValid;
@@ -198,7 +189,6 @@ namespace InstaKG.Account
                 con.Dispose();
                 return name;
             }
-
         }
     }
 }
