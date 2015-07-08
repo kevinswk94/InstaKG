@@ -93,6 +93,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="1024-2006_1011_093752.jpg" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Registration.aspx" />
@@ -147,6 +148,7 @@
     <Content Include="Images\reddit404d.png" />
     <Content Include="Images\showbiz-jeremy-clarkson-3.jpg" />
     <None Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2-vsdoc.js" />
+    <Content Include="ImgLocation.aspx" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.js" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.min.js" />
     <None Include="packages\jQuery.1.10.2\Tools\jquery-1.10.2.intellisense.js" />
@@ -179,6 +181,7 @@
     <Content Include="packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll" />
     <Content Include="packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.xml" />
     <Content Include="packages\Owin.1.0\lib\net40\Owin.dll" />
+    <Content Include="PlazaMorning-D70-061003-0194-XL.jpg" />
     <Content Include="Profile.aspx" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Search.aspx" />
@@ -437,6 +440,13 @@
     </Compile>
     <Compile Include="ImageViewerHandler.ashx.cs">
       <DependentUpon>ImageViewerHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ImgLocation.aspx.cs">
+      <DependentUpon>ImgLocation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImgLocation.aspx.designer.cs">
+      <DependentUpon>ImgLocation.aspx</DependentUpon>
     </Compile>
     <Compile Include="InstaKG.Master.cs">
       <DependentUpon>InstaKG.Master</DependentUpon>
