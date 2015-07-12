@@ -10,16 +10,23 @@ namespace InstaKG
 {
     public partial class ImgLocation : System.Web.UI.Page
     {
+        string imageID = "9";
+
         protected double? latitude;
         protected double? longitude;
 
-        protected int imageID = 9;
+        protected string imageTitle;
 
         // To test pulling EXIF data from file on disk
         //protected static string dir = HttpContext.Current.Request.PhysicalApplicationPath.ToString();
         //System.Drawing.Image img = System.Drawing.Image.FromFile(dir + "1024-2006_1011_093752.jpg");
         protected void Page_Load(object sender, EventArgs e)
         {
+            imageID = Request.QueryString["imageID"];
+
+            string url = "~/ImageViewerHandler.ashx?id=" + imageID;
+            img_image.ImageUrl = Page.ResolveUrl(url);
+            
             // Getting image data from InstaKG DB
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString);
             con.Open();
@@ -28,6 +35,8 @@ namespace InstaKG
             cmd.Parameters.AddWithValue("@imageID", imageID); // Getting data from image ID
             SqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
+
+            imageTitle = dr["imageTitle"].ToString();
 
             // Retrieve imageData from DataReader and convert into byte array
             byte[] imgBytes = (byte[])dr["imageData"];

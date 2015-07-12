@@ -30,14 +30,11 @@
 
     <div class="container">
         <div class="col-lg-6">
-            <h3>Browsing Image: </h3>
-            <asp:Image ID="img_image" runat="server" ImageUrl="~/ImageViewerHandler.ashx?id=9" CssClass="img-responsive" />
-            <%--<img src="http://placehold.it/400x300" />--%>
+            <h3>Browsing Image: <span><% =imageTitle %></span></h3>
+            <asp:Image ID="img_image" runat="server" CssClass="img-responsive" style="max-height:450px;" />
         </div>
         <div class="col-lg-6">
-            <h3>EXIF data from image:</h3>
-            <%--<img src="http://placehold.it/400x300" />--%>
-            <%--<asp:Image ID="Image1" runat="server" />--%>
+            <h3>EXIF data from <span><% =imageTitle %></span>:</h3>
             <div id="map-canvas" class="img-responsive" style="max-height:300px;height:300px;"></div>
             <h4>Latitude: <% =latitude %></h4>
             <h4>Longitude: <% =longitude %></h4>
