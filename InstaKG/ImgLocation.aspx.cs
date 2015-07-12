@@ -60,12 +60,12 @@ namespace InstaKG
             if (!latitude.Equals(null))
             {
                 latitude = Convert.ToDouble(String.Format("{0:0.###}", latitude));
-                Response.Write("Latitude: " + latitude + "<br />");
+                //Response.Write("Latitude: " + latitude + "<br />");
             }
             else
             {
                 latitude = 0.0;
-                Response.Write("Latitude: Not Found <br />");
+                //Response.Write("Latitude: Not Found <br />");
             }
             
             // Retrieve longitude from Image data and write to page
@@ -73,13 +73,15 @@ namespace InstaKG
             if (!longitude.Equals(null))
             {
                 longitude = Convert.ToDouble(String.Format("{0:0.###}", longitude));
-                Response.Write("Longitude: " + longitude + "<br />");
+                //Response.Write("Longitude: " + longitude + "<br />");
             }
             else
             {
                 longitude = 0.0;
-                Response.Write("Longitude: Not Found <br />");
+                //Response.Write("Longitude: Not Found <br />");
             }
+
+            //Response.Write("f");
             
             //Image1.ImageUrl = "http://maps.google.com/maps/api/staticmap?center=151.21,-33.85&zoom=8&size=400x300&sensor=false"; <---- Kept as backup to remember url structure
             

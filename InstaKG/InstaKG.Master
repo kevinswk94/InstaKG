@@ -6,6 +6,9 @@
 <head runat="server">
     <title></title>
 
+    <%--<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8" />--%>
+
     <!-- Scripts [jQuery/Bootstrap] -->
     <script src="Scripts/jquery-1.10.2.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
