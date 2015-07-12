@@ -19,7 +19,12 @@
                 <asp:BoundField DataField="imageTitle" HeaderText="Title" SortExpression="imageTitle" />
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <a href="<%#"CommentViewer.aspx?imageID=" + Eval("imageID") %>"><asp:Image ID="img_Photo" CssClass="img-responsive" style="max-height:200px;" runat="server" ImageUrl='<%#"ImageViewerHandler.ashx?id=" + Eval("imageID")%>' /></a>
+                        <a href="<%#"/CommentViewer.aspx?imageID=" + Eval("imageID") %>"><asp:Image ID="img_Photo" CssClass="img-responsive" style="max-height:200px;" runat="server" ImageUrl='<%#"ImageViewerHandler.ashx?id=" + Eval("imageID")%>' /></a>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="View GPS Location">
+                    <ItemTemplate>
+                        <a href="<%#"/ImageGPSLocationViewer.aspx?imageID=" + Eval("imageID") %>">View</a>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField DataField="uploadDateTime" HeaderText="Upload Date" SortExpression="uploadDateTime" />
