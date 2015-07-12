@@ -93,7 +93,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="1024-2006_1011_093752.jpg" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Registration.aspx" />
