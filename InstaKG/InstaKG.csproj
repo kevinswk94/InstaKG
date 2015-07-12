@@ -148,7 +148,7 @@
     <Content Include="Images\reddit404d.png" />
     <Content Include="Images\showbiz-jeremy-clarkson-3.jpg" />
     <None Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2-vsdoc.js" />
-    <Content Include="ImgLocation.aspx" />
+    <Content Include="ImageGPSLocationViewer.aspx" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.js" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.min.js" />
     <None Include="packages\jQuery.1.10.2\Tools\jquery-1.10.2.intellisense.js" />
@@ -441,12 +441,12 @@
     <Compile Include="ImageViewerHandler.ashx.cs">
       <DependentUpon>ImageViewerHandler.ashx</DependentUpon>
     </Compile>
-    <Compile Include="ImgLocation.aspx.cs">
-      <DependentUpon>ImgLocation.aspx</DependentUpon>
+    <Compile Include="ImageGPSLocationViewer.aspx.cs">
+      <DependentUpon>ImageGPSLocationViewer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ImgLocation.aspx.designer.cs">
-      <DependentUpon>ImgLocation.aspx</DependentUpon>
+    <Compile Include="ImageGPSLocationViewer.aspx.designer.cs">
+      <DependentUpon>ImageGPSLocationViewer.aspx</DependentUpon>
     </Compile>
     <Compile Include="InstaKG.Master.cs">
       <DependentUpon>InstaKG.Master</DependentUpon>
