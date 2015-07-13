@@ -84,8 +84,8 @@ namespace InstaKG
         protected void gv_browseImages_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gv_browseImages.PageIndex = e.NewPageIndex;
-            BindData();
-            //RetrieveImages2();
+            //BindData();
+            RetrieveImages2();
         }
     }
 }

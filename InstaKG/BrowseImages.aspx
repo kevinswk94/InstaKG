@@ -3,6 +3,69 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style>
+        .pagination-ys {
+            /*display: inline-block;*/
+            padding-left: 0;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+            .pagination-ys table > tbody > tr > td {
+                display: inline;
+            }
+
+                .pagination-ys table > tbody > tr > td > a,
+                .pagination-ys table > tbody > tr > td > span {
+                    position: relative;
+                    float: left;
+                    padding: 8px 12px;
+                    line-height: 1.42857143;
+                    text-decoration: none;
+                    color: #dd4814;
+                    /*background-color: #ffffff;*/
+                    border: 1px solid #dddddd;
+                    margin-left: -1px;
+                }
+
+                .pagination-ys table > tbody > tr > td > span {
+                    position: relative;
+                    float: left;
+                    padding: 8px 12px;
+                    line-height: 1.42857143;
+                    text-decoration: none;
+                    margin-left: -1px;
+                    z-index: 2;
+                    color: white;
+                    background-color: #bf5a16; /* Selected index color */
+                    border-color: #dddddd;
+                    cursor: default;
+                }
+
+                .pagination-ys table > tbody > tr > td:first-child > a,
+                .pagination-ys table > tbody > tr > td:first-child > span {
+                    margin-left: 0;
+                    border-bottom-left-radius: 4px;
+                    border-top-left-radius: 4px;
+                }
+
+                .pagination-ys table > tbody > tr > td:last-child > a,
+                .pagination-ys table > tbody > tr > td:last-child > span {
+                    border-bottom-right-radius: 4px;
+                    border-top-right-radius: 4px;
+                }
+
+                .pagination-ys table > tbody > tr > td > a:hover,
+                .pagination-ys table > tbody > tr > td > span:hover,
+                .pagination-ys table > tbody > tr > td > a:focus,
+                .pagination-ys table > tbody > tr > td > span:focus {
+                    /*color: #97310e;*/
+                    color: white;
+                    background-color: #bf5a16;
+                    border-color: #dddddd;
+                }
+    </style>
+    
     <div class="container">
         <!-- Alert placeholder, alter attributes in CodeBehind -->
         <div id="alert_placeholder" runat="server" visible="false">
@@ -13,7 +76,7 @@
         <h3>Browse Images:</h3>
         <br />
         
-        <asp:GridView ID="gv_browseImages" CssClass="table table-responsive" runat="server" AutoGenerateColumns="False" PageSize="2" OnPageIndexChanging="gv_browseImages_PageIndexChanging">
+        <asp:GridView ID="gv_browseImages" CssClass="table table-responsive" runat="server" AutoGenerateColumns="False" PageSize="3" OnPageIndexChanging="gv_browseImages_PageIndexChanging" AllowPaging="True">
             <Columns>
                 <asp:BoundField DataField="imageID" HeaderText="imageID" InsertVisible="False" ReadOnly="True" SortExpression="imageID" Visible="false" />
                 <asp:BoundField DataField="imageTitle" HeaderText="Title" SortExpression="imageTitle" />
@@ -30,6 +93,7 @@
                 <asp:BoundField DataField="uploadDateTime" HeaderText="Upload Date" SortExpression="uploadDateTime" />
                 <asp:BoundField DataField="fName" HeaderText="Uploader" SortExpression="fName" />
             </Columns>
+            <PagerStyle CssClass="pagination-ys" />
         </asp:GridView>
     </div>
 

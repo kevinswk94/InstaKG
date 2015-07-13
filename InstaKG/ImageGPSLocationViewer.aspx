@@ -13,7 +13,7 @@
             
                 var myLatlng = new google.maps.LatLng(<% =latitude %>, <% =longitude %>);
                 var mapOptions = {
-                    zoom: 12,
+                    zoom: 11,
                     center: myLatlng
                 }
                 var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -30,12 +30,12 @@
 
     <div class="container">
         <div class="col-lg-6">
-            <h3>Browsing Image: <span><% =imageTitle %></span></h3>
+            <h3>Image: <span><% =imageTitle %></span></h3>
             <asp:Image ID="img_image" runat="server" CssClass="img-responsive" style="max-height:450px;" />
         </div>
         <div class="col-lg-6">
-            <h3>EXIF data from <span><% =imageTitle %></span>:</h3>
-            <div id="map-canvas" class="img-responsive" style="max-height:300px;height:300px;"></div>
+            <h3>GPS data from <span><% =imageTitle %></span>:</h3>
+            <div id="map-canvas" class="img-responsive" style="max-height:350px;height:350px;"></div>
             <h4>Latitude: <% =latitude %></h4>
             <h4>Longitude: <% =longitude %></h4>
         </div>
