@@ -78,7 +78,7 @@
         
         <asp:GridView ID="gv_browseImages" CssClass="table table-responsive" runat="server" AutoGenerateColumns="False" PageSize="3" OnPageIndexChanging="gv_browseImages_PageIndexChanging" AllowPaging="True">
             <PagerSettings Mode="NumericFirstLast" PageButtonCount="3" />
-            <PagerStyle CssClass="pagination-ys" />
+            <PagerStyle CssClass="pagination-ys" HorizontalAlign="Center" />
             <Columns>
                 <asp:BoundField DataField="imageID" HeaderText="imageID" InsertVisible="False" ReadOnly="True" SortExpression="imageID" Visible="false" />
                 <asp:BoundField DataField="imageTitle" HeaderText="Title" SortExpression="imageTitle" />
