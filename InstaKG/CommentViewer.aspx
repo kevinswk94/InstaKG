@@ -14,7 +14,7 @@
         <fieldset class="form-horizontal">
             <div class="row">
                 <%--<legend class="col-lg-offset-2 col-lg-7">Viewing Comments From <span id="span_title"><%= imageTitle %></span>:</legend>--%>
-                <h3 class="col-lg-offset-2 col-lg-6">Viewing Comments From <span><%= imageTitle %></span>:</h3>
+                <h3 class="col-lg-offset-2 col-lg-6">Comments From: <span><%= imageTitle %></span></h3>
             </div>
             <br />
 
