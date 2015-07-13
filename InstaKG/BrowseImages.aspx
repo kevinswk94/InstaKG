@@ -13,7 +13,7 @@
         <h3>Browse Images:</h3>
         <br />
         
-        <asp:GridView ID="gv_browseImages" CssClass="table table-responsive" runat="server" AutoGenerateColumns="False">
+        <asp:GridView ID="gv_browseImages" CssClass="table table-responsive" runat="server" AutoGenerateColumns="False" PageSize="2" OnPageIndexChanging="gv_browseImages_PageIndexChanging">
             <Columns>
                 <asp:BoundField DataField="imageID" HeaderText="imageID" InsertVisible="False" ReadOnly="True" SortExpression="imageID" Visible="false" />
                 <asp:BoundField DataField="imageTitle" HeaderText="Title" SortExpression="imageTitle" />

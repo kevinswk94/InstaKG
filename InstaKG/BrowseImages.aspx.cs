@@ -11,8 +11,13 @@ namespace InstaKG
         public string test = "1";
         protected void Page_Load(object sender, EventArgs e)
         {
-            gv_browseImages.DataSource = RetrieveImages();
-            gv_browseImages.DataBind();
+            BindData();
+            
+            // Below codes no longer needed as now using paging
+
+            //gv_browseImages.DataSource = RetrieveImages();
+            //gv_browseImages.DataSource = BindData();
+            //gv_browseImages.DataBind();
         }
 
         private DataTable RetrieveImages()
@@ -33,6 +38,30 @@ namespace InstaKG
             cmd.Dispose();
             con.Close();
             return dt;
+        }
+
+        private void BindData()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString);
+
+            string sql = "SELECT DISTINCT Image.imageID, Image.imageTitle, Image.uploadDateTime, Account.fName FROM Image INNER JOIN Account ON Image.accountID = Account.accountID ORDER BY uploadDateTime";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            DataSet ds = new DataSet();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            sda.Fill(ds);
+
+            sda.Dispose();
+            cmd.Dispose();
+            con.Close();
+
+            gv_browseImages.DataSource = ds;
+            gv_browseImages.DataBind();
+        }
+
+        protected void gv_browseImages_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gv_browseImages.PageIndex = e.NewPageIndex;
+            BindData();
         }
     }
 }
