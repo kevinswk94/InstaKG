@@ -77,6 +77,8 @@
         <br />
         
         <asp:GridView ID="gv_browseImages" CssClass="table table-responsive" runat="server" AutoGenerateColumns="False" PageSize="3" OnPageIndexChanging="gv_browseImages_PageIndexChanging" AllowPaging="True">
+            <PagerSettings Mode="NumericFirstLast" PageButtonCount="3" />
+            <PagerStyle CssClass="pagination-ys" />
             <Columns>
                 <asp:BoundField DataField="imageID" HeaderText="imageID" InsertVisible="False" ReadOnly="True" SortExpression="imageID" Visible="false" />
                 <asp:BoundField DataField="imageTitle" HeaderText="Title" SortExpression="imageTitle" />
@@ -93,7 +95,6 @@
                 <asp:BoundField DataField="uploadDateTime" HeaderText="Upload Date" SortExpression="uploadDateTime" />
                 <asp:BoundField DataField="fName" HeaderText="Uploader" SortExpression="fName" />
             </Columns>
-            <PagerStyle CssClass="pagination-ys" />
         </asp:GridView>
     </div>
 
