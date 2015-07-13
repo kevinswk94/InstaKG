@@ -25,6 +25,9 @@ namespace InstaKG
             //get new random password
             string newPass = randomString();
 
+            // Found a way to patch validation of ReCAPTCHA
+            // https://stackoverflow.com/questions/27764692/validating-recaptcha-2-no-captcha-recaptcha-in-asp-nets-server-side
+
             if (tb_UsernameOrEmail.Text != null && tb_UsernameOrEmail.Text != "")
             {
                 //have input
