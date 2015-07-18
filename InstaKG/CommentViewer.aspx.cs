@@ -21,19 +21,23 @@ namespace InstaKG
             string imageUrl = "~/ImageViewerHandler.ashx?id=" + imageID;
             img_selectedImage.ImageUrl = Page.ResolveUrl(imageUrl);
 
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString);
-            con.Open();
-            string sql = "SELECT Image.imageTitle, Image.accountID, Account.accountID, Account.fName FROM Image INNER JOIN Account ON Image.accountID = Account.accountID WHERE (Image.imageID = @ImageID)";
-            SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.Parameters.AddWithValue("ImageID", imageID);
-            //cmd.Prepare();
-            SqlDataReader dr = cmd.ExecuteReader();
-            dr.Read();
-            imageTitle = dr["imageTitle"].ToString();
-            fName = dr["fName"].ToString();
-            dr.Close();
-            cmd.Dispose();
-            con.Close();
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString))
+            {
+                con.Open();
+                string sql = "SELECT Image.imageTitle, Image.accountID, Account.accountID, Account.fName FROM Image INNER JOIN Account ON Image.accountID = Account.accountID WHERE (Image.imageID = @ImageID)";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("ImageID", imageID);
+                //cmd.Prepare();
+                
+                SqlDataReader dr = cmd.ExecuteReader();
+                dr.Read();
+                imageTitle = dr["imageTitle"].ToString();
+                fName = dr["fName"].ToString();
+                
+                dr.Close();
+                cmd.Dispose();
+                con.Close();
+            }
         }
 
         protected void btn_submit_Click(object sender, EventArgs e)
