@@ -10,26 +10,16 @@
         $(document).ready(function() {
             function initialize() {
 
-                var titles = <% =Serialize(returnTitleArray()) %>;
-                var titles2 = <% =Serialize(returnTitles3()) %>;
-                for (var j=0; j < titles.length; j++)
-                {
-                    if (titles[j] == null)
-                        continue;
-                    else
-                        console.log(titles[j]);
-                }
-
-                var loca = <% =Serialize(returnGPS2()) %>;
+                var loca = <% =Serialize(returnGPSdata()) %>;
 
                 // Note that the array cannot contain nulls, will default to 0
-                var locations = [
-                [-33.89, 151.27],
-                [-33.92, 151.25],
-                [-34.02, 151.15],
-                [-33.80, 151.28],
-                [-33.95, 151.25]
-                ];
+                //var locations = [
+                //[-33.89, 151.27],
+                //[-33.92, 151.25],
+                //[-34.02, 151.15],
+                //[-33.80, 151.28],
+                //[-33.95, 151.25]
+                //];
 
                 //var myLatlng = new google.maps.LatLng(-33.92, 151.25);
                 var myLatlng = new google.maps.LatLng(0, 0);
