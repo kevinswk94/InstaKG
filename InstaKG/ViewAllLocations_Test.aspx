@@ -13,13 +13,13 @@
                 var loca = <% =Serialize(returnGPSdata()) %>;
 
                 // Note that the array cannot contain nulls, will default to 0
-                //var locations = [
-                //[-33.89, 151.27],
-                //[-33.92, 151.25],
-                //[-34.02, 151.15],
-                //[-33.80, 151.28],
-                //[-33.95, 151.25]
-                //];
+                var locations = [
+                [-33.89, 151.27, "A"],
+                [-33.92, 151.25, "B"],
+                [-34.02, 151.15, "C"],
+                [-33.80, 151.28, "D"],
+                [-33.95, 151.25, "E"]
+                ];
 
                 //var myLatlng = new google.maps.LatLng(-33.92, 151.25);
                 var myLatlng = new google.maps.LatLng(0, 0);
@@ -34,7 +34,8 @@
                     marker = new google.maps.Marker({
                         position: new google.maps.LatLng(loca[i][0], loca[i][1]),
                         map: map,
-                        title: 'Photos taken here!'
+                        //title: 'Photos taken here!'
+                        title: loca[i][2]
                     });
                 }
 

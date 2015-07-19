@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.UI;
@@ -21,7 +22,74 @@ namespace InstaKG
             
         }
 
-        protected List<double?[]> returnGPSdata()
+        protected List<object[]> returnGPSdata()
+        {
+            // Gets all coordinates from DB, puts them in a list and then displays them to screen
+
+            List<byte[]> imageDataList = new List<byte[]>();
+            List<string> titles = new List<string>();
+            List<object[]> coordinates = new List<object[]>();
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString))
+            {
+                con.Open();
+                string sql = "SELECT imageTitle, imageData FROM Image";
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    imageDataList.Add((byte[])dr["imageData"]);
+                    titles.Add(dr["imageTitle"].ToString());
+                }
+
+                dr.Close();
+                cmd.Dispose();
+                con.Close();
+
+            }
+
+            int i = 0;
+            foreach (byte[] bt in imageDataList)
+            {
+                double? latitude;
+                double? longitude;
+
+                Stream stream = new MemoryStream(bt);
+                System.Drawing.Image img2 = System.Drawing.Image.FromStream(stream);
+
+                latitude = GetLatitude(img2);
+                if (!latitude.Equals(null))
+                {
+                    latitude = Convert.ToDouble(String.Format("{0:0.###}", latitude));
+                }
+                else
+                {
+                    //latitude = 0.0;
+                    continue;
+                }
+
+                // Retrieve longitude from Image data and write to page
+                longitude = GetLongitude(img2);
+                if (!longitude.Equals(null))
+                {
+                    longitude = Convert.ToDouble(String.Format("{0:0.###}", longitude));
+                }
+                else
+                {
+                    //longitude = 0.0;
+                    continue;
+                }
+
+                coordinates.Add(new object[] { latitude, longitude, titles[i].ToString() });
+                i++;
+            }
+
+            return coordinates;
+        }
+
+        protected List<double?[]> returnGPSdata2()
         {
             // Gets all titles from DB, puts them in a list and then displays them to screen
 
@@ -85,6 +153,73 @@ namespace InstaKG
             return coordinates;
         }
 
+        protected List<object[]> returnGPSdata3()
+        {
+            // Gets all titles from DB, puts them in a list and then displays them to screen
+
+            List<byte[]> imageDataList = new List<byte[]>();
+            List<string> titles = new List<string>();
+            List<object[]> coordinates = new List<object[]>();
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString))
+            {
+                con.Open();
+                string sql = "SELECT imageTitle, imageData FROM Image";
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    imageDataList.Add((byte[])dr["imageData"]);
+                    titles.Add(dr["imageTitle"].ToString());
+                }
+
+                dr.Close();
+                cmd.Dispose();
+                con.Close();
+
+            }
+
+            int i = 0;
+            foreach (byte[] bt in imageDataList)
+            {
+                double? latitude;
+                double? longitude;
+
+                Stream stream = new MemoryStream(bt);
+                System.Drawing.Image img2 = System.Drawing.Image.FromStream(stream);
+
+                latitude = GetLatitude(img2);
+                if (!latitude.Equals(null))
+                {
+                    latitude = Convert.ToDouble(String.Format("{0:0.###}", latitude));
+                }
+                else
+                {
+                    //latitude = 0.0;
+                    continue;
+                }
+
+                // Retrieve longitude from Image data and write to page
+                longitude = GetLongitude(img2);
+                if (!longitude.Equals(null))
+                {
+                    longitude = Convert.ToDouble(String.Format("{0:0.###}", longitude));
+                }
+                else
+                {
+                    //longitude = 0.0;
+                    continue;
+                }
+
+                coordinates.Add(new object[] { latitude, longitude, titles[i].ToString() });
+                i++;
+            }
+
+            return coordinates;
+        }
+
         protected static string Serialize(object o)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
@@ -143,6 +278,18 @@ namespace InstaKG
             if (gpsRef == "S" || gpsRef == "W")
                 coorditate = coorditate * -1;
             return coorditate;
+        }
+
+        private byte[] ObjectToByteArray(Object obj)
+        {
+            if (obj == null)
+                return null;
+            BinaryFormatter bf = new BinaryFormatter();
+            using (MemoryStream ms = new MemoryStream())
+            {
+                bf.Serialize(ms, obj);
+                return ms.ToArray();
+            }
         }
     }
 }
