@@ -10,6 +10,19 @@
         $(document).ready(function() {
             function initialize() {
 
+                var titles = <% =Serialize(returnTitleArray()) %>;
+                var titles2 = <% =Serialize(returnTitles3()) %>;
+                for (var j=0; j < titles.length; j++)
+                {
+                    if (titles[j] == null)
+                        continue;
+                    else
+                        console.log(titles[j]);
+                }
+
+                var loca = <% =Serialize(returnGPS2()) %>;
+
+                // Note that the array cannot contain nulls, will default to 0
                 var locations = [
                 [-33.89, 151.27],
                 [-33.92, 151.25],
@@ -18,7 +31,8 @@
                 [-33.95, 151.25]
                 ];
 
-                var myLatlng = new google.maps.LatLng(-33.92, 151.25);
+                //var myLatlng = new google.maps.LatLng(-33.92, 151.25);
+                var myLatlng = new google.maps.LatLng(0, 0);
                 var mapOptions = {
                     zoom: 1,
                     center: myLatlng
@@ -26,17 +40,17 @@
                 var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
                 var marker, i;
-                for (i = 0; i < locations.length; i++) {
+                for (i = 0; i < loca.length; i++) {
                     marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+                        position: new google.maps.LatLng(loca[i][0], loca[i][1]),
                         map: map,
                         title: 'Photos taken here!'
                     });
                 }
 
-                for (i = 0; i < locations.length; i++) {
-                    console.log("Latitude: " + locations[i][0] + ", Latitude: " + locations[i][1]);
-                }
+                //for (i = 0; i < locations.length; i++) {
+                //    console.log("Latitude: " + locations[i][0] + ", Latitude: " + locations[i][1]);
+                //}
             }
 
             google.maps.event.addDomListener(window, 'load', initialize);
