@@ -49,6 +49,10 @@
     </script>
 
     <div class="container">
+        <div class="row">
+            <h3>Overview of image locations:</h3>
+            <br />
+        </div>
         <div class="col-lg-12">
             <div id="map-canvas" class="img-responsive" style="max-height:500px;height:500px;"></div>
         </div>
