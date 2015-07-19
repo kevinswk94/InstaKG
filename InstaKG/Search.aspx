@@ -12,6 +12,33 @@
             }
         }
     </script>
+
+
+    <%--Light Gallery Animation--%>
+    <link href="Styles/lightGallery.css" rel="stylesheet" />
+    <script src="Scripts/lightGallery.js"></script>
+
+    <%-- WOW Animation--%>
+    <link href="Styles/animate.css" rel="stylesheet" />
+    <script src="Scripts/wow.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#lightGallery").lightGallery();
+        });
+    </script>
+
+    <style>
+        /*Gallery*/
+        ul {
+            list-style: none outside none;
+        }
+
+        .gallery li {
+            display: block;
+            float: left;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -28,9 +55,13 @@
 
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
-                        <asp:Label ID="lb_searchWord" runat="server" Text="Search: " />
-                        <asp:TextBox ID="tb_searchWord" runat="server" AutoPostBack="true" OnTextChanged="tb_searchWord_TextChanged"></asp:TextBox>
-                
+
+                        <div id="search_design">
+                            <!-- <asp:Label ID="lb_searchWord" runat="server" Text="Search: " />-->
+                            <asp:TextBox ID="tb_searchWord" runat="server" AutoPostBack="true" OnTextChanged="tb_searchWord_TextChanged" Width="300px"></asp:TextBox>
+                        </div>
+
+                        
                         <br />
                         <br />
 
@@ -52,13 +83,14 @@
                                                                     <br />
                                                                     <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' CssClass="lbl_desc" />
                                                                     <br />
-                                                                    <div class="lbl_creator">By:</div
+                                                                    <div class="lbl_creator">By:
+                                                                    <asp:Label ID="AuthorLabel" runat="server" Text='<%# getUsernameByAccountID(getAccountIDByImageID(Eval("ImageID"))) %>'></asp:Label>
+                                                                    </div>
                                                                 </td>
                                                                     
                                                                 <td runat="server" class="danger" style="text-align:center">
-                                                                    <asp:Label ID="ContentLabel" runat="server" Text='<%# Eval("Content") %>' />
-                                                                    <br />
-                                                                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="lb_fontSize">View User Profile</asp:LinkButton>
+                                                                    <asp:Image ID="Image" runat="server" class="thumbnail img-responsive" ImageUrl='<%#"ImageViewerHandler.ashx?id=" + Eval("imageID")%>' style="max-height:100px;" />
+                                                                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="lb_fontSize" CommandArgument='<%# Eval("ImageID") %>' OnClick="LinkButton1_Click">View User Profile</asp:LinkButton>                                                                  
                                                                 </td>
                                                             </AlternatingItemTemplate>
                                                             <EmptyDataTemplate>
@@ -82,7 +114,9 @@
                                                                     <br />
                                                                     <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' CssClass="lbl_desc" />
                                                                     <br />
-                                                                    <div class="lbl_creator">By:</div>
+                                                                    <div class="lbl_creator">By:
+                                                                    <asp:Label ID="AuthorLabel" runat="server" Text='<%# getUsernameByAccountID(getAccountIDByImageID(Eval("ImageID"))) %>'></asp:Label>
+                                                                    </div>
                                                                     <%--
                                                                     <b>Creation:</b>
                                                                     <asp:Label ID="CreationLabel" runat="server" Text='<%# Eval("Creation") %>' />
@@ -91,9 +125,8 @@
                                                                 </td>
 
                                                                 <td runat="server" style="text-align:center" class="active">
-                                                                    <asp:Label ID="ContentLabel" runat="server" Text='<%# Eval("Content") %>' />
-                                                                    <br />
-                                                                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="lb_fontSize">View User Profile</asp:LinkButton>
+                                                                    <asp:Image ID="Image" runat="server" class="thumbnail img-responsive" ImageUrl='<%#"ImageViewerHandler.ashx?id=" + Eval("imageID")%>' style="max-height:100px;" />
+                                                                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="lb_fontSize" CommandArgument='<%# Eval("ImageID") %>' OnClick="LinkButton1_Click">View User Profile</asp:LinkButton>
                                                                 </td>
                                                             </ItemTemplate>
                                                             <LayoutTemplate>
@@ -139,7 +172,7 @@
                                                              </td>
                                                             </SelectedItemTemplate>
                                                         </asp:ListView>
-                                                        
+
                                                     </td>
                                                 </tr>
                                             </table>
@@ -158,7 +191,7 @@
 
                                                                 <td runat="server" style="text-align:center" class="danger">
                                                                     <asp:Button ID="Button2" runat="server" Text="Add as Friend" CssClass="btn btn-default" />
-                                                                    <asp:Button ID="Button4" runat="server" Text="View Profile" CssClass="btn btn-default"/>
+                                                                    <asp:HyperLink ID="Button4" runat="server" Text="View Profile" CssClass="btn btn-default" NavigateUrl='<%# Eval("Username", "ViewProfile" + ".aspx?name={0}") %>'/>
                                                                 </td>
                                                             </AlternatingItemTemplate>
                                                             <EmptyDataTemplate>
@@ -184,7 +217,7 @@
 
                                                                 <td runat="server" style="text-align:center" class="active">
                                                                     <asp:Button ID="Button1" runat="server" Text="Add as friend" CssClass="btn btn-warning" />
-                                                                    <asp:Button ID="Button3" runat="server" Text="View Profile" CssClass="btn btn-warning" />
+                                                                    <asp:HyperLink ID="Button3" runat="server" Text="View Profile" CssClass="btn btn-warning" NavigateUrl='<%# Eval("Username", "ViewProfile" + ".aspx?name={0}") %>' />
                                                                 </td>
                                                             </ItemTemplate>
                                                             <LayoutTemplate>

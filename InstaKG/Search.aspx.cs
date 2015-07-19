@@ -12,6 +12,7 @@ namespace InstaKG
     {
         User u = new User();
         Images i = new Images();
+        DOA data = new DOA();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -94,6 +95,35 @@ namespace InstaKG
             updateUserList();
 
             tb_searchWord.Focus();
+        }
+
+        /// /////////////////////////////////
+
+        public string getAccountIDByImageID(object id)
+        {
+            return data.retrieveAccIDByImageID(Convert.ToInt32(id)).ToString();
+        }
+
+        public string getUsernameByAccountID(string id)
+        {
+            return data.retrieveUsernameByID(Convert.ToInt32(id)).ToString();
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)(sender);
+
+            string imageID= btn.CommandArgument;
+
+            string accID = getAccountIDByImageID(imageID);
+
+            string username = getUsernameByAccountID(accID);
+
+            System.Diagnostics.Debug.WriteLine(username);
+
+            string url = "ViewProfile.aspx?name=" + username;
+
+            Response.Redirect(url);
         }
     }
 }

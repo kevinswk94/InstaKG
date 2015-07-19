@@ -61,4 +61,11 @@
 .lbl_creator
 {
     text-align:right;
+    margin-top:76px;
+    font-size:medium;
+}
+
+#search_design
+{
+    text-align:center;
 }

@@ -10,7 +10,7 @@
 namespace InstaKG {
     
     
-    public partial class ProfilePage {
+    public partial class ViewProfile {
         
         /// <summary>
         /// alert_placeholder control.
@@ -40,13 +40,13 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.Label lbl_email;
         
         /// <summary>
-        /// TextBox1 control.
+        /// lbl_email_value control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Label lbl_email_value;
         
         /// <summary>
         /// lbl_fname control.
@@ -58,13 +58,13 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.Label lbl_fname;
         
         /// <summary>
-        /// Label2 control.
+        /// lbl_fname_value control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Label2;
+        protected global::System.Web.UI.WebControls.Label lbl_fname_value;
         
         /// <summary>
         /// lbl_lname control.
@@ -76,31 +76,31 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.Label lbl_lname;
         
         /// <summary>
-        /// Label4 control.
+        /// lbl_lname_value control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Label4;
+        protected global::System.Web.UI.WebControls.Label lbl_lname_value;
         
         /// <summary>
-        /// Label1 control.
+        /// lbl_gender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lbl_gender;
         
         /// <summary>
-        /// tb_gender control.
+        /// lbl_gender_value control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_gender;
+        protected global::System.Web.UI.WebControls.Label lbl_gender_value;
         
         /// <summary>
         /// lbl_birthday control.
@@ -112,102 +112,30 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.Label lbl_birthday;
         
         /// <summary>
-        /// tb_birthday control.
+        /// lbl_birthday_value control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_birthday;
+        protected global::System.Web.UI.WebControls.Label lbl_birthday_value;
         
         /// <summary>
-        /// btn_clear_user control.
+        /// Repeater1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_clear_user;
+        protected global::System.Web.UI.WebControls.Repeater Repeater1;
         
         /// <summary>
-        /// btn_submit_user control.
+        /// lb_gallery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_submit_user;
-        
-        /// <summary>
-        /// lbl_currentpw control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_currentpw;
-        
-        /// <summary>
-        /// tb_currentpw control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_currentpw;
-        
-        /// <summary>
-        /// lbl_newpw control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_newpw;
-        
-        /// <summary>
-        /// tb_newpw control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_newpw;
-        
-        /// <summary>
-        /// lbl_retype_newpw control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_retype_newpw;
-        
-        /// <summary>
-        /// tb_retype_newpw control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_retype_newpw;
-        
-        /// <summary>
-        /// btn_clear_pw control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_clear_pw;
-        
-        /// <summary>
-        /// btn_submit_pw control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_submit_pw;
+        protected global::System.Web.UI.WebControls.LinkButton lb_gallery;
     }
 }
