@@ -114,7 +114,7 @@ namespace InstaKG.Entity
 
         public Images()
         {
-            this.TitleList = new DOA().retrieveImageTitle();
+            this.TitleList = new DOA().retrieveImageTitleList();
             this.ImageList = new DOA().retrieveImageList();
         }
 

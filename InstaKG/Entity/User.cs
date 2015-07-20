@@ -67,7 +67,7 @@ namespace InstaKG.Entity
 
         public User()
         {
-            this.UsernameList = new DOA().retriveUsername();
+            this.UsernameList = new DOA().retriveUsernameList();
             this.UserList = new DOA().retrieveUserList();
         }
 

@@ -9,7 +9,7 @@ namespace InstaKG.Entity
 {
     public class DOA
     {
-        public List<User> retriveUsername()         //ONLY USERNAME
+        public List<User> retriveUsernameList()         //ONLY USERNAME
         {
             List<User> usernameList = new List<User>();
 
@@ -77,7 +77,7 @@ namespace InstaKG.Entity
             return userList;
         }
 
-        public List<Images> retrieveImageTitle()             //ONLY IMAGE TITLE
+        public List<Images> retrieveImageTitleList()             //ONLY IMAGE TITLE
         {
             List<Images> titleList = new List<Images>();
 
@@ -129,19 +129,13 @@ namespace InstaKG.Entity
 
                 while (dr.Read())
                 {
-                    System.Diagnostics.Debug.WriteLine(dr[0].ToString() + " hello");
-                    System.Diagnostics.Debug.WriteLine(dr[1].ToString() + " hello");
-                    System.Diagnostics.Debug.WriteLine(dr[2].ToString() + " hello");
-                    System.Diagnostics.Debug.WriteLine(dr[3].ToString() + " hello");
-                    System.Diagnostics.Debug.WriteLine(dr[4].ToString() + " hello");
-                    System.Diagnostics.Debug.WriteLine(dr[5].ToString() + " hello");
-
                     imageList.Add(new Images(Int32.Parse(dr[0].ToString())
                         , dr[1].ToString()
                         , dr[2].ToString()
                         , dr[3].ToString()
                         , dr[4].ToString()
-                        , DateTime.Parse(dr[5].ToString()))); //System.Globalization.CultureInfo.InvariantCulture
+                        , DateTime.Parse(dr[5].ToString())
+                        , Int32.Parse(dr[6].ToString()))); //System.Globalization.CultureInfo.InvariantCulture
                    
                 }
 
@@ -158,5 +152,82 @@ namespace InstaKG.Entity
 
             return imageList;
         }
+
+        //////////////////////////////////////////////////////////////////
+
+        public string retrieveUsernameByID(int ID)
+        {
+            string username = null;
+
+            try
+            {
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString;
+
+                string sql = "SELECT username FROM AccCreds where accCredID=@id";
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@id", ID);
+
+                con.Open();
+                username = Convert.ToString(cmd.ExecuteScalar());
+                con.Close();
+
+                
+            }
+            catch(Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return username;
+
+        }
+
+        public int retrieveIDByUsername(string username)
+        {
+            int id = 0;
+
+            try
+            {
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString;
+
+                string sql = "SELECT accCredID FROM AccCreds WHERE username=@username";
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@username", username);
+
+                con.Open();
+                id = Convert.ToInt32(cmd.ExecuteScalar());
+                con.Close();
+            }
+            catch(Exception e)
+            {
+                System.Diagnostics.Debug.Write(e.Message);
+            }
+
+            return id;
+        }
+
+        public int retrieveAccIDByImageID(int imageID)
+        {
+            int id = 0;
+            
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString;
+
+            string sql = "SELECT accountID FROM Image WHERE imageID=@id";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", imageID);
+
+            con.Open();
+            id = Convert.ToInt32(cmd.ExecuteScalar());
+            con.Close();
+
+            return id;
+        }
+
     }
 }
