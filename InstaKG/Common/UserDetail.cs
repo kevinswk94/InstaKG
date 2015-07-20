@@ -6,4 +6,4 @@
 
         public string UserName { get; set; }
     }
-}
+} 

@@ -2,6 +2,7 @@
 using OTR.Interface;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace InstaKG
@@ -13,17 +14,29 @@ namespace InstaKG
         private static List<UserDetail> ConnectedUsers = new List<UserDetail>();
         private static List<MessageDetail> CurrentMessage = new List<MessageDetail>();
 
-        // OTR Variables
+        // Fix Check the Public and Private properties of this page of coding
+        // Variables for Private Chat
         // toUser = Bob, fromUser = Alice
+        private UserDetail toUser;
+        private UserDetail fromUser;
 
-        // Declare OTR Variables
+        private string fromUserId;
+        private string toUserId;
+
+        //OTR Message Container Empty
+        private String privateMessage;
+
+        private int privateMessagePos = 0;
+
+
+        // Declare OTR Variables Empty
         private OTRSessionManager _toUser_otr_session_manager = null;
         private OTRSessionManager _fromUser_otr_session_manager = null;
 
         private string _toUser_unique_id;
         private string _fromUser_unique_id;
 
-        // Client unique IDs and DES Keys
+        // Client unique IDs and DES Keys Empty
         private string _fromUser_buddy_unique_id = string.Empty;
         private string _toUser_buddy_unique_id = string.Empty;
 
@@ -60,6 +73,7 @@ namespace InstaKG
         }
 
         private void SetDSAPublicKeys() {
+            // Alice and Bob want to use their DSA keys
             // Set DSA Public Keys
             // Will fix it to be auto generated, or plausible leave it since it is public key
             // Research into it more
@@ -77,48 +91,143 @@ namespace InstaKG
             _toUser_des_key_object = new DSAKeyParams(_dsa_key_2_p, _dsa_key_2_q, _dsa_key_2_g, _dsa_key_2_x);
         }
 
-        public void SendPrivateMessage(string toUserId, string message)
+        public void SendPrivateMessage(string toUserIdPassedIn, string message)
         {
-            string fromUserId = Context.ConnectionId;
+            fromUserId = Context.ConnectionId;
+            // Passed in parameter is in String
+            toUserId = toUserIdPassedIn;
+
+            // Passed in private plain text message
+            privateMessage = message;
 
             // Retrieve id of caller and target client
-            var toUser = ConnectedUsers.FirstOrDefault(x => x.ConnectionId == toUserId);
-            var fromUser = ConnectedUsers.FirstOrDefault(x => x.ConnectionId == fromUserId);
+            // May delete the following line
+            // toUser = ConnectedUsers.FirstOrDefault(x => x.ConnectionId == toUserId);
+            fromUser = ConnectedUsers.FirstOrDefault(x => x.ConnectionId == fromUserId);
+            toUser = ConnectedUsers.FirstOrDefault(x => x.ConnectionId == toUserId);
             
             // OTR Coding Section
-            _toUser_unique_id = toUser.ToString();
-            _fromUser_unique_id = fromUser.ToString();
-
+            _fromUser_unique_id = fromUser.UserName;
+            _toUser_unique_id = toUser.UserName;
             SetDSAPublicKeys();
 
             // OTR Processes
-            _fromUser_buddy_unique_id = _fromUser_unique_id;
-            _toUser_buddy_unique_id = _toUser_unique_id;
+            _fromUser_buddy_unique_id = _toUser_unique_id; // fromUser_buddy, which is > Bob
+            _toUser_buddy_unique_id = _fromUser_unique_id; // Bob's buddy, which is > Alice
 
-            _toUser_otr_session_manager = new OTRSessionManager(_toUser_unique_id);
             _fromUser_otr_session_manager = new OTRSessionManager(_fromUser_unique_id);
+            _toUser_otr_session_manager = new OTRSessionManager(_toUser_unique_id);
 
-            _toUser_otr_session_manager.OnOTREvent += new OTREventHandler(OnToUserOTRMangerEventHandler);
+            // Important handler - Alice OTR Event handler
             _fromUser_otr_session_manager.OnOTREvent += new OTREventHandler(OnFromUserOTRMangerEventHandler);
+            _toUser_otr_session_manager.OnOTREvent += new OTREventHandler(OnToUserOTRMangerEventHandler);
 
-            //OTR creates random keys, both do not have DSA Keys
-
-            _toUser_otr_session_manager.CreateOTRSession(_toUser_buddy_unique_id);
-            _fromUser_otr_session_manager.CreateOTRSession(_fromUser_buddy_unique_id);
+            // OTR creates random keys, both do not have DSA Keys
+            // Critical creating session, joining thru buddy's key
+            _fromUser_otr_session_manager.CreateOTRSession(_fromUser_buddy_unique_id, true);
+            _toUser_otr_session_manager.CreateOTRSession(_toUser_buddy_unique_id, true);
 
             //Alice requests an OTR session with Bob  using OTR version 2
-
             _fromUser_otr_session_manager.RequestOTRSession(_fromUser_buddy_unique_id, OTRSessionManager.GetSupportedOTRVersionList()[0]);
 
+            //Backup copy
             // SendPrivateMessage Chatting Section
-            if (toUser != null && fromUser != null)
-            {
-                // send to
-                Clients.Client(toUserId).sendPrivateMessage(fromUserId, fromUser.UserName, message);
+            //if (toUser != null && fromUser != null)
+            //{
+            //    // send to
+            //    Clients.Client(toUserId).sendPrivateMessage(fromUserId, fromUser.UserName, message);
 
-                // send to caller user
-                Clients.Caller.sendPrivateMessage(toUserId, fromUser.UserName, message);
+            //    // send to caller user
+            //    Clients.Caller.sendPrivateMessage(toUserId, fromUser.UserName, message);
+            //}
+
+        }
+
+        // Alice OTR Handler
+        private void OnFromUserOTRMangerEventHandler(object source, OTREventArgs e)
+        {
+
+            switch (e.GetOTREvent())
+            {
+                case OTR_EVENT.MESSAGE:
+                    Debug.WriteLine("{0}: {1} - FROM ALICE HANDLER\n", e.GetSessionID(), e.GetMessage());
+
+                    // send to
+                    //Clients.Client(fromUserId).sendPrivateMessage(toUserId, toUser.UserName, e.GetMessage());
+                    // send to caller user
+                    //Clients.Caller.sendPrivateMessage(fromUserId, toUser.UserName, e.GetMessage());
+
+                    if (privateMessagePos == 0) { 
+                        privateMessagePos++;
+                    _fromUser_otr_session_manager.EncryptMessage(_fromUser_buddy_unique_id, privateMessage);
+                    }
+
+
+                    break;
+
+                case OTR_EVENT.SEND:
+
+                    if (toUser != null && fromUser != null)
+                    {
+                        SendDataOnNetwork(_fromUser_unique_id, e.GetMessage());
+
+                        // send to
+                        //Clients.Client(fromUserId).sendPrivateMessage(toUserId, toUser.UserName, e.GetMessage());
+                        // send to caller user
+                        //Clients.Caller.sendPrivateMessage(fromUserId, toUser.UserName, e.GetMessage());
+
+                        // send to
+                        //Clients.Client(fromUserId).sendPrivateMessage(toUserId, toUser.UserName, e.GetMessage());
+
+                        // send to caller user
+                        //Clients.Caller.sendPrivateMessage(fromUserId, toUser.UserName, e.GetMessage());
+                    }
+
+
+
+                    break;
+                case OTR_EVENT.ERROR:
+                    
+                        Debug.WriteLine("Alice: OTR Error: {0} \n", e.GetErrorMessage());
+                        Debug.WriteLine("Alice: OTR Error Verbose: {0} \n", e.GetErrorVerbose());
+                    
+
+                    break;
+                case OTR_EVENT.READY:
+
+                    Debug.WriteLine(e.GetSessionID());
+                    privateMessagePos++;
+                    _fromUser_otr_session_manager.EncryptMessage(_fromUser_buddy_unique_id, privateMessage);
+
+                    break;
+                case OTR_EVENT.DEBUG:
+
+                    Debug.WriteLine("Alice: " + e.GetMessage() + "\n");
+
+                    break;
+                case OTR_EVENT.EXTRA_KEY_REQUEST:
+
+
+                    break;
+                case OTR_EVENT.SMP_MESSAGE:
+
+
+                    //Debug.WriteLine("Alice: " + e.GetMessage() + "\n");
+
+
+
+                    break;
+                case OTR_EVENT.CLOSED:
+
+
+
+                    Debug.WriteLine("Alice: Encrypted OTR session with {0} closed \n", e.GetSessionID());
+
+
+                    break;
+
             }
+
         }
 
         private void OnToUserOTRMangerEventHandler(object source, OTREventArgs e)
@@ -128,40 +237,59 @@ namespace InstaKG
             {
                 case OTR_EVENT.MESSAGE:
 
-                    Console.WriteLine("{0}: {1} \n", e.GetSessionID(), e.GetMessage());
+                    Debug.WriteLine("{0}: {1} \n - FROM BOB HANDLER", e.GetSessionID(), e.GetMessage());
+                    // send to
+                    Clients.Client(toUserId).sendPrivateMessage(fromUserId, fromUser.UserName, e.GetMessage());
 
-
-                    if (_bob_convo_pos < _bob_convo_array.Length)
+                    // send to caller user
+                    Clients.Caller.sendPrivateMessage(toUserId, fromUser.UserName, e.GetMessage());
+                    //SendPrivateMessage Chatting Section
+                    if (privateMessagePos == 0)
                     {
+                        privateMessagePos++;
+                        _toUser_otr_session_manager.EncryptMessage(_toUser_buddy_unique_id, privateMessage);
 
-                        _bob_convo_pos++;
-                        _toUser_otr_session_manager.EncryptMessage(_toUser_buddy_unique_id, _bob_convo_array[_bob_convo_pos - 1]);
+                    //    // send to
+                    //    Clients.Client(toUserId).sendPrivateMessage(fromUserId, fromUser.UserName, privateMessage);
+
+                    //    // send to caller user
+                    //    Clients.Caller.sendPrivateMessage(toUserId, fromUser.UserName, privateMessage);
                     }
+
 
                     break;
 
                 case OTR_EVENT.SEND:
 
 
-                    SendDataOnNetwork(_toUser_unique_id, e.GetMessage());
+                    if (toUser != null && fromUser != null)
+                    {
+                        SendDataOnNetwork(_toUser_unique_id, e.GetMessage());
+
+                        // send to
+                        //Clients.Client(toUserId).sendPrivateMessage(fromUserId, fromUser.UserName, e.GetMessage());
+
+                        // send to caller user
+                        //Clients.Caller.sendPrivateMessage(toUserId, fromUser.UserName, e.GetMessage());
+                    }
 
                     break;
                 case OTR_EVENT.ERROR:
 
-                    Console.WriteLine("Bob: OTR Error: {0} \n", e.GetErrorMessage());
-                    Console.WriteLine("Bob: OTR Error Verbose: {0} \n", e.GetErrorVerbose());
+                    Debug.WriteLine("Bob: OTR Error: {0} \n", e.GetErrorMessage());
+                    Debug.WriteLine("Bob: OTR Error Verbose: {0} \n", e.GetErrorVerbose());
 
                     break;
                 case OTR_EVENT.READY:
 
 
-                    Console.WriteLine("Bob: Encrypted OTR session with {0} established \n", e.GetSessionID());
+                    Debug.WriteLine("Bob: Encrypted OTR session with {0} established \n", e.GetSessionID());
 
 
                     break;
                 case OTR_EVENT.DEBUG:
 
-                    Console.WriteLine("Bob: " + e.GetMessage() + "\n");
+                    Debug.WriteLine("Bob: " + e.GetMessage() + "\n");
 
                     break;
                 case OTR_EVENT.EXTRA_KEY_REQUEST:
@@ -171,7 +299,7 @@ namespace InstaKG
                 case OTR_EVENT.SMP_MESSAGE:
 
 
-                    Console.WriteLine("Bob: " + e.GetMessage() + "\n");
+                    //Console.WriteLine("Bob: " + e.GetMessage() + "\n");
 
 
 
@@ -180,80 +308,7 @@ namespace InstaKG
 
 
 
-                    Console.WriteLine("Bob: Encrypted OTR session with {0} closed \n", e.GetSessionID());
-
-
-                    break;
-
-            }
-
-        }
-
-        private void OnFromUserOTRMangerEventHandler(object source, OTREventArgs e)
-        {
-
-            switch (e.GetOTREvent())
-            {
-                case OTR_EVENT.MESSAGE:
-
-                    Console.WriteLine("{0}: {1} \n", e.GetSessionID(), e.GetMessage());
-
-                    if (_alice_convo_pos < _alice_convo_array.Length)
-                    {
-                        _alice_convo_pos++;
-                        _fromUser_otr_session_manager.EncryptMessage(_fromUser_buddy_unique_id, _alice_convo_array[_alice_convo_pos - 1]);
-                    }
-
-
-                    break;
-
-                case OTR_EVENT.SEND:
-
-
-                    SendDataOnNetwork(_fromUser_unique_id, e.GetMessage());
-
-                    break;
-                case OTR_EVENT.ERROR:
-
-                    Console.WriteLine("Alice: OTR Error: {0} \n", e.GetErrorMessage());
-                    Console.WriteLine("Alice: OTR Error Verbose: {0} \n", e.GetErrorVerbose());
-
-                    break;
-                case OTR_EVENT.READY:
-
-
-                    Console.WriteLine("Alice: Encrypted OTR session with {0} established \n", e.GetSessionID());
-
-
-
-                    _alice_convo_pos++;
-                    _fromUser_otr_session_manager.EncryptMessage(_fromUser_buddy_unique_id, _alice_convo_array[_alice_convo_pos - 1]);
-
-
-
-                    break;
-                case OTR_EVENT.DEBUG:
-
-                    Console.WriteLine("Alice: " + e.GetMessage() + "\n");
-
-                    break;
-                case OTR_EVENT.EXTRA_KEY_REQUEST:
-
-
-                    break;
-                case OTR_EVENT.SMP_MESSAGE:
-
-
-                    Console.WriteLine("Alice: " + e.GetMessage() + "\n");
-
-
-
-                    break;
-                case OTR_EVENT.CLOSED:
-
-
-
-                    Console.WriteLine("Alice: Encrypted OTR session with {0} closed \n", e.GetSessionID());
+                    Debug.WriteLine("Bob: Encrypted OTR session with {0} closed \n", e.GetSessionID());
 
 
                     break;
@@ -266,9 +321,13 @@ namespace InstaKG
         private void SendDataOnNetwork(string my_unique_id, string otr_data)
         {
             if (my_unique_id == _fromUser_unique_id)
+            {
                 _toUser_otr_session_manager.ProcessOTRMessage(_toUser_buddy_unique_id, otr_data);
+            }
             else if (my_unique_id == _toUser_unique_id)
+            {
                 _fromUser_otr_session_manager.ProcessOTRMessage(_fromUser_buddy_unique_id, otr_data);
+            }
 
         }
 
