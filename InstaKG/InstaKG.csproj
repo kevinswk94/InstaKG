@@ -355,7 +355,7 @@
     <Content Include="Styles\custom.css" />
     <Content Include="TestNavBar.aspx" />
     <Content Include="UploadImg.aspx" />
-    <Content Include="ViewAllLocations_Test.aspx" />
+    <Content Include="ViewAllLocations.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -492,12 +492,12 @@
     <Compile Include="UploadImg.aspx.designer.cs">
       <DependentUpon>UploadImg.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ViewAllLocations_Test.aspx.cs">
-      <DependentUpon>ViewAllLocations_Test.aspx</DependentUpon>
+    <Compile Include="ViewAllLocations.aspx.cs">
+      <DependentUpon>ViewAllLocations.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ViewAllLocations_Test.aspx.designer.cs">
-      <DependentUpon>ViewAllLocations_Test.aspx</DependentUpon>
+    <Compile Include="ViewAllLocations.aspx.designer.cs">
+      <DependentUpon>ViewAllLocations.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
