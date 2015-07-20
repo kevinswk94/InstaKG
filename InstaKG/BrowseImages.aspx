@@ -81,10 +81,10 @@
             <PagerStyle CssClass="pagination-ys" HorizontalAlign="Center" />
             <Columns>
                 <asp:BoundField DataField="imageID" HeaderText="imageID" InsertVisible="False" ReadOnly="True" SortExpression="imageID" Visible="false" />
-                <asp:BoundField DataField="imageTitle" HeaderText="Title" SortExpression="imageTitle" />
+                <asp:BoundField DataField="imageTitle" HeaderText="Title" SortExpression="imageTitle" HeaderStyle-Width="200px" />
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <a href="<%#"/CommentViewer.aspx?imageID=" + Eval("imageID") %>"><asp:Image ID="img_Photo" CssClass="img-responsive" style="max-height:200px;" runat="server" ImageUrl='<%#"ImageViewerHandler.ashx?id=" + Eval("imageID")%>' /></a>
+                        <a href="<%#"/CommentViewer.aspx?imageID=" + Eval("imageID") %>"><asp:Image ID="img_Photo" CssClass="img-responsive" style="max-width:250px;" runat="server" ImageUrl='<%#"ImageViewerHandler.ashx?id=" + Eval("imageID")%>' /></a>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="View GPS Location">
