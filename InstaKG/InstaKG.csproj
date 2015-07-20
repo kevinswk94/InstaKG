@@ -131,6 +131,7 @@
     <Content Include="DummyData\Img\Thumb\cS-7.jpg" />
     <Content Include="DummyData\Img\Thumb\cS-8.jpg" />
     <Content Include="DummyData\Img\Thumb\cS-9.jpg" />
+    <Content Include="EditProfile.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
@@ -356,6 +357,8 @@
     <Content Include="TestNavBar.aspx" />
     <Content Include="UploadImg.aspx" />
     <Content Include="ViewAllLocations.aspx" />
+    <Content Include="ViewGallery.aspx" />
+    <Content Include="ViewProfile.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -411,6 +414,13 @@
     </Compile>
     <Compile Include="Common\MessageDetail.cs" />
     <Compile Include="Common\UserDetail.cs" />
+    <Compile Include="EditProfile.aspx.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditProfile.aspx.designer.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Entity\DOA.cs" />
     <Compile Include="Entity\Images.cs" />
     <Compile Include="Entity\User.cs" />
@@ -498,6 +508,20 @@
     </Compile>
     <Compile Include="ViewAllLocations.aspx.designer.cs">
       <DependentUpon>ViewAllLocations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewGallery.aspx.cs">
+      <DependentUpon>ViewGallery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewGallery.aspx.designer.cs">
+      <DependentUpon>ViewGallery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewProfile.aspx.cs">
+      <DependentUpon>ViewProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewProfile.aspx.designer.cs">
+      <DependentUpon>ViewProfile.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
