@@ -206,6 +206,7 @@
     <Content Include="packages\Newtonsoft.Json.6.0.4\tools\install.ps1" />
     <Content Include="packages\Owin.1.0\Owin.1.0.nupkg" />
     <Content Include="packages\repositories.config" />
+    <None Include="Properties\PublishProfiles\InstaKG.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
