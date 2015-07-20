@@ -37,7 +37,7 @@
                 </HeaderTemplate>
                 <ItemTemplate>
                     <li class="col-lg-3 col-md-4 col-xs-6 animated fadeInUp" data-src='<%#"ImageViewerHandler.ashx?id=" + Eval("imageID")%>'>
-                        <asp:Image ID="Image" runat="server" class="thumbnail img-responsive" ImageUrl='<%#"ImageViewerHandler.ashx?id=" + Eval("imageID")%>' />
+                        <asp:Image ID="Image" runat="server" class="thumbnail img-responsive" style="max-height:180px;" ImageUrl='<%#"ImageViewerHandler.ashx?id=" + Eval("imageID")%>' />
                     </li>
                 </ItemTemplate>
                 <FooterTemplate>
