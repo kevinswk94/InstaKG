@@ -184,7 +184,10 @@
     <Content Include="packages\Owin.1.0\lib\net40\Owin.dll" />
     <Content Include="Profile.aspx" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\lightGallery.js" />
+    <Content Include="Scripts\wow.min.js" />
     <Content Include="Search.aspx" />
+    <Content Include="Styles\animate.css" />
     <Content Include="Styles\bootstrap-theme.css.map" />
     <Content Include="Styles\bootstrap.css.map" />
     <Content Include="ImageViewerHandler.ashx" />
@@ -355,6 +358,8 @@
     <Content Include="Styles\ChatStyles\JQueryUI\themes\ui-lightness\minified\jquery.ui.theme.min.css" />
     <Content Include="Styles\ChatStyles\JQueryUI\themes\ui-lightness\minified\jquery.ui.tooltip.min.css" />
     <Content Include="Styles\custom.css" />
+    <Content Include="Styles\full-slider.css" />
+    <Content Include="Styles\lightGallery.css" />
     <Content Include="TestNavBar.aspx" />
     <Content Include="UploadImg.aspx" />
     <Content Include="ViewAllLocations.aspx" />
