@@ -238,10 +238,10 @@ namespace InstaKG
                 case OTR_EVENT.MESSAGE:
 
                     Debug.WriteLine("{0}: {1} \n - FROM BOB HANDLER", e.GetSessionID(), e.GetMessage());
-                    // send to
+                    //// send to
                     Clients.Client(toUserId).sendPrivateMessage(fromUserId, fromUser.UserName, e.GetMessage());
 
-                    // send to caller user
+                    //// send to caller user
                     Clients.Caller.sendPrivateMessage(toUserId, fromUser.UserName, e.GetMessage());
                     //SendPrivateMessage Chatting Section
                     if (privateMessagePos == 0)
@@ -265,7 +265,7 @@ namespace InstaKG
                     if (toUser != null && fromUser != null)
                     {
                         SendDataOnNetwork(_toUser_unique_id, e.GetMessage());
-
+                        
                         // send to
                         //Clients.Client(toUserId).sendPrivateMessage(fromUserId, fromUser.UserName, e.GetMessage());
 
