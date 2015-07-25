@@ -48,6 +48,12 @@
                     </li>
                     <li><a href="/UploadImg.aspx">Upload</a></li>
                     <li><a href="/Chat.aspx">Chat</a></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Steganography <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Steg_Encode.aspx">Encode Message</a></li>
+                            <li><a href="/Steg_Decode.aspx">Decode Message</a></li>
+                        </ul>
+                    </li>
                 </ul>
 
                 <!-- Right-side of navbar -->
