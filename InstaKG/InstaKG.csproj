@@ -187,6 +187,8 @@
     <Content Include="Scripts\lightGallery.js" />
     <Content Include="Scripts\wow.min.js" />
     <Content Include="Search.aspx" />
+    <Content Include="Steg_Decode.aspx" />
+    <Content Include="Steg_Encode.aspx" />
     <Content Include="Styles\animate.css" />
     <Content Include="Styles\bootstrap-theme.css.map" />
     <Content Include="Styles\bootstrap.css.map" />
@@ -494,6 +496,20 @@
       <DependentUpon>Search.aspx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Steg_Decode.aspx.cs">
+      <DependentUpon>Steg_Decode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Steg_Decode.aspx.designer.cs">
+      <DependentUpon>Steg_Decode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Steg_Encode.aspx.cs">
+      <DependentUpon>Steg_Encode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Steg_Encode.aspx.designer.cs">
+      <DependentUpon>Steg_Encode.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TestNavBar.aspx.cs">
       <DependentUpon>TestNavBar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
