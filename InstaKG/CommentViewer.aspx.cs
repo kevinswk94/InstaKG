@@ -13,6 +13,7 @@ namespace InstaKG
     {
         string imageID = "";
         protected string imageTitle = "";
+        protected string imageDescription = "";
         protected string fName = "";
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,7 +25,7 @@ namespace InstaKG
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString))
             {
                 con.Open();
-                string sql = "SELECT Image.imageTitle, Image.accountID, Account.accountID, Account.fName FROM Image INNER JOIN Account ON Image.accountID = Account.accountID WHERE (Image.imageID = @ImageID)";
+                string sql = "SELECT Image.imageTitle, Image.imageDescription, Image.accountID, Account.accountID, Account.fName FROM Image INNER JOIN Account ON Image.accountID = Account.accountID WHERE (Image.imageID = @ImageID)";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("ImageID", imageID);
                 //cmd.Prepare();
@@ -32,6 +33,7 @@ namespace InstaKG
                 SqlDataReader dr = cmd.ExecuteReader();
                 dr.Read();
                 imageTitle = dr["imageTitle"].ToString();
+                imageDescription = dr["imageDescription"].ToString();
                 fName = dr["fName"].ToString();
                 
                 dr.Close();

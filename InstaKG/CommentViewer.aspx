@@ -26,15 +26,15 @@
             </div>--%>
 
             <div class="form-group">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <asp:Image ID="img_selectedImage" runat="server" CssClass="img-responsive center-block" style="max-height:500px;"/>
-                        <%--<asp:Image ID="img_selectedImage" runat="server" CssClass="img-responsive" ImageUrl='<%#"~/ImageViewerHandler.ashx?id=" + ddl_imageTitle.SelectedValue%>' />--%>
-                    </div>
+                <div class="col-lg-8 col-lg-offset-2">
+                    <asp:Image ID="img_selectedImage" runat="server" CssClass="img-responsive center-block" Style="max-height: 500px;" />
+                    <%--<asp:Image ID="img_selectedImage" runat="server" CssClass="img-responsive" ImageUrl='<%#"~/ImageViewerHandler.ashx?id=" + ddl_imageTitle.SelectedValue%>' />--%>
                 </div>
+            </div>
         </fieldset>
 
         <div class="panel panel-default">
-            <div class="panel-heading">Comments Section<span class="pull-right">Uploader: <span><%= fName %></span></span></div>
+            <div class="panel-heading"><b style="padding-right:5px;">Description: </b><% =imageDescription %><span class="pull-right">Uploader: <span><%= fName %></span></span></div>
             <div class="panel-body">
                 <fieldset class="form-horizontal">
                     <div class="form-group">
