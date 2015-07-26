@@ -13,13 +13,13 @@
                 var loca = <% =Serialize(returnGPSdata()) %>;
 
                 // Note that the array cannot contain nulls, will default to 0
-                var locations = [
-                [-33.89, 151.27, "A"],
-                [-33.92, 151.25, "B"],
-                [-34.02, 151.15, "C"],
-                [-33.80, 151.28, "D"],
-                [-33.95, 151.25, "E"]
-                ];
+                //var locations = [
+                //[-33.89, 151.27, "A", 1],
+                //[-33.92, 151.25, "B", 2],
+                //[-34.02, 151.15, "C", 3],
+                //[-33.80, 151.28, "D", 5],
+                //[-33.95, 151.25, "E", 6]
+                //];
 
                 //var myLatlng = new google.maps.LatLng(-33.92, 151.25);
                 var myLatlng = new google.maps.LatLng(0, 0);
@@ -29,6 +29,10 @@
                 }
                 var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
+                var infowindow = new google.maps.InfoWindow();
+
+                var content = "CommentViewer.aspx?imageID=";
+
                 var marker, i;
                 for (i = 0; i < loca.length; i++) {
                     marker = new google.maps.Marker({
@@ -37,6 +41,13 @@
                         //title: 'Photos taken here!'
                         title: loca[i][2]
                     });
+
+                    google.maps.event.addListener(marker,'click', (function(marker,content,infowindow, i){ 
+                        return function() {
+                            infowindow.setContent('<a href="' + content + loca[i][3] + '"><div><img class="img-responsive" style="max-width:100px;max-height:100px;" src="ImageViewerHandler.ashx?id=' + loca[i][3] + '" /></div></a>');
+                            infowindow.open(map,marker);
+                        };
+                    })(marker,content,infowindow, i));
                 }
 
                 //for (i = 0; i < locations.length; i++) {
