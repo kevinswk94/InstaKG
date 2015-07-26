@@ -10,7 +10,7 @@ namespace InstaKG
 {
     public partial class ImgLocation : System.Web.UI.Page
     {
-        string imageID = "9";
+        protected string imageID = "9";
 
         protected double? latitude;
         protected double? longitude;

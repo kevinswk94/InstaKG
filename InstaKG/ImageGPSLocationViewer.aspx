@@ -10,6 +10,8 @@
 
         $(document).ready(function() {
             function initialize() {
+
+                var infowindow = new google.maps.InfoWindow();
             
                 var myLatlng = new google.maps.LatLng(<% =latitude %>, <% =longitude %>);
                 var mapOptions = {
@@ -22,6 +24,13 @@
                     map: map,
                     title: 'Photo taken here!'
                 });
+
+                google.maps.event.addListener(marker,'click', (function(marker,infowindow){ 
+                    return function() {
+                        infowindow.setContent('<span><a href="/CommentViewer.aspx?imageID=' + <% =imageID %> + '">View Image & Comments</a></span>');
+                        infowindow.open(map,marker);
+                    };
+                })(marker,infowindow));
             }
 
             google.maps.event.addDomListener(window, 'load', initialize);
@@ -36,8 +45,8 @@
         <div class="col-lg-6">
             <h3>GPS data from <span><% =imageTitle %></span>:</h3>
             <div id="map-canvas" class="img-responsive" style="max-height:350px;height:350px;"></div>
-            <h4>Latitude: <% =latitude %></h4>
-            <h4>Longitude: <% =longitude %></h4>
+            <%--<h4>Latitude: <% =latitude %></h4>
+            <h4>Longitude: <% =longitude %></h4>--%>
         </div>
     </div>
     
