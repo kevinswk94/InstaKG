@@ -54,6 +54,7 @@
                             <li><a href="/Steg_Decode.aspx">Decode Message</a></li>
                         </ul>
                     </li>
+                    <li><a href="/ViewAllLocations.aspx">World Image Map</a></li>
                 </ul>
 
                 <!-- Right-side of navbar -->

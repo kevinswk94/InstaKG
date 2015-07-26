@@ -61,7 +61,7 @@
 
     <div class="container">
         <div class="row">
-            <h3>Overview of image locations:</h3>
+            <h3>Overview of all image locations:</h3>
             <br />
         </div>
         <div class="col-lg-12">
