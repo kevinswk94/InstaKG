@@ -44,7 +44,7 @@
 
                     google.maps.event.addListener(marker,'click', (function(marker,content,infowindow, i){ 
                         return function() {
-                            infowindow.setContent('<a href="' + content + loca[i][3] + '"><div><img class="img-responsive" style="max-width:100px;max-height:100px;" src="ImageViewerHandler.ashx?id=' + loca[i][3] + '" /></div></a>');
+                            infowindow.setContent('<span style="color:black;"><b>' + loca[i][2] + '</b></span><a href="' + content + loca[i][3] + '"><div><img class="img-responsive" style="max-width:100px;max-height:100px;" src="ImageViewerHandler.ashx?id=' + loca[i][3] + '" /></div></a>');
                             infowindow.open(map,marker);
                         };
                     })(marker,content,infowindow, i));
