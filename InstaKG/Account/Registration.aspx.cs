@@ -71,6 +71,14 @@ namespace InstaKG.Account
                         con.Dispose();
                         cmd.Dispose();
 
+                        // Resets all form fields
+                        tb_username.Text = String.Empty;
+                        tb_fName.Text = String.Empty;
+                        tb_lName.Text = String.Empty;
+                        tb_email.Text = String.Empty;
+                        tb_password.Text = String.Empty;
+                        tb_rePassword.Text = String.Empty;
+
                         alert_placeholder.Visible = true;
                         alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";
                         alertText.Text = "User account successfully created! You will be redirected to the login page shortly.";
