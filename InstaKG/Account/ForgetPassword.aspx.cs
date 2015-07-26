@@ -10,6 +10,10 @@ using System.Configuration;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Security;
+using System.Web.UI.HtmlControls;
+using System.Net;
+using System.IO;
+using System.Web.Script.Serialization;
 
 namespace InstaKG
 {
@@ -17,7 +21,8 @@ namespace InstaKG
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Response.Redirect("~/ChangePassword.aspx");
+            
         }
 
         protected void btn_Reset_Click(object sender, EventArgs e)
@@ -31,87 +36,99 @@ namespace InstaKG
             if (tb_UsernameOrEmail.Text != null && tb_UsernameOrEmail.Text != "")
             {
                 //have input
+                //check for recaptcha validation
+                //string EncodedResponse = Request.Form["g-Recaptcha-Response"];
+                //bool IsCaptchaValid = (ReCaptchaClass.Validate(EncodedResponse) == "True" ? true : false);
 
-
-                if (AuthenticateUsername(tb_UsernameOrEmail.Text))
+                if (Validate())
                 {
-                    //valid username
-                    //retrieve salt
-                    string salt = RetrieveSalt(tb_UsernameOrEmail.Text);
-
-                    //get creds of user
-                    string[] creds = getCreds(tb_UsernameOrEmail.Text);
-
-                    //get email address of user, creds[1] = accountID
-                    string email = getEmail(creds[1]);
-
-                    if (updatePassword(newPass, tb_UsernameOrEmail.Text, salt))
+                    //Valid Request
+                    if (AuthenticateUsername(tb_UsernameOrEmail.Text))
                     {
-                        //sent email
-                        sentMail(newPass, email, tb_UsernameOrEmail.Text);
+                        //valid username
+                        //retrieve salt
+                        string salt = RetrieveSalt(tb_UsernameOrEmail.Text);
 
-                        alert_placeholder.Visible = true;
-                        alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";
-                        alertText.Text = "Please check email for new password.";
-                        tb_UsernameOrEmail.Text = "";
+                        //get creds of user
+                        string[] creds = getCreds(tb_UsernameOrEmail.Text);
+
+                        //get email address of user, creds[1] = accountID
+                        string email = getEmail(creds[1]);
+
+                        if (updatePassword(newPass, tb_UsernameOrEmail.Text, salt))
+                        {
+                            //sent email if valid
+                            sentMail(newPass, email, tb_UsernameOrEmail.Text);
+
+                            alert_placeholder.Visible = true;
+                            alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";
+                            alertText.Text = "Please check email for new password.";
+                            Response.AddHeader("REFRESH", "3;URL=../ChangePassword.aspx");
+
+                        }
+                        else
+                        {
+                            alert_placeholder.Visible = true;
+                            alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
+                            alertText.Text = "ERROR! Please try again later.";
+                            tb_UsernameOrEmail.Text = "";
+                        }
+
+
+
+                    }
+                    else if (AuthenticateEmail(tb_UsernameOrEmail.Text))
+                    {
+                        //valid email
+
+                        //get creds of user
+                        string[] creds = getCreds1(tb_UsernameOrEmail.Text);
+
+                        //get username, creds[1] = accID
+                        string username = getUsername(creds[1]);
+
+                        //get accID
+                        string accID = creds[1];
+
+                        //retrieve salt
+                        string salt = RetrieveSalt(username);
+                        //System.Diagnostics.Debug.WriteLine(accID);
+
+                        if (updatePassword(newPass, username, salt))
+                        {
+                            //sent mail if valid
+                            sentMail(newPass, tb_UsernameOrEmail.Text, username);
+                            //System.Diagnostics.Debug.WriteLine("newPass=" + newPass + "/==");
+
+                            alert_placeholder.Visible = true;
+                            alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";
+                            alertText.Text = "Please check email for new password.";
+
+                            Response.AddHeader("REFRESH", "3;URL=../ChangePassword.aspx");
+
+
+                        }
+                        else
+                        {
+                            //alert_placeholder.Visible = true;
+                            //alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
+                            //alertText.Text = "ERROR! Please try again later.";
+                            //tb_UsernameOrEmail.Text = "";
+                            Response.Write("~/Error.aspx");
+                        }
+
                     }
                     else
                     {
+                        //invalid
                         alert_placeholder.Visible = true;
-                        alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
-                        alertText.Text = "ERROR! Please try again later.";
+                        alert_placeholder.Attributes["class"] = "alert alert-warning alert-dismissable";
+                        alertText.Text = "Invalid username or email address.";
                         tb_UsernameOrEmail.Text = "";
                     }
-
-
-
                 }
-                else if (AuthenticateEmail(tb_UsernameOrEmail.Text))
-                {
-                    //valid email
 
-
-                    //get creds of user
-                    string[] creds = getCreds1(tb_UsernameOrEmail.Text);
-
-                    //get username, creds[1] = accID
-                    string username = getUsername(creds[1]);
-
-                    //get accID
-                    string accID = creds[1];
-
-                    //retrieve salt
-                    string salt = RetrieveSalt(username);
-                    //System.Diagnostics.Debug.WriteLine(accID);
-
-                    if (updatePassword(newPass, username, salt))
-                    {
-                        //sent mail
-                        sentMail(newPass, tb_UsernameOrEmail.Text, username);
-                        System.Diagnostics.Debug.WriteLine("newPass=" + newPass + "/==");
-
-                        alert_placeholder.Visible = true;
-                        alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";
-                        alertText.Text = "Please check email for new password.";
-                        tb_UsernameOrEmail.Text = "";
-                    }
-                    else
-                    {
-                        alert_placeholder.Visible = true;
-                        alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
-                        alertText.Text = "ERROR! Please try again later.";
-                        tb_UsernameOrEmail.Text = "";
-                    }
-
-                }
-                else
-                {
-                    //invalid
-                    alert_placeholder.Visible = true;
-                    alert_placeholder.Attributes["class"] = "alert alert-warning alert-dismissable";
-                    alertText.Text = "Invalid username or email address.";
-                    tb_UsernameOrEmail.Text = "";
-                }
+                
 
             }
             else
@@ -122,6 +139,45 @@ namespace InstaKG
                 alertText.Text = "Please enter username or email address";
                 tb_UsernameOrEmail.Text = "";
             }
+        }
+
+        public bool Validate()
+        {
+            string Response = Request["g-recaptcha-response"];//Getting Response String Append to Post Method
+            bool Valid = false;
+            //Request to Google Server
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create
+            (" https://www.google.com/recaptcha/api/siteverify?secret=6LdLjPYSAAAAAANviWnkDupG2Cp5j-8au4hH4qD2&response=" + Response);
+            try
+            {
+                //Google recaptcha Response
+                using (WebResponse wResponse = req.GetResponse())
+                {
+
+                    using (StreamReader readStream = new StreamReader(wResponse.GetResponseStream()))
+                    {
+                        string jsonResponse = readStream.ReadToEnd();
+
+                        JavaScriptSerializer js = new JavaScriptSerializer();
+                        MyObject data = js.Deserialize<MyObject>(jsonResponse);// Deserialize Json
+
+                        Valid = Convert.ToBoolean(data.success);
+                    }
+                }
+
+                return Valid;
+            }
+            catch (WebException ex)
+            {
+                throw ex;
+            }
+        }
+
+        public class MyObject
+        {
+            public string success { get; set; }
+
+
         }
 
         private static bool AuthenticateUsername(string username)
@@ -184,7 +240,7 @@ namespace InstaKG
 
         private string randomString()
         {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz!@#$";
             var random = new Random();
             var result = new string(
                 Enumerable.Repeat(chars, 8)
@@ -320,7 +376,7 @@ namespace InstaKG
 
         private string[] getCreds(string username)
         {
-            //get credentials
+            //get credentials by username
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString))
             {
                 string query = "SELECT * FROM dbo.AccCreds WHERE username=@username";

@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <asp:Label ID="lbl_CurrentPassword" CssClass="col-lg-3 control-label" runat="server">Current Password:</asp:Label>
                     <div class="col-lg-6">
-                        <asp:TextBox ID="tb_CurrentPassword" TextMode="Password" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tb_CurrentPassword" TextMode="Password" CssClass="form-control" runat="server" placeholder="Please enter current password."></asp:TextBox>
                     </div>
                     <div class="col-lg-1">
                         <asp:RequiredFieldValidator ID="rfv_CurrentPassword" runat="server" ErrorMessage="Current password required" ControlToValidate="tb_CurrentPassword" ForeColor="Red">*</asp:RequiredFieldValidator>
@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <asp:Label ID="lbl_NewPassword" CssClass="col-lg-3 control-label" runat="server">New Password:</asp:Label>
                     <div class="col-lg-6">
-                        <asp:TextBox ID="tb_NewPassword" TextMode="Password" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tb_NewPassword" TextMode="Password" CssClass="form-control" runat="server" pattern=".{8,50}" placeholder="Please enter at least 8 charaters long."></asp:TextBox>
                     </div>
                     <div class="col-lg-1">
                         <asp:RequiredFieldValidator ID="rfv_NewPassword" runat="server" ErrorMessage="New password required" ControlToValidate="tb_NewPassword" ForeColor="Red">*</asp:RequiredFieldValidator>
@@ -38,7 +38,7 @@
                 <div class="form-group">
                     <asp:Label ID="lbl_ConfirmPassword" CssClass="col-lg-3 control-label" runat="server">Re-enter New Password:</asp:Label>
                     <div class="col-lg-6">
-                        <asp:TextBox ID="tb_ConfirmPassword" TextMode="Password" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tb_ConfirmPassword" TextMode="Password" CssClass="form-control" runat="server" placeholder="Please re-type your new password."></asp:TextBox>
                     </div>
                     <div class="col-lg-1">
                         <asp:RequiredFieldValidator ID="rfv_ConfirmPassword" runat="server" ErrorMessage="Please re-enter new password" ControlToValidate="tb_ConfirmPassword" ForeColor="Red">*</asp:RequiredFieldValidator>

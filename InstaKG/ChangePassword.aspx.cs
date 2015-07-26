@@ -36,16 +36,11 @@ namespace InstaKG.Account
                             alert_placeholder.Visible = true;
                             alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";
                             alertText.Text = "Successfully updated!";
+                            
                         }
                         else
                         {
                             Response.Redirect("Error.aspx");
-                            //alert_placeholder.Visible = true;
-                            //alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
-                            //alertText.Text = "ERROR! Please try again later.";
-                            //tb_CurrentPassword.Text = string.Empty;
-                            //tb_NewPassword.Text = string.Empty;
-                            //tb_ConfirmPassword.Text = string.Empty;
                         }
                     }
                     else
@@ -53,8 +48,6 @@ namespace InstaKG.Account
                         alert_placeholder.Visible = true;
                         alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
                         alertText.Text = "Inconsistent new password";
-                        tb_NewPassword.Text = string.Empty;
-                        tb_ConfirmPassword.Text = string.Empty;
                     }
                 }
                 else
@@ -62,9 +55,7 @@ namespace InstaKG.Account
                     alert_placeholder.Visible = true;
                     alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
                     alertText.Text = "Invalid Password";
-                    tb_CurrentPassword.Text = string.Empty;
-                    tb_NewPassword.Text = string.Empty;
-                    tb_ConfirmPassword.Text = string.Empty;
+                   
                 }
             }
 
