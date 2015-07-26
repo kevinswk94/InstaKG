@@ -289,7 +289,7 @@
                                                                     <asp:Label ID="UsernameLabel" runat="server" Text='<%# Eval("Username") %>' />
                                                                 </td>
                                                                 <td style="text-align: center" class="danger">
-                                                                    <asp:Button ID="Button2" runat="server" Text="Add as Friend" CssClass="btn btn-default" />
+                                                                    <%--<asp:Button ID="Button2" runat="server" Text="Add as Friend" CssClass="btn btn-default" />--%>
                                                                     <asp:HyperLink ID="Button4" runat="server" Text="View Profile" CssClass="btn btn-default" NavigateUrl='<%# Eval("Username", "ViewProfile" + ".aspx?name={0}") %>' />
                                                                 </td>
                                                             </AlternatingItemTemplate>
@@ -362,7 +362,7 @@
                                                                     <asp:Label ID="UsernameLabel" runat="server" Text='<%# Eval("Username") %>' />
                                                                 </td>
                                                                 <td runat="server" style="text-align: center" class="active">
-                                                                    <asp:Button ID="Button2" runat="server" Text="Add as Friend" CssClass="btn btn-warning" />
+                                                                    <%--<asp:Button ID="Button2" runat="server" Text="Add as Friend" CssClass="btn btn-warning" />--%>
                                                                     <asp:HyperLink ID="Button4" runat="server" Text="View Profile" CssClass="btn btn-warning" NavigateUrl='<%# Eval("Username", "ViewProfile" + ".aspx?name={0}") %>' />
                                                                 </td>
                                                             </ItemTemplate>

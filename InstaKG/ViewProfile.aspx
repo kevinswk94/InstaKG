@@ -104,7 +104,7 @@
             </div>
 
             <br />
-            <br />
+            <%--<br />--%>
 
             <div class="form-group">
                 <asp:Label ID="lbl_fname" CssClass="col-lg-4 control-label" runat="server" Text="First Name: "></asp:Label>
@@ -123,7 +123,7 @@
             </div>
 
             <br />
-            <br />
+            <%--<br />--%>
 
             <div class="form-group">
                 <asp:Label ID="lbl_gender" CssClass="col-lg-4 control-label" runat="server" Text="Gender: "></asp:Label>
@@ -142,7 +142,7 @@
             </div>
             -->
 
-            <br />
+            <%--<br />--%>
         </div>
 
         <div class="well col-lg-12">
