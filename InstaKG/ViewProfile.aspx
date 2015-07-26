@@ -166,8 +166,6 @@
 
                     <div style="float: right; clear: left; width: 300px; font-size: 18px; text-align: right; margin-right: 30px;" class="warning">
                         <asp:LinkButton ID="lb_gallery" runat="server" OnClick="lb_gallery_Click" Text="View more..."></asp:LinkButton>
-                        <br />
-                        <a href="/ViewAllLocations.aspx">View GPS map</a>
                     </div>
 
                 </fieldset>

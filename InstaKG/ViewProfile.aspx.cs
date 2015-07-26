@@ -143,7 +143,7 @@ namespace InstaKG
                 string sql = "SELECT imageID, imageTitle, imageData FROM Image WHERE (accountID=@AccountID)";
 
                 SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@AccountID", Session["accountID"]);
+                cmd.Parameters.AddWithValue("@AccountID", data.retrieveIDByUsername(queryUsername()));
                 SqlDataReader dr = cmd.ExecuteReader();
 
                 while (dr.Read())
