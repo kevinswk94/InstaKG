@@ -112,6 +112,15 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.ListView lv_ImageResult;
         
         /// <summary>
+        /// ImageResultSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ImageResultSource;
+        
+        /// <summary>
         /// View2 control.
         /// </summary>
         /// <remarks>
@@ -128,5 +137,14 @@ namespace InstaKG {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView lv_UserResult;
+        
+        /// <summary>
+        /// UserResultSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource UserResultSource;
     }
 }

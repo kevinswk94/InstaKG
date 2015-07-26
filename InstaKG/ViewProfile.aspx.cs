@@ -100,7 +100,7 @@ namespace InstaKG
             //Dummy session of a particular user id
             //Session["accountID"] = 1;
             int accId = data.retrieveIDByUsername(queryUsername());
-            string strQuery = "Select * from Image where accountID= @ID";
+            string strQuery = "Select TOP 3 * from Image where accountID= @ID ORDER BY imageID DESC";
 
             SqlCommand cmd = new SqlCommand(strQuery);
             cmd.Parameters.AddWithValue("@ID", accId);

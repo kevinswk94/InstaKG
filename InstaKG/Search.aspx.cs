@@ -52,18 +52,24 @@ namespace InstaKG
             {
                 bool check = false;
 
-                if (item.ImageTitle.Contains(tb_searchWord.Text))
+                if (item.ImageTitle.ToLower().Contains(tb_searchWord.Text))
                 {
                     list.Add(item);
                     check = true;
                 }
-                if (item.Description.Contains(tb_searchWord.Text))
+                if (item.Description.ToLower().Contains(tb_searchWord.Text))
                 {
                     if (!check)
                     {
                         list.Add(item);
                     }
-
+                }
+                if (getUsernameByAccountID(getAccountIDByImageID(item.ImageID)).Contains(tb_searchWord.Text))
+                {
+                    if (!check)
+                    {
+                        list.Add(item);
+                    }
                 }
             }
 
@@ -124,6 +130,19 @@ namespace InstaKG
             string url = "ViewProfile.aspx?name=" + username;
 
             Response.Redirect(url);
+        }
+        public double dateDifference(object date)
+        {
+            double value;
+
+            TimeSpan difference = DateTime.Now - DateTime.Parse(date.ToString());
+
+            var days = difference.TotalDays;
+
+            value = Math.Ceiling(Convert.ToDouble(days));
+            System.Diagnostics.Debug.WriteLine(value);
+
+            return value;
         }
     }
 }
