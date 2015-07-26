@@ -134,22 +134,21 @@ namespace InstaKG
         {
             // Gets all coordinates from DB, puts them in a list and then displays them to screen
 
-            List<byte[]> imageDataList = new List<byte[]>();
-            List<string> titles = new List<string>();
+            List<object[]> imageProperties = new List<object[]>();
             List<object[]> coordinates = new List<object[]>();
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString))
             {
                 con.Open();
-                string sql = "SELECT imageTitle, imageData FROM Image";
+                string sql = "SELECT imageID, imageTitle, imageData FROM Image WHERE (accountID=@AccountID)";
 
                 SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@AccountID", Session["accountID"]);
                 SqlDataReader dr = cmd.ExecuteReader();
 
                 while (dr.Read())
                 {
-                    imageDataList.Add((byte[])dr["imageData"]);
-                    titles.Add(dr["imageTitle"].ToString());
+                    imageProperties.Add(new object[] { dr["imageID"], dr["imageTitle"].ToString(), (byte[])dr["imageData"] });
                 }
 
                 dr.Close();
@@ -159,8 +158,9 @@ namespace InstaKG
             }
 
             int i = 0;
-            foreach (byte[] bt in imageDataList)
+            foreach (object[] ob in imageProperties)
             {
+                byte[] bt = (byte[])ob[2];
                 double? latitude;
                 double? longitude;
 
@@ -168,6 +168,7 @@ namespace InstaKG
                 System.Drawing.Image img2 = System.Drawing.Image.FromStream(stream);
 
                 latitude = GetLatitude(img2);
+
                 if (!latitude.Equals(null))
                 {
                     latitude = Convert.ToDouble(String.Format("{0:0.###}", latitude));
@@ -190,7 +191,7 @@ namespace InstaKG
                     continue;
                 }
 
-                coordinates.Add(new object[] { latitude, longitude, titles[i].ToString() });
+                coordinates.Add(new object[] { latitude, longitude, ob[1], ob[0] });
                 i++;
             }
 
