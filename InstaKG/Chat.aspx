@@ -21,6 +21,7 @@
 
     <script type="text/javascript">
 
+
         $(function () {
 
             setScreen(false);
@@ -141,8 +142,23 @@
             }
 
             chatHub.client.messageReceived = function (userName, message) {
+                <%--var decryptedMessage = <%=getDecryptedMessage()%>;
+                <%--var decryptedMessage = <%=this.getDecryptedMessage()%>;--%>
 
-                AddMessage(userName, message);
+                //var privateChat = <%=InstaKG.ChatHub.inPrivate%>;
+                //if (decryptedMessage = "public"){--%>
+                    AddMessage(userName, message);
+                //} else{
+                //    AddMessage(userName, InstaKG.ChatHub.decryptedOTR);
+                    //}
+
+
+                <%--if (privateChat == "false"){
+                    decryptedMessage = <%=getDecryptedMessage()%>;
+                    AddMessage(userName, decryptedMessage);
+                }else{
+                    AddMessage(userName, message);
+                }--%>
             }
 
             chatHub.client.sendPrivateMessage = function (windowId, fromUserName, message) {
@@ -154,8 +170,18 @@
                     createPrivateChatWindow(chatHub, windowId, ctrId, fromUserName);
 
                 }
+                
+                // Decryption of the OTR message
+                <%--var decryptedMessage = <%=InstaKG.ChatHub.decryptedOTR%>;--%>
 
-                $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + message + '</div>');
+
+
+                // THIS WHERE THE PRIVATE MESSAGE IN, AND CAN BE PROCCESSED BEFORE HAND
+                var decryptedMessage = <%=getDecryptedMessage()%>;
+
+                $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + decryptedMessage + '</div>');
+
+                //$('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + message + '</div>');
 
                 // set scrollbar
                 var height = $('#' + ctrId).find('#divMessage')[0].scrollHeight;
@@ -195,10 +221,28 @@
         }
 
         function AddMessage(userName, message) {
+            <%--var privateChat = <%=InstaKG.ChatHub.inPrivate%>;
+            if (false){
+            // Decryption of the OTR message
+                var decryptedMessage = <%=InstaKG.ChatHub.decryptedOTR%>;
+
+                $('#divChatWindow').append('<div class="message"><span class="userName">' + userName + '</span>: ' + decryptedMessage + '</div>');
+
+                var height = $('#divChatWindow')[0].scrollHeight;
+                $('#divChatWindow').scrollTop(height);
+
+            } else {
             $('#divChatWindow').append('<div class="message"><span class="userName">' + userName + '</span>: ' + message + '</div>');
 
             var height = $('#divChatWindow')[0].scrollHeight;
             $('#divChatWindow').scrollTop(height);
+            }--%>
+
+            $('#divChatWindow').append('<div class="message"><span class="userName">' + userName + '</span>: ' + message + '</div>');
+
+            var height = $('#divChatWindow')[0].scrollHeight;
+            $('#divChatWindow').scrollTop(height);
+
         }
 
         function OpenPrivateChatWindow(chatHub, id, userName) {
@@ -245,6 +289,8 @@
                 if (msg.length > 0) {
 
                     chatHub.server.sendPrivateMessage(userId, msg);
+                    
+
                     $textBox.val('');
                 }
             });

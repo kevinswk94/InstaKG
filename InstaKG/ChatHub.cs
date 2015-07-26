@@ -17,6 +17,12 @@ namespace InstaKG
         // Fix Check the Public and Private properties of this page of coding
         // Variables for Private Chat
         // toUser = Bob, fromUser = Alice
+        
+        // Custom to utilise OTR
+        public string msgEncryptState;
+        public static string decryptedOTR;
+        public static bool inPrivate = false; 
+
         private UserDetail toUser;
         private UserDetail fromUser;
 
@@ -65,6 +71,7 @@ namespace InstaKG
 
         public void SendMessageToAll(string userName, string message)
         {
+            inPrivate = false;
             // store last 100 messages in cache
             AddMessageinCache(userName, message);
 
@@ -93,6 +100,7 @@ namespace InstaKG
 
         public void SendPrivateMessage(string toUserIdPassedIn, string message)
         {
+            inPrivate = true;
             fromUserId = Context.ConnectionId;
             // Passed in parameter is in String
             toUserId = toUserIdPassedIn;
@@ -129,6 +137,7 @@ namespace InstaKG
 
             //Alice requests an OTR session with Bob  using OTR version 2
             _fromUser_otr_session_manager.RequestOTRSession(_fromUser_buddy_unique_id, OTRSessionManager.GetSupportedOTRVersionList()[0]);
+
 
             //Backup copy
             // SendPrivateMessage Chatting Section
@@ -167,14 +176,24 @@ namespace InstaKG
 
                 case OTR_EVENT.SEND:
 
+
                     if (toUser != null && fromUser != null)
                     {
-                        SendDataOnNetwork(_fromUser_unique_id, e.GetMessage());
 
-                        // send to
-                        //Clients.Client(fromUserId).sendPrivateMessage(toUserId, toUser.UserName, e.GetMessage());
-                        // send to caller user
-                        //Clients.Caller.sendPrivateMessage(fromUserId, toUser.UserName, e.GetMessage());
+                        msgEncryptState = Convert.ToString(_fromUser_otr_session_manager.GetSessionMessageState(_fromUser_buddy_unique_id));
+
+                        if (msgEncryptState == "MSG_STATE_ENCRYPTED" && privateMessagePos > 0)
+                        {
+                            // The correct encryption area EG
+                            ////send to
+                            Clients.Client(toUserId).sendPrivateMessage(fromUserId, fromUser.UserName, e.GetMessage());
+                            ////send to caller user
+                            Clients.Caller.sendPrivateMessage(toUserId, fromUser.UserName, e.GetMessage());
+
+                            
+                        }
+
+                        SendDataOnNetwork(_fromUser_unique_id, e.GetMessage());
 
                         // send to
                         //Clients.Client(fromUserId).sendPrivateMessage(toUserId, toUser.UserName, e.GetMessage());
@@ -197,7 +216,10 @@ namespace InstaKG
 
                     Debug.WriteLine(e.GetSessionID());
                     privateMessagePos++;
+                    //msgEncryptState = true;
                     _fromUser_otr_session_manager.EncryptMessage(_fromUser_buddy_unique_id, privateMessage);
+                    // msgEncryptState == true
+
 
                     break;
                 case OTR_EVENT.DEBUG:
@@ -223,7 +245,6 @@ namespace InstaKG
 
                     Debug.WriteLine("Alice: Encrypted OTR session with {0} closed \n", e.GetSessionID());
 
-
                     break;
 
             }
@@ -238,11 +259,15 @@ namespace InstaKG
                 case OTR_EVENT.MESSAGE:
 
                     Debug.WriteLine("{0}: {1} \n - FROM BOB HANDLER", e.GetSessionID(), e.GetMessage());
-                    //// send to
-                    Clients.Client(toUserId).sendPrivateMessage(fromUserId, fromUser.UserName, e.GetMessage());
+                    
+                    // Asses the security
+                    decryptedOTR = e.GetMessage();
 
-                    //// send to caller user
-                    Clients.Caller.sendPrivateMessage(toUserId, fromUser.UserName, e.GetMessage());
+                    ////// send to
+                    //Clients.Client(toUserId).sendPrivateMessage(fromUserId, fromUser.UserName, e.GetMessage());
+
+                    ////// send to caller user
+                    //Clients.Caller.sendPrivateMessage(toUserId, fromUser.UserName, e.GetMessage());
                     //SendPrivateMessage Chatting Section
                     if (privateMessagePos == 0)
                     {
