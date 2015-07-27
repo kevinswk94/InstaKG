@@ -161,6 +161,8 @@
                 }--%>
             }
 
+
+
             chatHub.client.sendPrivateMessage = function (windowId, fromUserName, message) {
 
                 var ctrId = 'private_' + windowId;
@@ -170,6 +172,8 @@
                     createPrivateChatWindow(chatHub, windowId, ctrId, fromUserName);
 
                 }
+
+
                 
                 // Decryption of the OTR message
                 <%--var decryptedMessage = <%=InstaKG.ChatHub.decryptedOTR%>;--%>
@@ -177,9 +181,30 @@
 
 
                 // THIS WHERE THE PRIVATE MESSAGE IN, AND CAN BE PROCCESSED BEFORE HAND
-                var decryptedMessage = <%=getDecryptedMessage()%>;
+                //var delay=10000; //10 seconds
+                //var decryptedMessage;
+                //setTimeout(function(){
+                //    //your code to be executed after 10 seconds
+                //    decryptedMessage = "SLDHKSNFA";
 
-                $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + decryptedMessage + '</div>');
+                //}, delay);
+
+                decryptedMessage = refreshingDecryption();
+                
+              <%--if (<%=this.privateCounter%> != 0){
+                    decryptedMessage = <%=getDecryptedMessage()%>;}--%>
+
+                <%--decryptedMessage = <%=getDecryptedMessage()%>;--%>
+                
+                var delay = 10000; //10 seconds
+                setTimeout(function () {
+                    //your code to be executed after 10 seconds
+                    //decryptedMessage = "SLDHKSNFA";
+$('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + decryptedMessage +"-OTR SIGNED"+ '</div>');
+                }, delay);
+
+                // Adding private message
+                
 
                 //$('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + message + '</div>');
 
@@ -189,6 +214,24 @@
 
             }
 
+        }
+
+        // getting decrpted value
+        function refreshingDecryption() {
+            $.ajax({
+                type: "POST",
+                url: 'Chat.aspx/refreshingDecryption',
+                data: "",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (retValue) {
+                    //$("#divResult").html("success");
+                    decryptedMessage = retValue;
+                },
+                error: function (e) {
+                    $("#divResult").html("Something Wrong.");
+                }
+            });
         }
 
         function AddUser(chatHub, id, name) {
@@ -220,6 +263,7 @@
 
         }
 
+        // Public chat
         function AddMessage(userName, message) {
             <%--var privateChat = <%=InstaKG.ChatHub.inPrivate%>;
             if (false){
@@ -238,6 +282,7 @@
             $('#divChatWindow').scrollTop(height);
             }--%>
 
+            // this is the public chat adding message function
             $('#divChatWindow').append('<div class="message"><span class="userName">' + userName + '</span>: ' + message + '</div>');
 
             var height = $('#divChatWindow')[0].scrollHeight;
@@ -288,10 +333,22 @@
                 var msg = $textBox.val();
                 if (msg.length > 0) {
 
+                    // Process private message
                     chatHub.server.sendPrivateMessage(userId, msg);
-                    
-
                     $textBox.val('');
+
+                    var delay=10000; //10 seconds
+                    setTimeout(function(){
+                        //your code to be executed after 1 seconds
+                        
+                        var pageId = '<%=  Page.ClientID %>';
+                        __doPostBack(pageId,"myargs" );
+                    }, delay);
+
+
+                    var pageId = '<%=  Page.ClientID %>';
+                    __doPostBack(pageId,"myargs" );
+                    
                 }
             });
 
