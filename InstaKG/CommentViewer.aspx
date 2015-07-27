@@ -58,6 +58,7 @@
                     </div>
                 </fieldset>
             </div>
+            <div class="panel-footer"><a href="/ImageGPSLocationViewer.aspx?imageID=<% =Request.QueryString["imageID"] %>">View Location</a></div>
         </div>
 
         <fieldset class="form-horizontal">
