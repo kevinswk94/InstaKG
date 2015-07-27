@@ -76,7 +76,6 @@ namespace InstaKG
                     //set up parameters
                     cmd.Parameters.AddWithValue("@imgTitle", tb_ImageTitle.Text);
                     cmd.Parameters.AddWithValue("@imgDescription", tb_ImageDescription.Text);
-                    //cmd.Parameters.Add("@imgData", SqlDbType.Image, imgData.Length).Value = imgData; // YP, you're probably saving the unwatermarked image to the DB, not the watermarked version. May be wrong.
                     cmd.Parameters.Add("@imgData", SqlDbType.Binary).Value = bytes;
                     cmd.Parameters.AddWithValue("@imgtype", FileUpload1.PostedFile.ContentType);
                     cmd.Parameters.AddWithValue("@uploadDT", dt);
@@ -128,7 +127,9 @@ namespace InstaKG
 
         protected void btn_cancel_Click(object sender, EventArgs e)
         {
-
+            tb_ImageDescription.Text = string.Empty;
+            tb_ImageTitle.Text = string.Empty;
+            tb_watermark.Text = Session["username"].ToString();
         }
 
         private void clearFolder(string FolderName)
