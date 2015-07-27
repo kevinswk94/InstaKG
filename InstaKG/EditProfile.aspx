@@ -114,7 +114,7 @@
                         <asp:TextBox ID="tb_newpw" runat="server" TextMode="Password"></asp:TextBox>
                     </div>
                     <div class="col-lg-1">
-                        <asp:RequiredFieldValidator ValidationGroup="UpdatePassword" ID="rfv_NewPassword" runat="server" ErrorMessage="New password required" ControlToValidate="tb_newpw" CssClass="text-danger">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ValidationGroup="UpdatePassword" ID="rfv_NewPassword" runat="server" ErrorMessage="New password required" ControlToValidate="tb_newpw" CssClass="text-danger" pattern=".{8,50}" placeholder="Please enter at least 8 charaters long.">*</asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -126,7 +126,7 @@
                         <asp:TextBox ID="tb_confirmpw" runat="server" TextMode="Password"></asp:TextBox>
                     </div>
                     <div class="col-lg-1">
-                        <asp:RequiredFieldValidator ValidationGroup="UpdatePassword" ID="rfv_ConfirmPassword" runat="server" ErrorMessage="Please re-enter new password" ControlToValidate="tb_confirmpw" CssClass="text-danger">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ValidationGroup="UpdatePassword" ID="rfv_ConfirmPassword" runat="server" ErrorMessage="Please re-enter new password" ControlToValidate="tb_confirmpw" CssClass="text-danger" pattern=".{8,50}">*</asp:RequiredFieldValidator>
                     </div>
                 </div>
 
