@@ -39,7 +39,7 @@ namespace InstaKG
         public static string  refreshingDecryption()
         {
 
-            decryptedMessage =  "refreshingDecryption";
+            decryptedMessage = ChatHub.decryptedOTR;
             return decryptedMessage;
 
         }

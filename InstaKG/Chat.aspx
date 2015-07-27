@@ -189,7 +189,7 @@
 
                 //}, delay);
 
-                decryptedMessage = refreshingDecryption();
+                refreshingDecryption();
                 
               <%--if (<%=this.privateCounter%> != 0){
                     decryptedMessage = <%=getDecryptedMessage()%>;}--%>
@@ -200,7 +200,7 @@
                 setTimeout(function () {
                     //your code to be executed after 10 seconds
                     //decryptedMessage = "SLDHKSNFA";
-$('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + decryptedMessage +"-OTR SIGNED"+ '</div>');
+$('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + decryptedMessage + '</div>');
                 }, delay);
 
                 // Adding private message
@@ -226,7 +226,8 @@ $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="use
                 dataType: "json",
                 success: function (retValue) {
                     //$("#divResult").html("success");
-                    decryptedMessage = retValue;
+                    //alert(retValue.d)
+                    decryptedMessage = retValue.d;
                 },
                 error: function (e) {
                     $("#divResult").html("Something Wrong.");
