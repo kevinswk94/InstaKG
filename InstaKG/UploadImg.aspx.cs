@@ -12,7 +12,7 @@ namespace InstaKG
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            tb_watermark.Text = Session["username"].ToString();
         }
 
         protected void btn_Submit_Click(object sender, EventArgs e)
