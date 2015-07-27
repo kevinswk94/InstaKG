@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://www.google.com/recaptcha/api.js" ></script>
     <script type="text/javascript">
         var onloadCallback = function () {
             grecaptcha.render('fp', {
@@ -63,17 +63,19 @@
                 </div>
                 <div class="form-group">
                     <div class="col-lg-offset-3 col-lg-6">
+                         <div id="fp"></div>
                         <div class="g-recaptcha" data-sitekey="6LdLjPYSAAAAACgXKw1nxpFEndwLVqbotnANKY4I"></div>
                     </div>
+                    
                 </div>
                 <div class="form-group">
                     <div class="col-lg-4 col-lg-offset-3">
-                        <asp:Button ID="btn_Reset" runat="server" OnClick="btn_Reset_Click" Text="Reset Password" class="btn btn-primary" />
+                        <asp:Button ID="btn_Reset" runat="server" OnClick="btn_Reset_Click" Text="Reset Password" class="btn btn-primary"/>
                     <asp:Label ID="lb_EndInfo" runat="server" ForeColor="Red"></asp:Label>
                     </div>
                 </div>
             </fieldset>
-            <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit">
+            <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" >
             </script>
         </div>
     </div>
