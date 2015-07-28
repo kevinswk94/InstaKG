@@ -111,10 +111,10 @@
                 <div class="form-group">
                     <asp:Label ID="lbl_newpw" CssClass="col-lg-4 control-label" runat="server" Text="New Password: "></asp:Label>
                     <div class="col-lg-4">
-                        <asp:TextBox ID="tb_newpw" runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="tb_newpw" runat="server" TextMode="Password"  pattern=".{8,50}" placeholder="Enter at least 8 chars"></asp:TextBox>
                     </div>
                     <div class="col-lg-1">
-                        <asp:RequiredFieldValidator ValidationGroup="UpdatePassword" ID="rfv_NewPassword" runat="server" ErrorMessage="New password required" ControlToValidate="tb_newpw" CssClass="text-danger" pattern=".{8,50}" placeholder="Please enter at least 8 charaters long.">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ValidationGroup="UpdatePassword" ID="rfv_NewPassword" runat="server" ErrorMessage="New password required" ControlToValidate="tb_newpw" CssClass="text-danger">*</asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -123,10 +123,10 @@
                 <div class="form-group">
                     <asp:Label ID="lbl_confirmpw" CssClass="col-lg-4 control-label" runat="server" Text="Re-Enter New Password: "></asp:Label>
                     <div class="col-lg-4">
-                        <asp:TextBox ID="tb_confirmpw" runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="tb_confirmpw" runat="server" TextMode="Password" pattern=".{8,50}"></asp:TextBox>
                     </div>
                     <div class="col-lg-1">
-                        <asp:RequiredFieldValidator ValidationGroup="UpdatePassword" ID="rfv_ConfirmPassword" runat="server" ErrorMessage="Please re-enter new password" ControlToValidate="tb_confirmpw" CssClass="text-danger" pattern=".{8,50}">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ValidationGroup="UpdatePassword" ID="rfv_ConfirmPassword" runat="server" ErrorMessage="Please re-enter new password" ControlToValidate="tb_confirmpw" CssClass="text-danger" >*</asp:RequiredFieldValidator>
                     </div>
                 </div>
 
