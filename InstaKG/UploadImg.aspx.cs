@@ -121,7 +121,7 @@ namespace InstaKG
                 {
                     alert_placeholder.Visible = true;
                     alert_placeholder.Attributes["class"] = "alert alert-warning alert-dismissable";
-                    alertText.Text = "You can only upload jpg or png file.";
+                    alertText.Text = "You can only upload jpg, jpeg, png or gif.";
                     //lb_EndInfo.Text = "You can only upload jpg or png file.";
                 }
             }
