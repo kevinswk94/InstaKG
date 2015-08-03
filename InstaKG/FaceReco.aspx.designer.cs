@@ -10,7 +10,7 @@
 namespace InstaKG {
     
     
-    public partial class ViewProfile {
+    public partial class test {
         
         /// <summary>
         /// alert_placeholder control.
@@ -31,120 +31,156 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.Literal alertText;
         
         /// <summary>
-        /// img_profImg control.
+        /// Tab1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image img_profImg;
+        protected global::System.Web.UI.WebControls.Button Tab1;
         
         /// <summary>
-        /// lbl_email control.
+        /// Tab2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_email;
+        protected global::System.Web.UI.WebControls.Button Tab2;
         
         /// <summary>
-        /// lbl_email_value control.
+        /// MainView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_email_value;
+        protected global::System.Web.UI.WebControls.MultiView MainView;
         
         /// <summary>
-        /// lbl_fname control.
+        /// View1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_fname;
+        protected global::System.Web.UI.WebControls.View View1;
         
         /// <summary>
-        /// lbl_fname_value control.
+        /// lbl_CameraUsed control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_fname_value;
+        protected global::System.Web.UI.WebControls.Label lbl_CameraUsed;
         
         /// <summary>
-        /// lbl_lname control.
+        /// lbl_Camera control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_lname;
+        protected global::System.Web.UI.WebControls.Label lbl_Camera;
         
         /// <summary>
-        /// lbl_lname_value control.
+        /// lbl_ImageCaptured control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_lname_value;
+        protected global::System.Web.UI.WebControls.Label lbl_ImageCaptured;
         
         /// <summary>
-        /// lbl_gender control.
+        /// HiddenField1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_gender;
+        protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
         
         /// <summary>
-        /// lbl_gender_value control.
+        /// Image1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_gender_value;
+        protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
-        /// lbl_birthday control.
+        /// btn_Capture control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_birthday;
+        protected global::System.Web.UI.WebControls.Button btn_Capture;
         
         /// <summary>
-        /// lbl_birthday_value control.
+        /// btn_Use control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_birthday_value;
+        protected global::System.Web.UI.WebControls.Button btn_Use;
         
         /// <summary>
-        /// Repeater1 control.
+        /// View2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater1;
+        protected global::System.Web.UI.WebControls.View View2;
         
         /// <summary>
-        /// lb_gallery control.
+        /// lbl_FromCom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lb_gallery;
+        protected global::System.Web.UI.WebControls.Label lbl_FromCom;
+        
+        /// <summary>
+        /// FileUpload1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        
+        /// <summary>
+        /// lbl_imagePreview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_imagePreview;
+        
+        /// <summary>
+        /// lb_EndInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_EndInfo;
+        
+        /// <summary>
+        /// btn_UseFromCom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_UseFromCom;
     }
 }

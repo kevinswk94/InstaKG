@@ -31,6 +31,24 @@ namespace InstaKG.Account {
         protected global::System.Web.UI.WebControls.Literal alertText;
         
         /// <summary>
+        /// alert_placeholder2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alert_placeholder2;
+        
+        /// <summary>
+        /// alertText2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal alertText2;
+        
+        /// <summary>
         /// lbl_username control.
         /// </summary>
         /// <remarks>

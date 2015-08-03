@@ -31,6 +31,24 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.Literal alertText;
         
         /// <summary>
+        /// img_profImg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image img_profImg;
+        
+        /// <summary>
+        /// lb_ChangeProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lb_ChangeProfile;
+        
+        /// <summary>
         /// lbl_email control.
         /// </summary>
         /// <remarks>
@@ -67,13 +85,13 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.TextBox tb_fname;
         
         /// <summary>
-        /// rfv_fname control.
+        /// rfv_lname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_fname;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_lname;
         
         /// <summary>
         /// lbl_lname control.
@@ -94,13 +112,13 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.TextBox tb_lname;
         
         /// <summary>
-        /// rfv_lname control.
+        /// rfv_fname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_lname;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_fname;
         
         /// <summary>
         /// Label1 control.

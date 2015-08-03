@@ -99,9 +99,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Account\Registration.aspx" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="Account\Login.aspx" />
-    <Content Include="Account\Registration.aspx" />
     <Content Include="BrowseImages.aspx" />
     <Content Include="Chat.aspx" />
     <Content Include="CommentCreator_Test.aspx" />
@@ -139,6 +139,7 @@
     <Content Include="DummyData\Img\Thumb\cS-9.jpg" />
     <Content Include="EditProfile.aspx" />
     <Content Include="Error.aspx" />
+    <Content Include="FaceReco.aspx" />
     <Content Include="Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Fonts\glyphicons-halflings-regular.woff" />
@@ -189,6 +190,7 @@
     <Content Include="packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.xml" />
     <Content Include="packages\Owin.1.0\lib\net40\Owin.dll" />
     <Content Include="Profile.aspx" />
+    <Content Include="scriptcam.swf" />
     <Content Include="Scripts\ChatUI\jquery.ui.core.js" />
     <Content Include="Scripts\ChatUI\jquery.ui.dialog.js" />
     <Content Include="Scripts\ChatUI\jquery.ui.draggable.js" />
@@ -377,6 +379,7 @@
     <Content Include="Styles\custom.css" />
     <Content Include="Styles\full-slider.css" />
     <Content Include="Styles\lightGallery.css" />
+    <Content Include="Scripts\scriptcam.js" />
     <Content Include="TestNavBar.aspx" />
     <Content Include="UploadImg.aspx" />
     <Content Include="ViewAllLocations.aspx" />
@@ -385,6 +388,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\Registration.aspx.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Registration.aspx.designer.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -398,13 +408,6 @@
     </Compile>
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\Registration.aspx.cs">
-      <DependentUpon>Registration.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\Registration.aspx.designer.cs">
-      <DependentUpon>Registration.aspx</DependentUpon>
     </Compile>
     <Compile Include="BrowseImages.aspx.cs">
       <DependentUpon>BrowseImages.aspx</DependentUpon>
@@ -460,6 +463,13 @@
     </Compile>
     <Compile Include="Account\ForgetPassword.aspx.designer.cs">
       <DependentUpon>ForgetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FaceReco.aspx.cs">
+      <DependentUpon>FaceReco.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FaceReco.aspx.designer.cs">
+      <DependentUpon>FaceReco.aspx</DependentUpon>
     </Compile>
     <Compile Include="FriendFinder.aspx.cs">
       <DependentUpon>FriendFinder.aspx</DependentUpon>
