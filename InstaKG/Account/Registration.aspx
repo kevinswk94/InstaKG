@@ -12,12 +12,6 @@
             <asp:Literal runat="server" ID="alertText" />
         </div>
         
-        <!-- Debug Alert placeholder, alter attributes in CodeBehind -->
-        <div id="alert_placeholder2" runat="server" visible="false">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <asp:Literal runat="server" ID="alertText2" />
-        </div>
-        
         <div class="well">
             <fieldset class="form-horizontal">
                 <div class="row">

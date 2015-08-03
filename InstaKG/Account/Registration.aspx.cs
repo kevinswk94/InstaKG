@@ -223,15 +223,10 @@ namespace InstaKG.Account
             {
                 con.Open();
                 cmd.ExecuteNonQuery();
-                alert_placeholder2.Visible = true;
-                alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
-                alertText2.Text = "INSERTED";
             }
             catch (Exception ex)
             {
-                alert_placeholder2.Visible = true;
-                alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
-                alertText2.Text = ex.Message;
+                Response.Redirect("Error.aspx");
             }
         }
     }
