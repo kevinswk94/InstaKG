@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/InstaKG.Master" AutoEventWireup="true" CodeBehind="EditProfile.aspx.cs" Inherits="InstaKG.EditProfile" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
@@ -12,7 +12,12 @@
         <div class="well">
             <fieldset>
                 <legend><%--<%= Session["username"].ToString() %>'s--%> Profile</legend>
-
+                <div class="form-group">
+                    <div class="col-lg-4">
+                        <asp:Image ID="img_profImg" runat="server" class="img-responsive" src="#" style="width:150px; height:120px;"/>
+                        <asp:LinkButton ID="lb_ChangeProfile" runat="server" OnClick="ChangeProf_Click">Snap a Profile Image</asp:LinkButton>
+                    </div>
+                </div>
                 <div class="form-group">
                     <asp:Label ID="lbl_email" CssClass="col-lg-4 control-label" runat="server" Text="Email: "></asp:Label>
                     <div class="col-lg-4">
@@ -27,27 +32,34 @@
                     <asp:Label ID="lbl_fname" CssClass="col-lg-4 control-label" runat="server" Text="First Name: "></asp:Label>
                     <div class="col-lg-4">
                         <asp:TextBox ID="tb_fname" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ValidationGroup="UpdateUser" ID="rfv_lname" runat="server" ErrorMessage="Last Name Required" ControlToValidate="tb_lname" CssClass="text-danger">*</asp:RequiredFieldValidator>
+ 
                     </div>
-                    <div class="col-lg-1">
-                        <asp:RequiredFieldValidator ValidationGroup="UpdateUser" ID="rfv_fname" runat="server" ErrorMessage="First Name Required" ControlToValidate="tb_fname" CssClass="text-danger">*</asp:RequiredFieldValidator>
-                    </div>
-                </div>
-
-                <br />
-
+                      </div>
+                    <%--<div class="col-lg-4">
+                          </div>--%>
+                    <br />
                 <div class="form-group">
                     <asp:Label ID="lbl_lname" CssClass="col-lg-4 control-label" runat="server" Text="Last Name: "></asp:Label>
 
                     <div class="col-lg-4">
                         <asp:TextBox ID="tb_lname" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ValidationGroup="UpdateUser" ID="rfv_fname" runat="server" ErrorMessage="First Name Required" ControlToValidate="tb_fname" CssClass="text-danger">*</asp:RequiredFieldValidator>
+                  
                     </div>
-                    <div class="col-lg-1">
-                        <asp:RequiredFieldValidator ValidationGroup="UpdateUser" ID="rfv_lname" runat="server" ErrorMessage="Last Name Required" ControlToValidate="tb_lname" CssClass="text-danger">*</asp:RequiredFieldValidator>
-                    </div>
-                </div>
+                   <%-- <div class="col-lg-1">
+                       </div> --%>
+                     </div>
+              
+                  
+                <br />
+
+                
+                    
+                
 
                 <br />
-                <br />                
+                <br />
 
                 <div class="form-group">
                     <asp:Label ID="Label1" CssClass="col-lg-4 control-label" runat="server" Text="Gender: "></asp:Label>
@@ -111,10 +123,10 @@
                 <div class="form-group">
                     <asp:Label ID="lbl_newpw" CssClass="col-lg-4 control-label" runat="server" Text="New Password: "></asp:Label>
                     <div class="col-lg-4">
-                        <asp:TextBox ID="tb_newpw" runat="server" TextMode="Password"  pattern=".{8,50}" placeholder="Enter at least 8 chars"></asp:TextBox>
+                        <asp:TextBox ID="tb_newpw" runat="server" TextMode="Password" pattern=".{8,50}" placeholder="Enter at least 8 chars"></asp:TextBox>
                     </div>
                     <div class="col-lg-1">
-                        <asp:RequiredFieldValidator ValidationGroup="UpdatePassword" ID="rfv_NewPassword" runat="server" ErrorMessage="New password required" ControlToValidate="tb_newpw" CssClass="text-danger">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ValidationGroup="UpdatePassword" ID="rfv_NewPassword" runat="server" ErrorMessage="New password required" ControlToValidate="tb_newpw" CssClass="text-danger" pattern=".{8,50}" placeholder="Please enter at least 8 charaters long.">*</asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -126,7 +138,7 @@
                         <asp:TextBox ID="tb_confirmpw" runat="server" TextMode="Password" pattern=".{8,50}"></asp:TextBox>
                     </div>
                     <div class="col-lg-1">
-                        <asp:RequiredFieldValidator ValidationGroup="UpdatePassword" ID="rfv_ConfirmPassword" runat="server" ErrorMessage="Please re-enter new password" ControlToValidate="tb_confirmpw" CssClass="text-danger" >*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ValidationGroup="UpdatePassword" ID="rfv_ConfirmPassword" runat="server" ErrorMessage="Please re-enter new password" ControlToValidate="tb_confirmpw" CssClass="text-danger" pattern=".{8,50}">*</asp:RequiredFieldValidator>
                     </div>
                 </div>
 

@@ -19,6 +19,7 @@ namespace InstaKG
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            getProfileImg();
             if (!IsPostBack)
             {
                 string []value = loadData();
@@ -27,11 +28,11 @@ namespace InstaKG
                 tb_fname.Text = value[1];
                 tb_lname.Text = value[2];
 
-                if(value[3].Equals("0"))
+                if (value[3].Equals("0"))
                 {
                     rbl_gender.SelectedValue = "Male";
                 }
-                else if(value[3].Equals("1"))
+                else if (value[3].Equals("1"))
                 {
                     rbl_gender.SelectedValue = "Female";
                 }
@@ -40,9 +41,11 @@ namespace InstaKG
         }
         public string[] loadData()
         {
-            int id = data.retrieveIDByUsername(Session["username"].ToString());
-
-
+            //int id = data.retrieveIDByUsername(Session["username"].ToString());
+            string[] creds = getCreds(Session["username"].ToString());
+            //get accID
+            string id = creds[1];
+            //Response.Write("id for loadData" + id);
             string []value = new string[4];
 
             SqlConnection con = new SqlConnection();
@@ -162,6 +165,9 @@ namespace InstaKG
         public bool updateAllDetails(string fname, string lname, string gender)
         {
             bool check = false;
+            string[] creds = getCreds(Session["username"].ToString());
+            //get accID
+            string id = creds[1];
 
             SqlConnection con = new SqlConnection();
             con.ConnectionString = ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString;
@@ -173,8 +179,10 @@ namespace InstaKG
             cmd.Parameters.AddWithValue("@fname", fname);
             cmd.Parameters.AddWithValue("@lname", lname);
             cmd.Parameters.AddWithValue("@gender", gender);
-            cmd.Parameters.AddWithValue("@id", data.retrieveIDByUsername(Session["username"].ToString()));
-            
+            cmd.Parameters.AddWithValue("@id", id);
+            //Response.Write("id for update all details: " + id);
+
+
             con.Open();
 
             int count;
@@ -210,14 +218,18 @@ namespace InstaKG
 
                 string salt = retrieveSalt(username);
 
+                string[] creds = getCreds(Session["username"].ToString());
+                //get accID
+                string id = creds[1];
 
                 //match the current password
                 if(authenticatePassword(tb_currentpw.Text, salt))
                 {
                     if (tb_newpw.Text.Trim().Equals(tb_confirmpw.Text.Trim()))
                     {
-                        if(updatePassword(tb_confirmpw.Text, data.retrieveIDByUsername(username),salt))
+                        if(updatePassword(tb_confirmpw.Text, Int32.Parse(id),salt))
                         {
+                            //Response.Write("id for update password: " + id);
                             alert_placeholder.Visible = true;
                             alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";
                             alertText.Text = "Successfully Updated";
@@ -350,6 +362,67 @@ namespace InstaKG
 
         }
 
+        protected void ChangeProf_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FaceReco.aspx");
+        }
 
+        private void getProfileImg()
+        {
+            string[] creds = getCreds(Session["username"].ToString());
+            //get accID
+            string id = creds[1];
+            //Response.Write("id for prof img: " + id);
+
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString;
+
+            string sql = "SELECT profilePic FROM ProfilePic WHERE accountID=@id";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", Int32.Parse(id));
+
+            SqlDataReader dr;
+
+            DataTable dt = new DataTable();
+
+            con.Open();
+            dr = cmd.ExecuteReader();
+
+            dt.Load(dr);
+
+            byte[] pic = (byte[])dt.Rows[0]["profilePic"];
+            img_profImg.Attributes["src"] = "data:image/jpg;base64," + Convert.ToBase64String(pic);
+            con.Close();
+            con.Dispose();
+        }
+
+        private string[] getCreds(string username)
+        {
+            //get credentials by username
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString))
+            {
+                string query = "SELECT * FROM dbo.AccCreds WHERE username=@username";
+                string[] creds = new string[3];
+
+                con.Open();
+                SqlCommand cmd1 = new SqlCommand(query, con);
+                cmd1.Parameters.AddWithValue("@username", username);
+                SqlDataReader dr = cmd1.ExecuteReader();
+
+                //save creds to array
+                while (dr.Read())
+                {
+                    creds[0] = (string)dr["username"];
+                    creds[1] = dr["accountID"].ToString();
+                    creds[2] = (string)dr["passwordHash"];
+                }
+                dr.Close();
+                con.Close();
+                con.Dispose();
+
+                return creds;
+            }
+        }
     }
 }

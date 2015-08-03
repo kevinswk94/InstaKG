@@ -4,6 +4,8 @@ using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.UI;
+using System.IO;
+using System.Data;
 
 namespace InstaKG.Account
 {
@@ -70,6 +72,9 @@ namespace InstaKG.Account
                         con.Close();
                         con.Dispose();
                         cmd.Dispose();
+
+                        //insert default pic
+                        insertDefaultPic();
 
                         // Resets all form fields
                         tb_username.Text = String.Empty;
@@ -184,6 +189,45 @@ namespace InstaKG.Account
                 cmd.Dispose();
             }
             return result;
+        }
+
+        private void insertDefaultPic()
+        {
+            int id = retrieveAccID(tb_email.Text);
+
+            // Read the file and convert it to Byte Array
+            string imgPath = "~/Register/default.png";
+            string filePath = Path.Combine(Server.MapPath(imgPath));
+            string filename = Path.GetFileName(filePath);
+
+            FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+            Byte[] bytes = br.ReadBytes((Int32)fs.Length);
+            
+            br.Close();
+            fs.Close();
+            
+
+            // Saving the iamge to DB
+            string sql = "Insert into ProfilePic(profilepic, accountID)";
+            sql = sql + "Values(@profilepic,@accountID)";
+
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString;
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            //set up parameters
+            cmd.Parameters.Add("@profilepic", SqlDbType.Binary).Value = bytes;
+            cmd.Parameters.AddWithValue("@accountID",id);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Response.Redirect("Error.aspx");
+            }
         }
     }
 }

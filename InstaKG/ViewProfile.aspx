@@ -95,7 +95,12 @@
             <fieldset>
                 <legend><%= queryUsername() %>'s Profile</legend>
             </fieldset>
-
+             <div class="form-group">
+                    <div class="col-lg-4">
+                        <asp:Image ID="img_profImg" runat="server" class="img-responsive" src="#" style="width:150px; height:120px;"/>
+                       <%-- <asp:LinkButton ID="lb_ChangeProfile" runat="server" OnClick="ChangeProf_Click">Snap a Profile Image</asp:LinkButton>--%>
+                    </div>
+                </div>
             <div class="form-group">
                 <asp:Label ID="lbl_email" CssClass="col-lg-4 control-label" runat="server" Text="Email: "></asp:Label>
                 <div class="col-lg-4">

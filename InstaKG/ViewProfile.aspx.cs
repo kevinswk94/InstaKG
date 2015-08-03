@@ -24,7 +24,7 @@ namespace InstaKG
             if (!IsPostBack) //first time load
             {
                 displayProfile();
-
+                getProfileImg();
                 ///////////////////////////
                 Repeater1.DataSource = FetchAllImagesInfo();
                 Repeater1.DataBind();
@@ -34,12 +34,17 @@ namespace InstaKG
         public string queryUsername()
         {
             return Request.QueryString["name"];
+            //return Session["username"].ToString();
         }
 
         public void displayProfile()
         {
-            int id = data.retrieveIDByUsername(queryUsername());
 
+            //int id = data.retrieveIDByUsername(queryUsername());
+            string[] creds = getCreds(queryUsername());
+            //get accID
+            string id = creds[1];
+            //Response.Write("id for display profile: " + id);
             string genderValue = null;
 
             System.Diagnostics.Debug.WriteLine("what is my id: " + id);
@@ -68,7 +73,7 @@ namespace InstaKG
 
             System.Diagnostics.Debug.WriteLine(genderValue);
 
-            if(genderValue.Length == 0)
+            if (genderValue.Length == 0)
             {
                 lbl_gender_value.Visible = false;
                 lbl_gender.Visible = false;
@@ -84,7 +89,7 @@ namespace InstaKG
                     lbl_gender_value.Text = "Female";
                 }
             }
-            
+
             con.Close();
 
         }
@@ -99,7 +104,12 @@ namespace InstaKG
 
             //Dummy session of a particular user id
             //Session["accountID"] = 1;
-            int accId = data.retrieveIDByUsername(queryUsername());
+            //int accId = data.retrieveIDByUsername(queryUsername());
+            
+            string[] creds = getCreds(queryUsername());
+            //get accID
+            string accId = creds[1];
+            //Response.Write("id for fetch all img: " + accId);
             string strQuery = "Select TOP 3 * from Image where accountID= @ID ORDER BY imageID DESC";
 
             SqlCommand cmd = new SqlCommand(strQuery);
@@ -256,6 +266,69 @@ namespace InstaKG
             if (gpsRef == "S" || gpsRef == "W")
                 coorditate = coorditate * -1;
             return coorditate;
+        }
+
+        //protected void ChangeProf_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect("FaceReco.aspx");
+        //}
+
+        private void getProfileImg()
+        {
+            string[] creds = getCreds(queryUsername());
+            //get accID
+            string id = creds[1];
+            //Response.Write("id for prof img: " + id);
+           
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString;
+
+            string sql = "SELECT profilePic FROM ProfilePic WHERE accountID=@id";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", Int32.Parse(id));
+
+            SqlDataReader dr;
+
+            DataTable dt = new DataTable();
+
+            con.Open();
+            dr = cmd.ExecuteReader();
+
+            dt.Load(dr);
+
+            byte[] pic = (byte[])dt.Rows[0]["profilePic"];
+            img_profImg.Attributes["src"] = "data:image/jpg;base64," + Convert.ToBase64String(pic);
+            con.Close();
+            con.Dispose();
+        }
+
+        private string[] getCreds(string username)
+        {
+            //get credentials by username
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString))
+            {
+                string query = "SELECT * FROM dbo.AccCreds WHERE username=@username";
+                string[] creds = new string[3];
+
+                con.Open();
+                SqlCommand cmd1 = new SqlCommand(query, con);
+                cmd1.Parameters.AddWithValue("@username", username);
+                SqlDataReader dr = cmd1.ExecuteReader();
+
+                //save creds to array
+                while (dr.Read())
+                {
+                    creds[0] = (string)dr["username"];
+                    creds[1] = dr["accountID"].ToString();
+                    creds[2] = (string)dr["passwordHash"];
+                }
+                dr.Close();
+                con.Close();
+                con.Dispose();
+
+                return creds;
+            }
         }
     }
 }
