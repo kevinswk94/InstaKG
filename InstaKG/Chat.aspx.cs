@@ -47,7 +47,7 @@ namespace InstaKG
 
         public void RaisePostBackEvent(string eventArgument)
         {
-            decryptedMessage = "RaisePostBackEvent";
+            decryptedMessage = ChatHub.decryptedOTR;
         }
     }
 }

@@ -153,6 +153,7 @@
     <Content Include="ImageViewerHandler.ashx" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\OTRCHAT Localhost.pubxml" />
+    <None Include="Properties\PublishProfiles\otrsecure.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

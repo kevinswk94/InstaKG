@@ -19,8 +19,8 @@ namespace InstaKG
         // toUser = Bob, fromUser = Alice
         
         // Custom to utilise OTR
-        public string msgEncryptState;
-        public static string decryptedOTR;
+        public string msgEncryptState;      // Create set and get method
+        public static string decryptedOTR;  // Create set and get method
         public static bool inPrivate = false; 
 
         private UserDetail toUser;
@@ -31,7 +31,6 @@ namespace InstaKG
 
         //OTR Message Container Empty
         private String privateMessage;
-
         private int privateMessagePos = 0;
 
 
@@ -79,6 +78,31 @@ namespace InstaKG
             Clients.All.messageReceived(userName, message);
         }
 
+        public void SetMsgEncryptState(string inMsgEncryptState) {
+            msgEncryptState = inMsgEncryptState;
+        }
+
+        public string GetMsgEncryptState () {
+            return msgEncryptState;
+        }
+
+        private void SetDecryptedOTR(string inDecryptedOTR) {
+            decryptedOTR = inDecryptedOTR;
+        }
+
+        public string GetDecryptedOTR() {
+            return decryptedOTR;
+        }
+
+        public void SetPrivateMsg(string inPrivateMessage) {
+            privateMessage = inPrivateMessage;
+
+        }
+
+        public string GetPrivateMsg() {
+            return privateMessage;
+        }
+
         private void SetDSAPublicKeys() {
             // Alice and Bob want to use their DSA keys
             // Set DSA Public Keys
@@ -105,8 +129,8 @@ namespace InstaKG
             // Passed in parameter is in String
             toUserId = toUserIdPassedIn;
 
-            // Passed in private plain text message
-            privateMessage = message;
+            // Set private message to be processed
+            SetPrivateMsg(message);
 
             // Retrieve id of caller and target client
             // May delete the following line
@@ -179,8 +203,8 @@ namespace InstaKG
 
                     if (toUser != null && fromUser != null)
                     {
-
-                        msgEncryptState = Convert.ToString(_fromUser_otr_session_manager.GetSessionMessageState(_fromUser_buddy_unique_id));
+                        SetMsgEncryptState(Convert.ToString(_fromUser_otr_session_manager.GetSessionMessageState(_fromUser_buddy_unique_id)));
+                        //msgEncryptState = Convert.ToString(_fromUser_otr_session_manager.GetSessionMessageState(_fromUser_buddy_unique_id));
 
                         if (msgEncryptState == "MSG_STATE_ENCRYPTED" && privateMessagePos > 0)
                         {
@@ -261,7 +285,8 @@ namespace InstaKG
                     Debug.WriteLine("{0}: {1} \n - FROM BOB HANDLER", e.GetSessionID(), e.GetMessage());
                     
                     // Asses the security
-                    decryptedOTR = e.GetMessage();
+                    SetDecryptedOTR(e.GetMessage());
+                    //decryptedOTR = e.GetMessage();
 
                     ////// send to
                     //Clients.Client(toUserId).sendPrivateMessage(fromUserId, fromUser.UserName, e.GetMessage());

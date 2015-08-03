@@ -200,6 +200,7 @@
                 setTimeout(function () {
                     //your code to be executed after 10 seconds
                     //decryptedMessage = "SLDHKSNFA";
+                    refreshingDecryption();
 $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + decryptedMessage + '</div>');
                 }, delay);
 
@@ -230,7 +231,7 @@ $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="use
                     decryptedMessage = retValue.d;
                 },
                 error: function (e) {
-                    $("#divResult").html("Something Wrong.");
+                    //alert("fail to refresh message")
                 }
             });
         }
@@ -255,6 +256,7 @@ $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="use
                     var id = $(this).attr('id');
 
                     if (userId != id)
+
                         OpenPrivateChatWindow(chatHub, id, name);
 
                 });
@@ -292,7 +294,6 @@ $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="use
         }
 
         function OpenPrivateChatWindow(chatHub, id, userName) {
-
             var ctrId = 'private_' + id;
 
             if ($('#' + ctrId).length > 0) return;
@@ -303,6 +304,25 @@ $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="use
 
         function createPrivateChatWindow(chatHub, userId, ctrId, userName) {
 
+
+
+            refreshingDecryption();
+            var delay = 10000; //10 seconds
+            setTimeout(function () {
+                //your code to be executed after 10 seconds
+                //decryptedMessage = "SLDHKSNFA";
+                refreshingDecryption();
+               
+            }, delay);
+
+
+
+
+
+
+
+
+           
             var div = '<div id="' + ctrId + '" class="ui-widget-content draggable" rel="0">' +
                        '<div class="header">' +
                           '<div  style="float:right;">' +
@@ -337,11 +357,11 @@ $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="use
                     // Process private message
                     chatHub.server.sendPrivateMessage(userId, msg);
                     $textBox.val('');
-
+                    refreshingDecryption();
                     var delay=10000; //10 seconds
                     setTimeout(function(){
                         //your code to be executed after 1 seconds
-                        
+                        refreshingDecryption();
                         var pageId = '<%=  Page.ClientID %>';
                         __doPostBack(pageId,"myargs" );
                     }, delay);
@@ -385,7 +405,7 @@ $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="use
     </script>
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" onload="refreshingDecryption();">
     <div id="header">
         Insta Chat Room
     </div>
