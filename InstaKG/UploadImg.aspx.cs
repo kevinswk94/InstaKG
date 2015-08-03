@@ -68,11 +68,12 @@ namespace InstaKG
                 //string ext1 = ext.ToLower();
                 if (ext.ToLower().Equals(".jpg") || ext.ToLower().Equals(".png") || ext.ToLower().Equals(".jpeg") || ext.ToLower().Equals(".gif"))
                 {
-                    if (ext.ToLower().Equals(".gif"))
-                    {
-                        tb_watermark.Text = string.Empty;
-                        tb_watermark.Enabled = false;
-                    }
+                    //if (ext.ToLower().Equals(".gif"))
+                    //{
+                    //    tb_watermark.Text = string.Empty;
+                    //    tb_watermark.Enabled = false;
+                    //}
+
                     //if image ext is correct, insert into db
                     string sql = "Insert into Image(imageTitle, imageDescription, imageData, imageType, uploadDateTime, accountID)";
                     sql = sql + "Values (@imgTitle, @imgDescription, @imgData, @imgType, @uploadDT, @accID)";
