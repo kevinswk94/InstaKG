@@ -153,13 +153,14 @@
                     <asp:View ID="View2" runat="server">
                         <div class="form-group">
                             <asp:Label ID="lbl_FromCom" CssClass="col-lg-4 control-label" runat="server">Select Image:</asp:Label>
-                            <div class="col-lg-6">
+                            
                                 <asp:FileUpload ID="FileUpload1" runat="server" onchange="readURL(this)" />
-                            </div>
+                            
                         </div>
 
                         <div class="form-group">
-                            <asp:Label ID="lbl_imagePreview" CssClass="col-lg-3 control-label" runat="server"></asp:Label>
+                             <asp:Label ID="lbl_Selected" CssClass="col-lg-4 control-label" runat="server">Selected Image:</asp:Label>
+                            <asp:Label ID="lbl_imagePreview" CssClass="col-lg-4 control-label" runat="server"></asp:Label>
                             <div class="col-lg-6">
                                 <img id="file" src="#" class="img-responsive" />
                                 <asp:Label ID="lb_EndInfo" runat="server" ForeColor="Red"></asp:Label>
