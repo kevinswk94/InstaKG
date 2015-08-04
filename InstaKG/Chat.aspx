@@ -24,7 +24,7 @@
         $(function () {
 
             setScreen(false);
-
+            var decryptedMessage;
             // Declare a proxy to reference the hub.
             var chatHub = $.connection.chatHub;
 
@@ -141,8 +141,22 @@
             }
 
             chatHub.client.messageReceived = function (userName, message) {
+                <%--var decryptedMessage = <%=getDecryptedMessage()%>;
+                <%--var decryptedMessage = <%=this.getDecryptedMessage()%>;--%>
 
-                AddMessage(userName, message);
+                //var privateChat = <%=InstaKG.ChatHub.inPrivate%>;
+                //if (decryptedMessage = "public"){--%>
+                AddMessage(userName, message + "Dedug line 149"); // Adding message to public chat area
+                //} else{
+                //    AddMessage(userName, InstaKG.ChatHub.decryptedOTR);
+                //}
+
+                <%--if (privateChat == "false"){
+                    decryptedMessage = <%=getDecryptedMessage()%>;
+                    AddMessage(userName, decryptedMessage);
+                }else{
+                    AddMessage(userName, message);
+                }--%>
             }
 
             chatHub.client.sendPrivateMessage = function (windowId, fromUserName, message) {
@@ -155,7 +169,36 @@
 
                 }
 
-                $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + message + '</div>');
+                // Decryption of the OTR message
+                <%--var decryptedMessage = <%=InstaKG.ChatHub.decryptedOTR%>;--%>
+
+                // THIS WHERE THE PRIVATE MESSAGE IN, AND CAN BE PROCCESSED BEFORE HAND
+                //var delay=10000; //10 seconds
+                //var decryptedMessage;
+                //setTimeout(function(){
+                //    //your code to be executed after 10 seconds
+                //    decryptedMessage = "SLDHKSNFA";
+
+                //}, delay);
+
+                //refreshingDecryption();
+
+                <%--if (<%=this.privateCounter%> != 0){
+                    decryptedMessage = <%=getDecryptedMessage()%>;}--%>
+
+                <%--decryptedMessage = <%=getDecryptedMessage()%>;--%>
+
+                //var delay = 10000; //10 seconds
+                //setTimeout(function () {
+                    //your code to be executed after 10 seconds
+                    //decryptedMessage = "SLDHKSNFA";
+                    refreshingDecryption();
+                    $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + decryptedMessage+ " Debug line 196" + '</div>');
+                //}, delay);
+
+                // Adding private message
+
+                //$('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + message + '</div>');
 
                 // set scrollbar
                 var height = $('#' + ctrId).find('#divMessage')[0].scrollHeight;
@@ -163,6 +206,25 @@
 
             }
 
+        }
+
+        // getting decrpted value
+        function refreshingDecryption() {
+            $.ajax({
+                type: "POST",
+                url: 'Chat.aspx/refreshingDecryption',
+                data: "",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (retValue) {
+                    //$("#divResult").html("success");
+                    //alert(retValue.d)
+                    decryptedMessage = retValue.d;
+                },
+                error: function (e) {
+                    //alert("fail to refresh message")
+                }
+            });
         }
 
         function AddUser(chatHub, id, name) {
@@ -185,6 +247,7 @@
                     var id = $(this).attr('id');
 
                     if (userId != id)
+
                         OpenPrivateChatWindow(chatHub, id, name);
 
                 });
@@ -194,15 +257,34 @@
 
         }
 
+        // Public chat
         function AddMessage(userName, message) {
+            <%--var privateChat = <%=InstaKG.ChatHub.inPrivate%>;
+            if (false){
+            // Decryption of the OTR message
+                var decryptedMessage = <%=InstaKG.ChatHub.decryptedOTR%>;
+
+                $('#divChatWindow').append('<div class="message"><span class="userName">' + userName + '</span>: ' + decryptedMessage + '</div>');
+
+                var height = $('#divChatWindow')[0].scrollHeight;
+                $('#divChatWindow').scrollTop(height);
+
+            } else {
             $('#divChatWindow').append('<div class="message"><span class="userName">' + userName + '</span>: ' + message + '</div>');
 
             var height = $('#divChatWindow')[0].scrollHeight;
             $('#divChatWindow').scrollTop(height);
+            }--%>
+
+            // this is the public chat adding message function
+            $('#divChatWindow').append('<div class="message"><span class="userName">' + userName + '</span>: ' + message + '</div>');
+
+            var height = $('#divChatWindow')[0].scrollHeight;
+            $('#divChatWindow').scrollTop(height);
+
         }
 
         function OpenPrivateChatWindow(chatHub, id, userName) {
-
             var ctrId = 'private_' + id;
 
             if ($('#' + ctrId).length > 0) return;
@@ -213,13 +295,22 @@
 
         function createPrivateChatWindow(chatHub, userId, ctrId, userName) {
 
+            //refreshingDecryption();
+            //var delay = 10000; //10 seconds
+            //setTimeout(function () {
+            //    //your code to be executed after 10 seconds
+            //    //decryptedMessage = "SLDHKSNFA";
+            //    refreshingDecryption();
+
+            //}, delay);
+
             var div = '<div id="' + ctrId + '" class="ui-widget-content draggable" rel="0">' +
                        '<div class="header">' +
                           '<div  style="float:right;">' +
                               '<img id="imgDelete"  style="cursor:pointer;" src="Styles/img/delete.png" />' +
                            '</div>' +
 
-                           '<span class="selText" rel="0">' + userName + '</span>' +
+                           '<span class="selText" rel="0">' + userName + " Debug line 313" + '</span>' +
                        '</div>' +
                        '<div id="divMessage" class="messageArea">' +
 
@@ -244,8 +335,21 @@
                 var msg = $textBox.val();
                 if (msg.length > 0) {
 
+                    // Process private message
                     chatHub.server.sendPrivateMessage(userId, msg);
                     $textBox.val('');
+                    refreshingDecryption();
+                    var delay = 10000; //10 seconds
+                    setTimeout(function () {
+                        //your code to be executed after 1 seconds
+                        refreshingDecryption();
+                        var pageId = '<%=  Page.ClientID %>';
+                        __doPostBack(pageId, "myargs");
+                    }, delay);
+
+                    var pageId = '<%=  Page.ClientID %>';
+                    __doPostBack(pageId, "myargs");
+
                 }
             });
 
