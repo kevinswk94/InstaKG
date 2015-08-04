@@ -343,12 +343,12 @@
                     setTimeout(function () {
                         //your code to be executed after 1 seconds
                         refreshingDecryption();
-                        var pageId = '<%=  Page.ClientID %>';
-                        __doPostBack(pageId, "myargs");
+                        <%--var pageId = '<%=  Page.ClientID %>';
+                        __doPostBack(pageId, "myargs");--%>
                     }, delay);
 
-                    var pageId = '<%=  Page.ClientID %>';
-                    __doPostBack(pageId, "myargs");
+                    <%--var pageId = '<%=  Page.ClientID %>';
+                    __doPostBack(pageId, "myargs");--%>
 
                 }
             });
