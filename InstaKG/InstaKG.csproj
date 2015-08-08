@@ -384,6 +384,8 @@
     <Content Include="Styles\ChatStyles\JQueryUI\themes\ui-lightness\minified\jquery.ui.tooltip.min.css" />
     <Content Include="Styles\custom.css" />
     <Content Include="Styles\full-slider.css" />
+    <Content Include="Styles\img\delete.png" />
+    <Content Include="Styles\img\loading.gif" />
     <Content Include="Styles\lightGallery.css" />
     <Content Include="Scripts\scriptcam.js" />
     <Content Include="TestNavBar.aspx" />
@@ -580,7 +582,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Service References\" />
     <Folder Include="WaterMarking\" />
   </ItemGroup>
   <ItemGroup>
