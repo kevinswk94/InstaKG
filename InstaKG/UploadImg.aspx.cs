@@ -12,7 +12,9 @@ namespace InstaKG
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            tb_watermark.Text = Session["username"].ToString();
+            if(!Page.IsPostBack){
+                tb_watermark.Text = Session["username"].ToString();
+            }
         }
 
         protected void btn_Submit_Click(object sender, EventArgs e)
@@ -36,7 +38,7 @@ namespace InstaKG
 
                 //get file extension
                 string ext = Path.GetExtension(FileUpload1.FileName);
-
+                
                 //watermark the image
                 string fn = Guid.NewGuid() + Path.GetExtension(FileUpload1.PostedFile.FileName);
                 Image upImage = Image.FromStream(FileUpload1.PostedFile.InputStream);
@@ -115,6 +117,7 @@ namespace InstaKG
                         con.Dispose();
                         tb_ImageTitle.Text = "";
                         tb_ImageDescription.Text = "";
+                        tb_watermark.Text = Session["username"].ToString();
                     }
                     //end of insert
                 }
