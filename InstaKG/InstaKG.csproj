@@ -208,6 +208,7 @@
     <Content Include="Scripts\jquery.signalR-2.1.2.js" />
     <Content Include="Scripts\jquery.signalR-2.1.2.min.js" />
     <Content Include="Scripts\lightGallery.js" />
+    <Content Include="Scripts\notify.min.js" />
     <Content Include="Scripts\wow.min.js" />
     <Content Include="Search.aspx" />
     <Content Include="Steg_Decode.aspx" />
@@ -385,6 +386,8 @@
     <Content Include="Styles\ChatStyles\JQueryUI\themes\ui-lightness\minified\jquery.ui.tooltip.min.css" />
     <Content Include="Styles\custom.css" />
     <Content Include="Styles\full-slider.css" />
+    <Content Include="Styles\img\delete.png" />
+    <Content Include="Styles\img\loading.gif" />
     <Content Include="Styles\lightGallery.css" />
     <Content Include="Scripts\scriptcam.js" />
     <Content Include="Styles\webcam\webcamlogo.png" />

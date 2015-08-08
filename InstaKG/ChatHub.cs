@@ -19,8 +19,8 @@ namespace InstaKG
         // toUser = Bob, fromUser = Alice
         
         // Custom to utilise OTR
-        public string msgEncryptState;      // Create set and get method
-        public static string decryptedOTR;  // Create set and get method
+        private string msgEncryptState; // Create set and get method
+        private static string decryptedOTR;  // Create set and get method
         public static bool inPrivate = false; 
 
         private UserDetail toUser;
@@ -90,7 +90,8 @@ namespace InstaKG
             decryptedOTR = inDecryptedOTR;
         }
 
-        public string GetDecryptedOTR() {
+        public static string GetDecryptedOTR()
+        {
             return decryptedOTR;
         }
 
@@ -258,7 +259,7 @@ namespace InstaKG
                 case OTR_EVENT.SMP_MESSAGE:
 
 
-                    //Debug.WriteLine("Alice: " + e.GetMessage() + "\n");
+                    Debug.WriteLine("Alice: "+ "SMP Line" + e.GetMessage() + "\n");
 
 
 
@@ -349,7 +350,7 @@ namespace InstaKG
                 case OTR_EVENT.SMP_MESSAGE:
 
 
-                    //Console.WriteLine("Bob: " + e.GetMessage() + "\n");
+                    Console.WriteLine("Bob: " + "SMP Line" + e.GetMessage() + "\n");
 
 
 
