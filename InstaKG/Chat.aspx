@@ -24,7 +24,7 @@
         $(function () {
 
             setScreen(false);
-            var decryptedMessage;
+            var decryptedMessage = null;
             // Declare a proxy to reference the hub.
             var chatHub = $.connection.chatHub;
 
@@ -141,22 +141,10 @@
             }
 
             chatHub.client.messageReceived = function (userName, message) {
-                <%--var decryptedMessage = <%=getDecryptedMessage()%>;
-                <%--var decryptedMessage = <%=this.getDecryptedMessage()%>;--%>
-
-                //var privateChat = <%=InstaKG.ChatHub.inPrivate%>;
-                //if (decryptedMessage = "public"){--%>
-                AddMessage(userName, message + "Dedug line 149"); // Adding message to public chat area
-                //} else{
-                //    AddMessage(userName, InstaKG.ChatHub.decryptedOTR);
-                //}
-
-                <%--if (privateChat == "false"){
-                    decryptedMessage = <%=getDecryptedMessage()%>;
-                    AddMessage(userName, decryptedMessage);
-                }else{
-                    AddMessage(userName, message);
-                }--%>
+               
+                // Adding message to public chat on receival
+                // Calling the defined method AddMessage at the bottom
+                AddMessage(userName, message ); 
             }
 
             chatHub.client.sendPrivateMessage = function (windowId, fromUserName, message) {
@@ -169,36 +157,25 @@
 
                 }
 
-                // Decryption of the OTR message
-                <%--var decryptedMessage = <%=InstaKG.ChatHub.decryptedOTR%>;--%>
-
-                // THIS WHERE THE PRIVATE MESSAGE IN, AND CAN BE PROCCESSED BEFORE HAND
-                //var delay=10000; //10 seconds
-                //var decryptedMessage;
-                //setTimeout(function(){
-                //    //your code to be executed after 10 seconds
-                //    decryptedMessage = "SLDHKSNFA";
-
-                //}, delay);
-
-                //refreshingDecryption();
-
-                <%--if (<%=this.privateCounter%> != 0){
-                    decryptedMessage = <%=getDecryptedMessage()%>;}--%>
-
-                <%--decryptedMessage = <%=getDecryptedMessage()%>;--%>
-
-                //var delay = 10000; //10 seconds
-                //setTimeout(function () {
-                    //your code to be executed after 10 seconds
-                    //decryptedMessage = "SLDHKSNFA";
+                // This is the message incoming processing
+                //alert(); //Key to resolve continous refreshing (alternative)
+            
+                //Calling Web Method to retrieve decrypted OTR Message
+                refreshingDecryption();
+                refreshingDecryption();
+                refreshingDecryption();
+                refreshingDecryption();
+                refreshingDecryption();
+                refreshingDecryption();
+                refreshingDecryption();
+                refreshingDecryption();
+                
+               // Delay of 10000 = 10 seconds
+                setTimeout(function () {
                     refreshingDecryption();
-                    $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + decryptedMessage+ " Debug line 196" + '</div>');
-                //}, delay);
+                    $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + decryptedMessage + '</div>');
 
-                // Adding private message
-
-                //$('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + message + '</div>');
+                }, 10000);
 
                 // set scrollbar
                 var height = $('#' + ctrId).find('#divMessage')[0].scrollHeight;
@@ -208,7 +185,8 @@
 
         }
 
-        // getting decrpted value
+        // Getting decrpted value OTR supporting function
+        // Calling method in C# (Server side) from JavaScript
         function refreshingDecryption() {
             $.ajax({
                 type: "POST",
@@ -217,12 +195,12 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (retValue) {
-                    //$("#divResult").html("success");
-                    //alert(retValue.d)
+                    // Debugging purposes
+                    //alert("Refreshing decryption success: " + retValue.d)
                     decryptedMessage = retValue.d;
                 },
                 error: function (e) {
-                    //alert("fail to refresh message")
+                    //alert("fail to refresh decryption")
                 }
             });
         }
@@ -257,26 +235,10 @@
 
         }
 
-        // Public chat
+        // Public chat code section
         function AddMessage(userName, message) {
-            <%--var privateChat = <%=InstaKG.ChatHub.inPrivate%>;
-            if (false){
-            // Decryption of the OTR message
-                var decryptedMessage = <%=InstaKG.ChatHub.decryptedOTR%>;
 
-                $('#divChatWindow').append('<div class="message"><span class="userName">' + userName + '</span>: ' + decryptedMessage + '</div>');
-
-                var height = $('#divChatWindow')[0].scrollHeight;
-                $('#divChatWindow').scrollTop(height);
-
-            } else {
-            $('#divChatWindow').append('<div class="message"><span class="userName">' + userName + '</span>: ' + message + '</div>');
-
-            var height = $('#divChatWindow')[0].scrollHeight;
-            $('#divChatWindow').scrollTop(height);
-            }--%>
-
-            // this is the public chat adding message function
+            // Public chat adding message to window function
             $('#divChatWindow').append('<div class="message"><span class="userName">' + userName + '</span>: ' + message + '</div>');
 
             var height = $('#divChatWindow')[0].scrollHeight;
@@ -295,22 +257,13 @@
 
         function createPrivateChatWindow(chatHub, userId, ctrId, userName) {
 
-            //refreshingDecryption();
-            //var delay = 10000; //10 seconds
-            //setTimeout(function () {
-            //    //your code to be executed after 10 seconds
-            //    //decryptedMessage = "SLDHKSNFA";
-            //    refreshingDecryption();
-
-            //}, delay);
-
             var div = '<div id="' + ctrId + '" class="ui-widget-content draggable" rel="0">' +
                        '<div class="header">' +
                           '<div  style="float:right;">' +
                               '<img id="imgDelete"  style="cursor:pointer;" src="Styles/img/delete.png" />' +
                            '</div>' +
 
-                           '<span class="selText" rel="0">' + userName + " Debug line 313" + '</span>' +
+                           '<span class="selText" rel="0">' + userName +  '</span>' +
                        '</div>' +
                        '<div id="divMessage" class="messageArea">' +
 
@@ -335,20 +288,16 @@
                 var msg = $textBox.val();
                 if (msg.length > 0) {
 
-                    // Process private message
+                    // Sending private message
+                    // Calling method in C#, ChatHub.cs
                     chatHub.server.sendPrivateMessage(userId, msg);
                     $textBox.val('');
-                    refreshingDecryption();
-                    var delay = 10000; //10 seconds
-                    setTimeout(function () {
-                        //your code to be executed after 1 seconds
-                        refreshingDecryption();
-                        <%--var pageId = '<%=  Page.ClientID %>';
-                        __doPostBack(pageId, "myargs");--%>
-                    }, delay);
 
-                    <%--var pageId = '<%=  Page.ClientID %>';
-                    __doPostBack(pageId, "myargs");--%>
+                    // Refreshing any possible decrypted value
+                    setTimeout(function () {
+                        refreshingDecryption();
+
+                    }, 10000);
 
                 }
             });
@@ -422,5 +371,6 @@
 
         <input id="hdId" type="hidden" />
         <input id="hdUserName" type="hidden" />
+
     </div>
 </asp:Content>
