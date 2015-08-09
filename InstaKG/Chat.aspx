@@ -351,14 +351,17 @@
     <div id="divContainer">
         <div id="divLogin" class="login">
             <div class="container">
-                InstaKG Lounge
+                <h4>InstaKG Lounge</h4>
                 <br />
+
                 <img src="Styles/img/lounge.jpg" class="img-responsive" />
                 <br />
                 <input id="txtNickName" type="text" class="textBox" hidden="hidden"/>
-            </div>
+            
             <div id="divButton">
                 <input id="btnStartChat" type="button" class="submitButton" value="Start Chat" />
+            </div>
+
             </div>
         </div>
 
