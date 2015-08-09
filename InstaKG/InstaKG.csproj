@@ -153,6 +153,7 @@
     <Content Include="Global.asax" />
     <Content Include="Account\Home.aspx" />
     <Content Include="Images\changiAirportSG50.jpg" />
+    <Content Include="Images\heavy-load.png" />
     <Content Include="Images\hideandseek.PNG" />
     <Content Include="Images\lky.jpg" />
     <Content Include="Images\llaollao.jpg" />
@@ -166,6 +167,7 @@
     <Content Include="Images\showbiz-jeremy-clarkson-3.jpg" />
     <None Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="ImageGPSLocationViewer.aspx" />
+    <Content Include="Images\trouble-afoot.png" />
     <Content Include="Images\uploadImg.PNG" />
     <Content Include="Images\venue.jpg" />
     <Content Include="Images\viewGallery.PNG" />
