@@ -12,12 +12,14 @@ namespace InstaKG
 
         protected void Application_Start(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void Session_Start(object sender, EventArgs e)
         {
-
+            FormsAuthentication.SignOut();
+            Session["username"] = null;
+            Session["accountID"] = null;
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
