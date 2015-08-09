@@ -63,20 +63,20 @@
                         if (Session["username"] == null)
                         {
                     %>
-                            <li><a href="Register.aspx">Register</a></li>
-                            <li><a href="Login.aspx">Login</a></li>
+                    <li><a href="Register.aspx">Register</a></li>
+                    <li><a href="Login.aspx">Login</a></li>
                     <%
                         }
                         else
                         {
                     %>
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><% =(string)Session["username"] %> <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">View Profile</a></li>
-                                    <li><a href="#">Report User</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Logout</a></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><% =(string)Session["username"] %> <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">View Profile</a></li>
+                            <li><a href="#">Report User</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Logout</a></li>
                     <%
                         }    
                     %>
@@ -98,7 +98,7 @@
         <div class="carousel-inner">
             <div class="item active">
                 <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('Images/lky.jpg');"></div>
+                <div class="fill" style="background-image: url('Images/lky.jpg');"></div>
                 <div class="carousel-caption">
                     <h3>Lee Kuan Yew Memorial</h3>
                     <p>Exhibition held at Singapore National Museum in honour of the late Mr Lee Kuan Yew</p>
@@ -106,7 +106,7 @@
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('Images/marinabay.jpg');"></div>
+                <div class="fill" style="background-image: url('Images/marinabay.jpg');"></div>
                 <div class="carousel-caption">
                     <h3>Marina Bay Sands</h3>
                     <p>An integrated resort in Singapore with features such as a casiono, ice skating rink...</p>
@@ -114,7 +114,7 @@
             </div>
             <div class="item">
                 <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('Images/nyp.jpg');"></div>
+                <div class="fill" style="background-image: url('Images/nyp.jpg');"></div>
                 <div class="carousel-caption">
                     <h3>Nanyang Polytechnic Apartment</h3>
                     <p>Welcoming internationals students and providing accommodation to help adjust and adapt to what is life in Singapore like </p>
@@ -131,6 +131,118 @@
         </a>
 
     </header>
+
+    <div class="container">
+
+        <!-- Marketing Icons Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Welcome to InstaKG
+                </h1>
+            </div>
+            <div class="col-md-12">
+
+                <div class="panel-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                </div>
+
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Features</h2>
+            </div>
+            <div class="col-md-8">
+                <h3>Uploading of Images</h3>
+
+                <p>Upload your images easily and just add a quick info about it and submit!</p>
+                <p>That's easy!</p>
+                <p>Also, you could try custom your watermark to have a unqiue signature to the image. This identifies and protects yourself from unauthorized use online! </p>
+            </div>
+            <div class="col-md-2">                
+                <asp:Image runat="server"  ImageUrl="~/Images/uploadImg.PNG" Height="300" Width="400"/>
+                <br />
+            </div>
+
+            <div class="col-md-5">
+                <asp:Image runat="server" ImageUrl="~/Images/viewGallery.PNG" Height="300" Width="400"/>
+            </div>
+
+            <div class="col-md-6" >
+                <h3>Photo Gallery</h3>
+
+                <p>A responsive flexible photo gallery for you to view all your photos or other users photos. </p>
+                <p>With each simple click of the mouse to make an endless view of photos to be discovered!</p>
+            </div>
+            
+            <div class="col-md-7" style="clear:left;">
+                <h3>Search</h3>
+
+                <p>Our search interacts with users quickly, instant results being shown.</p>
+                <p>How can you do it?</p>
+                <p>You can search easily through events, description or even the user who uploaded those images! </p>
+            </div>
+            <div class="col-md-3">
+                <%--<img class="img-responsive" src="http://placehold.it/400x300" alt="">--%>
+                <asp:Image runat="server" ImageUrl="~/Images/search.PNG" Height="300" Width="500" />
+                <br />
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr/>
+
+        <!-- Call to Action Section -->
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Images</h5>
+                    <nav>
+                        <ul style="list-style:none; ">
+                            <li><a href="#">Upload</a></li>
+                            <li><a href="#">Browse</a></li>
+                            <li><a href="#">Search</a></li>
+                            <li><a href="#">World Image Map</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-md-4" >
+                    <h5>Chat</h5>
+                    <nav>
+                        <ul style="list-style:none;">
+                            <li><a href="#">Chat</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-md-4">
+                    <h5>Account Management</h5>
+                    <nav>
+                        <ul style="list-style:none; ">
+                            <li><a href="#">View Profile</a></li>
+                            <li><a href="#">Edit Profile</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+            <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; InstaKG 2015</p>
+                    
+                </div>
+            </div>
+        </footer>
+
+    </div>
 
     <!-- jQuery -->
     <script src="Scripts/jquery.js"></script>
