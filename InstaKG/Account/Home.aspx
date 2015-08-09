@@ -13,13 +13,13 @@
 
     <title>InstaKG</title>
 
-    <link href="Styles/bootstrap.min.css" rel="stylesheet" />
-    <link href="Styles/full-slider.css" rel="stylesheet" />
-    <link href="Styles/bootstrap.min.css" rel="stylesheet" />
-    <link href="Styles/custom.css" rel="stylesheet" />
-    <script src="Scripts/jquery-1.10.2.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/respond.min.js"></script>
+    <link href="../Styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Styles/full-slider.css" rel="stylesheet" />
+    <link href="../Styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Styles/custom.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/respond.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -98,7 +98,7 @@
         <div class="carousel-inner">
             <div class="item active">
                 <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background-image: url('Images/lky.jpg');"></div>
+                <div class="fill" style="background-image: url('../Images/lky.jpg');"></div>
                 <div class="carousel-caption">
                     <h3>Lee Kuan Yew Memorial</h3>
                     <p>Exhibition held at Singapore National Museum in honour of the late Mr Lee Kuan Yew</p>
@@ -106,7 +106,7 @@
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image: url('Images/marinabay.jpg');"></div>
+                <div class="fill" style="background-image: url('../Images/marinabay.jpg');"></div>
                 <div class="carousel-caption">
                     <h3>Marina Bay Sands</h3>
                     <p>An integrated resort in Singapore with features such as a casiono, ice skating rink...</p>
@@ -114,7 +114,7 @@
             </div>
             <div class="item">
                 <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background-image: url('Images/nyp.jpg');"></div>
+                <div class="fill" style="background-image: url('../Images/nyp.jpg');"></div>
                 <div class="carousel-caption">
                     <h3>Nanyang Polytechnic Apartment</h3>
                     <p>Welcoming internationals students and providing accommodation to help adjust and adapt to what is life in Singapore like </p>
