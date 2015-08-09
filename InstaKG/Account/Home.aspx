@@ -217,11 +217,11 @@
             </div>
 
             <div class="col-md-7" style="clear:left;text-align:center">
-                <h5>Dont have an account?</h5>
+                <h4>Dont have an account?</h4>
                 <a href="Registration.aspx"><input id="Button1" type="button" value="Register" class="btn btn-primary"/></a>
             </div>
             <div class="col-md-3" style="float:left;text-align:center">
-                <p>Start uploading!</p>
+                <h4>Start uploading!</h4>
                 <a href="Login.aspx"><input id="Button2" type="button" value="Login" class="btn btn-primary"  /></a>
             </div>
             
