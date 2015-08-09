@@ -5,8 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
         <div class="well">
-            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/reddit404d.png" CssClass="img-responsive center-block" />
-            <h3 class="text-center">An error has occurred. Please try again.</h3>
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/trouble-afoot.png" CssClass="img-responsive center-block" />
+            <h3 class="text-center">Oops! An unexpected error has occurred. Please try again later.</h3>
         </div>
     </div>
 </asp:Content>
