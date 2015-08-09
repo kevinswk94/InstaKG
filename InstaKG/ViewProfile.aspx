@@ -93,7 +93,21 @@
     <div class="container">
         <div class="well">
             <fieldset>
-                <legend><%= queryUsername() %>'s Profile</legend>
+                <legend>
+                    <% if(queryUsername() == null)
+                       {
+                    %>
+                            Your Profile
+                    <%      
+                       }
+                       else
+                       {
+                    %>
+                        <%= queryUsername() %>'s Profile
+                    <%       
+                       }
+                    %>                    
+                </legend>
             </fieldset>
              <div class="form-group">
                     <div class="col-lg-4">

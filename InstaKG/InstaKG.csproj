@@ -40,8 +40,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.7.4114.6375, Culture=neutral, PublicKeyToken=0e99375e54769942">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="BouncyCastle.Crypto">
       <HintPath>..\..\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -73,8 +72,7 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="OTRLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="OTRLib">
       <HintPath>..\..\OTRLib.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
@@ -153,18 +151,25 @@
     <Content Include="Account\ForgetPassword.aspx" />
     <Content Include="FriendFinder.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Home.aspx" />
+    <Content Include="Account\Home.aspx" />
+    <Content Include="Images\changiAirportSG50.jpg" />
     <Content Include="Images\heavy-load.png" />
+    <Content Include="Images\hideandseek.PNG" />
     <Content Include="Images\lky.jpg" />
     <Content Include="Images\llaollao.jpg" />
     <Content Include="Images\marinabay.jpg" />
     <Content Include="Images\mcy2LTT.jpg" />
     <Content Include="Images\nyp.jpg" />
     <Content Include="Images\reddit404d.png" />
+    <Content Include="Images\search.PNG" />
+    <Content Include="Images\SG-heart-map.jpg" />
+    <Content Include="Images\sg50_trans.png" />
     <Content Include="Images\showbiz-jeremy-clarkson-3.jpg" />
     <None Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="ImageGPSLocationViewer.aspx" />
     <Content Include="Images\trouble-afoot.png" />
+    <Content Include="Images\uploadImg.PNG" />
+    <Content Include="Images\viewGallery.PNG" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.js" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.min.js" />
     <None Include="packages\jQuery.1.10.2\Tools\jquery-1.10.2.intellisense.js" />
@@ -504,11 +509,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Home.aspx.cs">
+    <Compile Include="Account\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Home.aspx.designer.cs">
+    <Compile Include="Account\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="ImageViewerHandler.ashx.cs">

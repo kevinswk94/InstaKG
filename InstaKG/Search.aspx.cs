@@ -52,12 +52,12 @@ namespace InstaKG
             {
                 bool check = false;
 
-                if (item.ImageTitle.ToLower().Contains(tb_searchWord.Text))
+                if (item.ImageTitle.ToLower().Contains(tb_searchWord.Text.ToLower()))
                 {
                     list.Add(item);
                     check = true;
                 }
-                if (item.Description.ToLower().Contains(tb_searchWord.Text))
+                if (item.Description.ToLower().Contains(tb_searchWord.Text.ToLower()))
                 {
                     if (!check)
                     {
