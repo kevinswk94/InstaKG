@@ -41,7 +41,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="Home.aspx">InstaKilogram</a>
+                <a class="navbar-brand" href="/BrowseImages.aspx">InstaKilogram</a>
             </div>
 
             <!-- Full sized navbar -->
@@ -50,11 +50,19 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Browse Images</a></li>
-                            <li><a href="#">Search Images</a></li>
+                            <li><a href="/BrowseImages.aspx">Browse Images</a></li>
+                            <li><a href="/Search.aspx">Search Images</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Upload</a></li>
+                    <li><a href="/UploadImg.aspx">Upload</a></li>
+                    <li><a href="/Chat.aspx">Chat</a></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Hide & Seek <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Steg_Encode.aspx">Hide a message!</a></li>
+                            <li><a href="/Steg_Decode.aspx">Reveal a message!</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/ViewAllLocations.aspx">World Image Map</a></li>
                 </ul>
 
                 <!-- Right-side of navbar -->
@@ -63,20 +71,20 @@
                         if (Session["username"] == null)
                         {
                     %>
-                    <li><a href="Register.aspx">Register</a></li>
-                    <li><a href="Login.aspx">Login</a></li>
+                            <li><a href="/Account/Registration.aspx">Register</a></li>
+                            <li><a href="/Account/Login.aspx">Login</a></li>
                     <%
                         }
                         else
                         {
                     %>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><% =(string)Session["username"] %> <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">View Profile</a></li>
-                            <li><a href="#">Report User</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Logout</a></li>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><% =(string)Session["username"] %> <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/ViewProfile.aspx?name=<%= Session["username"].ToString() %>">View Profile</a></li>
+                                    <li><a href="/EditProfile.aspx">Edit Profile</a></li>
+                                </ul>
+                            </li>
+                            <li><button type="button" id="btn_logout" runat="server" class="btn btn-danger btn-sm navbar-btn" causesvalidation="false" onserverclick="logout">Logout</button></li>
                     <%
                         }    
                     %>
@@ -202,10 +210,10 @@
                     <h5>Images</h5>
                     <nav>
                         <ul style="list-style:none; ">
-                            <li><a href="#">Upload</a></li>
-                            <li><a href="#">Browse</a></li>
-                            <li><a href="#">Search</a></li>
-                            <li><a href="#">World Image Map</a></li>
+                            <li><a href="/UploadImg.aspx">Upload</a></li>
+                            <li><a href="/BrowseImages.aspx">Browse</a></li>
+                            <li><a href="/Search.aspx">Search</a></li>
+                            <li><a href="/ViewAllLocations.aspx">World Image Map</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -214,7 +222,7 @@
                     <h5>Chat</h5>
                     <nav>
                         <ul style="list-style:none;">
-                            <li><a href="#">Chat</a></li>
+                            <li><a href="/Chat.aspx">Chat</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -223,8 +231,8 @@
                     <h5>Account Management</h5>
                     <nav>
                         <ul style="list-style:none; ">
-                            <li><a href="#">View Profile</a></li>
-                            <li><a href="#">Edit Profile</a></li>
+                            <li><a href="/ViewProfile.aspx">View Profile</a></li>
+                            <li><a href="/EditProfile.aspx">Edit Profile</a></li>
                         </ul>
                     </nav>
                 </div>
