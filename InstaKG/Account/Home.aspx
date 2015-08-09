@@ -41,7 +41,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/BrowseImages.aspx">InstaKilogram &nbsp
+                <a class="navbar-brand" href="/Account/Home.aspx">InstaKilogram &nbsp
                     <img style="max-width:30px; margin-top: -7px; float:right" src="../Images/sg50_trans.png"/>
                 </a>
             </div>
