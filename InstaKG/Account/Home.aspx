@@ -200,28 +200,28 @@
             </div>
 
         </div>
-        <!-- /.row -->
 
-        <hr/>
-
-        <!-- Call to Action Section -->
+        <!-- Footer -->
+        <footer>
+            <hr />
+            <!-- Call to Action Section -->
             <div class="row">
                 <div class="col-md-4">
                     <h5>Images</h5>
                     <nav>
-                        <ul style="list-style:none; ">
-                            <li><a href="/UploadImg.aspx">Upload</a></li>
+                        <ul style="list-style: none;">
                             <li><a href="/BrowseImages.aspx">Browse</a></li>
+                            <li><a href="/UploadImg.aspx">Upload</a></li>
                             <li><a href="/Search.aspx">Search</a></li>
                             <li><a href="/ViewAllLocations.aspx">World Image Map</a></li>
                         </ul>
                     </nav>
                 </div>
 
-                <div class="col-md-4" >
+                <div class="col-md-4">
                     <h5>Chat</h5>
                     <nav>
-                        <ul style="list-style:none;">
+                        <ul style="list-style: none;">
                             <li><a href="/Chat.aspx">Chat</a></li>
                         </ul>
                     </nav>
@@ -230,7 +230,7 @@
                 <div class="col-md-4">
                     <h5>Account Management</h5>
                     <nav>
-                        <ul style="list-style:none; ">
+                        <ul style="list-style: none;">
                             <li><a href="/ViewProfile.aspx">View Profile</a></li>
                             <li><a href="/EditProfile.aspx">Edit Profile</a></li>
                         </ul>
@@ -238,14 +238,12 @@
                 </div>
 
             </div>
-            <hr>
-
-        <!-- Footer -->
-        <footer>
+            <hr />
+            <br />
             <div class="row">
                 <div class="col-lg-12">
                     <p>Copyright &copy; InstaKG 2015</p>
-                    
+
                 </div>
             </div>
         </footer>
