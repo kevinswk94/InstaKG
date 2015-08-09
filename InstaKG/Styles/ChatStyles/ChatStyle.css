@@ -28,11 +28,11 @@
 
 .login
 {
-    width: 265px;
+    /*width: 265px;*/
     margin-left: auto;
     margin-right: auto;
     padding:10px;
-    border: solid 2px #5f9482;
+    /*border: solid 2px #5f9482;*/
     color: white;
 }
 
@@ -93,7 +93,7 @@
         .chatRoom .content .users
         {
             float: right;
-            width: 240px;
+            width: 200px;
             height: 300px;
         }
 
@@ -101,7 +101,6 @@
             {
                 display: block;
                 cursor: pointer;
-                padding: 4px;
                 background-color: #f9f9f9;
                 border-bottom: solid 1px #5f9482;
             }
