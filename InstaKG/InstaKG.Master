@@ -23,6 +23,16 @@
 </head>
 <body>
 
+    <style>
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            height: 200px;
+            /*background-color: #f5f5f5;*/
+        }
+    </style>
     <nav class="navbar navbar-inverse">
         <!-- Mobile friendly navbar -->
         <div class="container">
@@ -91,5 +101,44 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
+
+    <footer class="footer">
+        <hr />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Images</h5>
+                    <nav>
+                        <ul style="list-style: none;">
+                            <li><a href="/BrowseImages.aspx">Browse</a></li>
+                            <li><a href="/UploadImg.aspx">Upload</a></li>
+                            <li><a href="/Search.aspx">Search</a></li>
+                            <li><a href="/ViewAllLocations.aspx">World Image Map</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-md-4">
+                    <h5>Chat</h5>
+                    <nav>
+                        <ul style="list-style: none;">
+                            <li><a href="/Chat.aspx">Chat</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-md-4">
+                    <h5>Account Management</h5>
+                    <nav>
+                        <ul style="list-style: none;">
+                            <li><a href="/ViewProfile.aspx">View Profile</a></li>
+                            <li><a href="/EditProfile.aspx">Edit Profile</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
