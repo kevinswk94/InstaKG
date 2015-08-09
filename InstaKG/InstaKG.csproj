@@ -169,7 +169,6 @@
     <Content Include="ImageGPSLocationViewer.aspx" />
     <Content Include="Images\trouble-afoot.png" />
     <Content Include="Images\uploadImg.PNG" />
-    <Content Include="Images\venue.jpg" />
     <Content Include="Images\viewGallery.PNG" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.js" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.min.js" />
