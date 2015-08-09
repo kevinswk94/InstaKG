@@ -22,7 +22,6 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-
     <nav class="navbar navbar-inverse">
         <!-- Mobile friendly navbar -->
         <div class="container">
