@@ -11,5 +11,7 @@ namespace InstaKG {
     
     
     public partial class Chat {
+
+
     }
 }

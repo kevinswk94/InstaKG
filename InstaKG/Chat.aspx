@@ -57,8 +57,9 @@
         function registerEvents(chatHub) {
 
             $("#btnStartChat").click(function () {
+    
+                var name = "<%=Session["username"].ToString()%>";
 
-                var name = $("#txtNickName").val();
                 if (name.length > 0) {
                     chatHub.server.connect(name);
                 }
@@ -92,6 +93,13 @@
             });
 
         }
+
+        //var elem = document.getElementById("btnStartChat");
+        //if (typeof elem.onclick == "function") {
+        //    elem.onclick.apply(elem);
+        //}
+
+        //window.onload = automateChat();
 
         function registerClientMethods(chatHub) {
 
@@ -331,31 +339,35 @@
             ////});
 
         }
+
+
+
     </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div id="header">
-        Insta Chat Room
-    </div>
-    <br />
-    <br />
-    <br />
+
 
     <div id="divContainer">
         <div id="divLogin" class="login">
-            <div>
-                Your Name:<br />
-                <input id="txtNickName" type="text" class="textBox" />
-            </div>
+            <div class="container">
+                <h4>InstaKG Lounge</h4>
+                <br />
+
+                <img src="Styles/img/lounge.jpg" class="img-responsive" />
+                <br />
+                <input id="txtNickName" type="text" class="textBox" hidden="hidden"/>
+            
             <div id="divButton">
                 <input id="btnStartChat" type="button" class="submitButton" value="Start Chat" />
+            </div>
+
             </div>
         </div>
 
         <div id="divChat" class="chatRoom">
             <div class="title">
-                Welcome to Chat Room [<span id='spanUser'></span>]
+                Welcome to Lounge [<span id='spanUser'></span>]
             </div>
             <div class="content">
                 <div id="divChatWindow" class="chatWindow">
