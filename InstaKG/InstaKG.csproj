@@ -151,6 +151,8 @@
     <Content Include="FriendFinder.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Account\Home.aspx" />
+    <Content Include="Images\changiAirportSG50.jpg" />
+    <Content Include="Images\hideandseek.PNG" />
     <Content Include="Images\lky.jpg" />
     <Content Include="Images\llaollao.jpg" />
     <Content Include="Images\marinabay.jpg" />
@@ -158,6 +160,8 @@
     <Content Include="Images\nyp.jpg" />
     <Content Include="Images\reddit404d.png" />
     <Content Include="Images\search.PNG" />
+    <Content Include="Images\SG-heart-map.jpg" />
+    <Content Include="Images\sg50_trans.png" />
     <Content Include="Images\showbiz-jeremy-clarkson-3.jpg" />
     <None Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="ImageGPSLocationViewer.aspx" />

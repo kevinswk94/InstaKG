@@ -41,7 +41,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/BrowseImages.aspx">InstaKilogram</a>
+                <a class="navbar-brand" href="/BrowseImages.aspx">InstaKilogram &nbsp
+                    <img style="max-width:30px; margin-top: -7px; float:right" src="../Images/sg50_trans.png"/>
+                </a>
             </div>
 
             <!-- Full sized navbar -->
@@ -106,26 +108,26 @@
         <div class="carousel-inner">
             <div class="item active">
                 <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background-image: url('../Images/lky.jpg');"></div>
+                <div class="fill" style="background-image: url('../Images/SG-heart-map.jpg');"></div>
                 <div class="carousel-caption">
-                    <h3>Lee Kuan Yew Memorial</h3>
-                    <p>Exhibition held at Singapore National Museum in honour of the late Mr Lee Kuan Yew</p>
+                    <h3>Singapore SG50 !</h3>
+                    <p>Join in the atmosphere! Come and celebrate Singapore 50th birthday by taking, uploading and sharing the moments! </p>
                 </div>
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image: url('../Images/marinabay.jpg');"></div>
+                <div class="fill" style="background-image: url('../Images/changiAirportSG50.jpg');"></div>
                 <div class="carousel-caption">
-                    <h3>Marina Bay Sands</h3>
-                    <p>An integrated resort in Singapore with features such as a casiono, ice skating rink...</p>
+                    <h3>Changi Airport celebrates SG50!</h3>
+                    <p>Go on a hunt for our 50 ‪#‎ChangiHomeSpots‬ and snap fun pics with each one. Share your photos with the hashtag #ChangiHomeSpots</p>
                 </div>
             </div>
             <div class="item">
                 <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background-image: url('../Images/nyp.jpg');"></div>
+                <div class="fill" style="background-image: url('../Images/lky.jpg');"></div>
                 <div class="carousel-caption">
-                    <h3>Nanyang Polytechnic Apartment</h3>
-                    <p>Welcoming internationals students and providing accommodation to help adjust and adapt to what is life in Singapore like </p>
+                    <h3>Lee Kuan Yew Memorial</h3>
+                    <p>Tribute to our late Mr Lee Kuan Yew</p>
                 </div>
             </div>
         </div>
@@ -151,7 +153,10 @@
             <div class="col-md-12">
 
                 <div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                    <p>Image-based social media platform for anyone alike who likes to constantly upload and update their profile 
+                        with lots of images about their life or share wonderful moments.  
+                        With so many add-on features to the image, using and show it will be wonderful!
+                    </p>
                 </div>
 
             </div>
@@ -165,7 +170,6 @@
             </div>
             <div class="col-md-8">
                 <h3>Uploading of Images</h3>
-
                 <p>Upload your images easily and just add a quick info about it and submit!</p>
                 <p>That's easy!</p>
                 <p>Also, you could try custom your watermark to have a unqiue signature to the image. This identifies and protects yourself from unauthorized use online! </p>
@@ -178,14 +182,13 @@
             <div class="col-md-5">
                 <asp:Image runat="server" ImageUrl="~/Images/viewGallery.PNG" Height="300" Width="400"/>
             </div>
-
             <div class="col-md-6" >
                 <h3>Photo Gallery</h3>
 
                 <p>A responsive flexible photo gallery for you to view all your photos or other users photos. </p>
                 <p>With each simple click of the mouse to make an endless view of photos to be discovered!</p>
             </div>
-            
+
             <div class="col-md-7" style="clear:left;">
                 <h3>Search</h3>
 
@@ -199,7 +202,31 @@
                 <br />
             </div>
 
+            <div class="col-md-5">
+                <asp:Image runat="server" ImageUrl="~/Images/hideandseek.PNG" Height="300" Width="450"/>
+            </div>
+            <div class="col-md-6" >
+                <h3>Hide & Seek</h3>
+
+                <p>Hide secret messages in images and share them with your friends to decode them!</p>
+            </div>
+
+            <div class="col-md-12" style="clear:left;text-align:center">
+                <h2>Why wait! Let's get started!</h2>
+                <br />
+            </div>
+
+            <div class="col-md-7" style="clear:left;text-align:center">
+                <h5>Dont have an account?</h5>
+                <a href="Registration.aspx"><input id="Button1" type="button" value="Register" class="btn btn-primary"/></a>
+            </div>
+            <div class="col-md-3" style="float:left;text-align:center">
+                <p>Start uploading!</p>
+                <a href="Login.aspx"><input id="Button2" type="button" value="Login" class="btn btn-primary"  /></a>
+            </div>
+            
         </div>
+
 
         <!-- Footer -->
         <footer>
@@ -208,7 +235,7 @@
                 <div class="col-md-4">
                     <h5>Images</h5>
                     <nav>
-                        <ul style="list-style: none;">
+                        <ul style="list-style:none">
                             <li><a href="/BrowseImages.aspx">Browse</a></li>
                             <li><a href="/UploadImg.aspx">Upload</a></li>
                             <li><a href="/Search.aspx">Search</a></li>
@@ -229,7 +256,7 @@
                 <div class="col-md-4">
                     <h5>Account Management</h5>
                     <nav>
-                        <ul style="list-style: none;">
+                        <ul style="list-style:none">
                             <li><a href="/ViewProfile.aspx">View Profile</a></li>
                             <li><a href="/EditProfile.aspx">Edit Profile</a></li>
                         </ul>

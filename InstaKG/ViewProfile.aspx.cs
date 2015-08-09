@@ -40,8 +40,20 @@ namespace InstaKG
         public void displayProfile()
         {
 
+            string[] creds; 
+
+            if(queryUsername() == null)
+            {
+                creds = getCreds(Session["username"].ToString());
+            }
+            else
+            {
+                creds = getCreds(queryUsername());
+            }
+
+
             //int id = data.retrieveIDByUsername(queryUsername());
-            string[] creds = getCreds(queryUsername());
+             
             //get accID
             string id = creds[1];
             //Response.Write("id for display profile: " + id);
@@ -105,8 +117,17 @@ namespace InstaKG
             //Dummy session of a particular user id
             //Session["accountID"] = 1;
             //int accId = data.retrieveIDByUsername(queryUsername());
-            
-            string[] creds = getCreds(queryUsername());
+
+            string[] creds;
+
+            if (queryUsername() == null)
+            {
+                creds = getCreds(Session["username"].ToString());
+            }
+            else
+            {
+                creds = getCreds(queryUsername());
+            }
             //get accID
             string accId = creds[1];
             //Response.Write("id for fetch all img: " + accId);
@@ -275,7 +296,16 @@ namespace InstaKG
 
         private void getProfileImg()
         {
-            string[] creds = getCreds(queryUsername());
+            string[] creds;
+
+            if (queryUsername() == null)
+            {
+                creds = getCreds(Session["username"].ToString());
+            }
+            else
+            {
+                creds = getCreds(queryUsername());
+            }
             //get accID
             string id = creds[1];
             //Response.Write("id for prof img: " + id);
