@@ -104,6 +104,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Account\404.aspx" />
     <Content Include="Account\Registration.aspx" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="Account\Login.aspx" />
@@ -143,7 +144,7 @@
     <Content Include="DummyData\Img\Thumb\cS-8.jpg" />
     <Content Include="DummyData\Img\Thumb\cS-9.jpg" />
     <Content Include="EditProfile.aspx" />
-    <Content Include="Error.aspx" />
+    <Content Include="Account\Error.aspx" />
     <Content Include="FaceReco.aspx" />
     <Content Include="Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
@@ -153,6 +154,7 @@
     <Content Include="FriendFinder.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
+    <Content Include="Images\heavy-load.png" />
     <Content Include="Images\lky.jpg" />
     <Content Include="Images\llaollao.jpg" />
     <Content Include="Images\marinabay.jpg" />
@@ -162,6 +164,7 @@
     <Content Include="Images\showbiz-jeremy-clarkson-3.jpg" />
     <None Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="ImageGPSLocationViewer.aspx" />
+    <Content Include="Images\trouble-afoot.png" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.js" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.min.js" />
     <None Include="packages\jQuery.1.10.2\Tools\jquery-1.10.2.intellisense.js" />
@@ -399,6 +402,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Registration.aspx.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -463,11 +473,11 @@
     <Compile Include="Entity\DOA.cs" />
     <Compile Include="Entity\Images.cs" />
     <Compile Include="Entity\User.cs" />
-    <Compile Include="Error.aspx.cs">
+    <Compile Include="Account\Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Error.aspx.designer.cs">
+    <Compile Include="Account\Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\ForgetPassword.aspx.cs">
