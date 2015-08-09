@@ -204,7 +204,6 @@
         <!-- Footer -->
         <footer>
             <hr />
-            <!-- Call to Action Section -->
             <div class="row">
                 <div class="col-md-4">
                     <h5>Images</h5>
