@@ -58,6 +58,11 @@
                         <div id="search_design">
                             <!-- <asp:Label ID="lb_searchWord" runat="server" Text="Search: " />-->
                             <asp:TextBox ID="tb_searchWord" runat="server" AutoPostBack="true" OnTextChanged="tb_searchWord_TextChanged" Width="300px"></asp:TextBox>
+                            <br />
+                            <asp:Label ID="ImageValue" runat="server" ForeColor="#FF6600"></asp:Label>
+                            <asp:Label ID="ImageResult" runat="server" Text="Image Results" Visible="false"></asp:Label>  &nbsp &nbsp
+                            <asp:Label ID="UserValue" runat="server" ForeColor="#FF6600" ></asp:Label>
+                            <asp:Label ID="UserResult" runat="server" Text="User Results" Visible="false"></asp:Label>                            
                         </div>
 
 

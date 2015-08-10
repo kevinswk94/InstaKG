@@ -67,6 +67,42 @@ namespace InstaKG {
         protected global::System.Web.UI.WebControls.TextBox tb_searchWord;
         
         /// <summary>
+        /// ImageValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ImageValue;
+        
+        /// <summary>
+        /// ImageResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ImageResult;
+        
+        /// <summary>
+        /// UserValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label UserValue;
+        
+        /// <summary>
+        /// UserResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label UserResult;
+        
+        /// <summary>
         /// Tab1 control.
         /// </summary>
         /// <remarks>

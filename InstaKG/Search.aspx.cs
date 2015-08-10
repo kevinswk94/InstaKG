@@ -43,7 +43,7 @@ namespace InstaKG
             MainView.ActiveViewIndex = 1;
         }
 
-        public void updateImagesList()
+        public int updateImagesList()
         {
             List<Images> list = new List<Images>();
 
@@ -76,10 +76,10 @@ namespace InstaKG
             lv_ImageResult.DataSource = list;
             lv_ImageResult.DataBind();
 
-
+            return list.Count;
         }
 
-        public void updateUserList()
+        public int updateUserList()
         {
             List<User> list = new List<User>();
 
@@ -93,12 +93,23 @@ namespace InstaKG
 
             lv_UserResult.DataSource = list;
             lv_UserResult.DataBind();
+
+            return list.Count;
         }
 
         protected void tb_searchWord_TextChanged(object sender, EventArgs e)
         {
-            updateImagesList();
-            updateUserList();
+            int valueI = 0;
+            int valueU = 0;
+
+            valueI = updateImagesList();
+            valueU = updateUserList();
+
+            ImageResult.Visible = true;
+            UserResult.Visible = true;
+
+            ImageValue.Text = valueI.ToString();
+            UserValue.Text = valueU.ToString();
 
             tb_searchWord.Focus();
         }
@@ -140,7 +151,6 @@ namespace InstaKG
             var days = difference.TotalDays;
 
             value = Math.Ceiling(Convert.ToDouble(days));
-            System.Diagnostics.Debug.WriteLine(value);
 
             return value;
         }
