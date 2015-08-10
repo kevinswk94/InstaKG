@@ -58,6 +58,11 @@
                         <div id="search_design">
                             <!-- <asp:Label ID="lb_searchWord" runat="server" Text="Search: " />-->
                             <asp:TextBox ID="tb_searchWord" runat="server" AutoPostBack="true" OnTextChanged="tb_searchWord_TextChanged" Width="300px"></asp:TextBox>
+                            <br />
+                            <asp:Label ID="ImageValue" runat="server" ForeColor="#FF6600"></asp:Label>
+                            <asp:Label ID="ImageResult" runat="server" Text="Image Results" Visible="false"></asp:Label>  &nbsp &nbsp
+                            <asp:Label ID="UserValue" runat="server" ForeColor="#FF6600" ></asp:Label>
+                            <asp:Label ID="UserResult" runat="server" Text="User Results" Visible="false"></asp:Label>                            
                         </div>
 
 
@@ -139,7 +144,7 @@
                                                             <EmptyDataTemplate>
                                                                 <table runat="server" style="border-collapse: collapse; border-style: none; border-width: 1px;">
                                                                     <tr>
-                                                                        <td>No data was returned.</td>
+                                                                        <td>No result found.</td>
                                                                     </tr>
                                                                 </table>
                                                             </EmptyDataTemplate>
@@ -317,9 +322,9 @@
                                                                 </td>
                                                             </EditItemTemplate>
                                                             <EmptyDataTemplate>
-                                                                <table runat="server" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px;">
+                                                                <table runat="server" style="border-collapse: collapse;border-style: none; border-width: 1px;">
                                                                     <tr>
-                                                                        <td>No data was returned.</td>
+                                                                        <td>No result found.</td>
                                                                     </tr>
                                                                 </table>
                                                             </EmptyDataTemplate>

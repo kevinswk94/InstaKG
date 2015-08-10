@@ -104,6 +104,7 @@
   <ItemGroup>
     <Content Include="Account\404.aspx" />
     <Content Include="Account\Registration.aspx" />
+    <Content Include="BrowseImg.aspx" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="BrowseImages.aspx" />
@@ -421,6 +422,13 @@
     </Compile>
     <Compile Include="Account\Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BrowseImg.aspx.cs">
+      <DependentUpon>BrowseImg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BrowseImg.aspx.designer.cs">
+      <DependentUpon>BrowseImg.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
