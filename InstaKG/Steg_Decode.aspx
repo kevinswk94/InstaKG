@@ -31,17 +31,18 @@
                         <asp:FileUpload ID="fu_Image" runat="server" accept="image/png" onchange="readURL(this)" /> <%--Only allows PNG image filetypes--%>
                     </div>
                 </div>
-                <div class="form-group">
-                    <asp:Label ID="lbl_message" CssClass="col-lg-3 control-label" runat="server">Message:</asp:Label>
-                    <div class="col-lg-6">
-                        <asp:TextBox ID="tb_message" CssClass="form-control" runat="server" TextMode="MultiLine" ReadOnly="True"></asp:TextBox>
-                    </div>
-                </div>
-
+                
                 <div class="form-group">
                     <asp:Label ID="lbl_imagePreview" CssClass="col-lg-3 control-label" runat="server">Preview:</asp:Label>
                     <div class="col-lg-6">
                         <img id="file" src="#" class="img-responsive center-block" style="max-width:400px;max-height:400px;" onerror="this.style.visibility='hidden'" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <asp:Label ID="lbl_message" CssClass="col-lg-3 control-label" runat="server">Message:</asp:Label>
+                    <div class="col-lg-6">
+                        <asp:TextBox ID="tb_message" CssClass="form-control" runat="server" TextMode="MultiLine" ReadOnly="True"></asp:TextBox>
                     </div>
                 </div>
 
