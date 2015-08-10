@@ -99,14 +99,11 @@ namespace InstaKG.Account
 
                 cmd.Parameters.AddWithValue("@passwordHash", hashedPwd);
                 cmd.Parameters.AddWithValue("@accID", accID);
-                System.Diagnostics.Debug.WriteLine("ID" + accID + "/==");
-                System.Diagnostics.Debug.WriteLine("hash" + hashedPwd + "/==");
 
                 con.Open();
 
                 int count;
                 count = Convert.ToInt32(cmd.ExecuteScalar());
-                System.Diagnostics.Debug.WriteLine(count);
                 // updated: count == 0
                 if (count == 0)
                 {
@@ -174,7 +171,6 @@ namespace InstaKG.Account
                     username[0] = (string)dr["username"];
                 }
                 string name = username[0].ToString();
-                System.Diagnostics.Debug.WriteLine(name);
 
                 con.Close();
                 con.Dispose();
