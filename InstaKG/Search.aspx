@@ -139,7 +139,7 @@
                                                             <EmptyDataTemplate>
                                                                 <table runat="server" style="border-collapse: collapse; border-style: none; border-width: 1px;">
                                                                     <tr>
-                                                                        <td>No data was returned.</td>
+                                                                        <td>No result found.</td>
                                                                     </tr>
                                                                 </table>
                                                             </EmptyDataTemplate>
@@ -317,9 +317,9 @@
                                                                 </td>
                                                             </EditItemTemplate>
                                                             <EmptyDataTemplate>
-                                                                <table runat="server" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px;">
+                                                                <table runat="server" style="border-collapse: collapse;border-style: none; border-width: 1px;">
                                                                     <tr>
-                                                                        <td>No data was returned.</td>
+                                                                        <td>No result found.</td>
                                                                     </tr>
                                                                 </table>
                                                             </EmptyDataTemplate>

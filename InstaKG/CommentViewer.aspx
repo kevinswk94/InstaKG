@@ -33,7 +33,7 @@
             </div>
         </fieldset>
 
-        <div class="panel panel-default">
+        <div class="panel panel-default" style="width:70%;margin-left:15%;">
             <div class="panel-heading"><b style="padding-right:5px;">Description: </b><% =imageDescription %><span class="pull-right">Uploader: <span><%= fName %></span></span></div>
             <div class="panel-body">
                 <fieldset class="form-horizontal">
