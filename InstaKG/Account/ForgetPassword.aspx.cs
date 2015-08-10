@@ -92,13 +92,13 @@ namespace InstaKG
 
                         //retrieve salt
                         string salt = RetrieveSalt(username);
-                        //System.Diagnostics.Debug.WriteLine(accID);
+                        
 
                         if (updatePassword(newPass, username, salt))
                         {
                             //sent mail if valid
                             sentMail(newPass, tb_UsernameOrEmail.Text, username);
-                            //System.Diagnostics.Debug.WriteLine("newPass=" + newPass + "/==");
+                            
 
                             alert_placeholder.Visible = true;
                             alert_placeholder.Attributes["class"] = "alert alert-success alert-dismissable";
@@ -268,7 +268,6 @@ namespace InstaKG
 
                 int count;
                 count = Convert.ToInt32(cmd.ExecuteScalar());
-                System.Diagnostics.Debug.WriteLine(count);
                 // updated: count == 0
                 if (count == 0)
                 {

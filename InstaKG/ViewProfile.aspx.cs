@@ -59,8 +59,6 @@ namespace InstaKG
             //Response.Write("id for display profile: " + id);
             string genderValue = null;
 
-            System.Diagnostics.Debug.WriteLine("what is my id: " + id);
-
             SqlConnection con = new SqlConnection();
             con.ConnectionString = ConfigurationManager.ConnectionStrings["InstaKG"].ConnectionString;
 
@@ -82,8 +80,6 @@ namespace InstaKG
             lbl_lname_value.Text = dt.Rows[0]["lName"].ToString();
             lbl_email_value.Text = dt.Rows[0]["email"].ToString();
             genderValue = dt.Rows[0]["gender"].ToString();
-
-            System.Diagnostics.Debug.WriteLine(genderValue);
 
             if (genderValue.Length == 0)
             {

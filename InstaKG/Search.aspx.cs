@@ -125,8 +125,6 @@ namespace InstaKG
 
             string username = getUsernameByAccountID(accID);
 
-            System.Diagnostics.Debug.WriteLine(username);
-
             string url = "ViewProfile.aspx?name=" + username;
 
             Response.Redirect(url);
@@ -140,7 +138,6 @@ namespace InstaKG
             var days = difference.TotalDays;
 
             value = Math.Ceiling(Convert.ToDouble(days));
-            System.Diagnostics.Debug.WriteLine(value);
 
             return value;
         }
