@@ -245,6 +245,7 @@
     <Content Include="packages\Owin.1.0\Owin.1.0.nupkg" />
     <Content Include="packages\repositories.config" />
     <None Include="Properties\PublishProfiles\InstaKG.pubxml" />
+    <None Include="Properties\PublishProfiles\instasecure.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
