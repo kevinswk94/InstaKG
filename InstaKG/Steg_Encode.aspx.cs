@@ -18,47 +18,56 @@ namespace InstaKG
 
         protected void btn_submit_Click(object sender, EventArgs e)
         {
-            System.Drawing.Bitmap bmpImage = new System.Drawing.Bitmap(fu_Image.PostedFile.InputStream);
-            
-            int maxMessageSize = bmpImage.Height * bmpImage.Width;
-            string message = tb_message.Text;
-            string key = tb_key.Text;
-            
-            //string key = "";
+            string fileExtension = System.IO.Path.GetExtension(fu_Image.FileName.ToLower());
 
-            if (key.Equals(null) || key.Equals(""))
-                key = "DefaultPassword";
-                
-            string encryptedMessage = EncryptStringAES(message, key);
-
-            if (encryptedMessage.Length < maxMessageSize)
+            if (fileExtension.Equals(".jpg") || fileExtension.Equals(".jpeg") || fileExtension.Equals(".png") || fileExtension.Equals(".bmp"))
             {
-                //Response.Write("Can Fit");
-                
-                Bitmap stegoedImage = embedText(bmpImage, encryptedMessage);
-                MemoryStream bitmapStream = new MemoryStream();
-                stegoedImage.Save(bitmapStream, ImageFormat.Png);
+                System.Drawing.Bitmap bmpImage = new System.Drawing.Bitmap(fu_Image.PostedFile.InputStream);
 
-                byte[] bitmapBytes = bitmapStream.ToArray();
+                int maxMessageSize = bmpImage.Height * bmpImage.Width;
+                string message = tb_message.Text;
+                string key = tb_key.Text;
 
-                Response.Clear();
-                Response.Buffer = true;
-                Response.Charset = "";
-                Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                Response.ContentType = "image/png";
-                Response.AppendHeader("Content-Disposition", "attachment; filename=" + Path.GetFileNameWithoutExtension(fu_Image.FileName) + ".png");
-                Response.BinaryWrite(bitmapBytes);
-                Response.Flush();
-                Response.End();
+                //string key = "";
+
+                if (key.Equals(null) || key.Equals(""))
+                    key = "DefaultPassword";
+
+                string encryptedMessage = EncryptStringAES(message, key);
+
+                if (encryptedMessage.Length < maxMessageSize)
+                {
+                    //Response.Write("Can Fit");
+
+                    Bitmap stegoedImage = embedText(bmpImage, encryptedMessage);
+                    MemoryStream bitmapStream = new MemoryStream();
+                    stegoedImage.Save(bitmapStream, ImageFormat.Png);
+
+                    byte[] bitmapBytes = bitmapStream.ToArray();
+
+                    Response.Clear();
+                    Response.Buffer = true;
+                    Response.Charset = "";
+                    Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                    Response.ContentType = "image/png";
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=" + Path.GetFileNameWithoutExtension(fu_Image.FileName) + ".png");
+                    Response.BinaryWrite(bitmapBytes);
+                    Response.Flush();
+                    Response.End();
+                }
+                else
+                {
+                    alert_placeholder.Visible = true;
+                    alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
+                    alertText.Text = "Selected image too small to hide message!";
+                }
             }
             else
             {
                 alert_placeholder.Visible = true;
                 alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
-                alertText.Text = "Selected image too small to hide message!";
+                alertText.Text = "File format not supported!";
             }
-
-            
 
         }
 

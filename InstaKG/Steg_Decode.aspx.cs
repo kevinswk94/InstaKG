@@ -16,28 +16,38 @@ namespace InstaKG
 
         protected void btn_submit_Click(object sender, EventArgs e)
         {
-            try
+            string fileExtension = System.IO.Path.GetExtension(fu_Image.FileName.ToLower());
+
+            if (fileExtension.Equals(".png"))
             {
-                System.Drawing.Bitmap bmpImage = new System.Drawing.Bitmap(fu_Image.PostedFile.InputStream);
-                string cipherText = extractText(bmpImage);
-                string key = tb_key.Text;
+                try
+                {
+                    System.Drawing.Bitmap bmpImage = new System.Drawing.Bitmap(fu_Image.PostedFile.InputStream);
+                    string cipherText = extractText(bmpImage);
+                    string key = tb_key.Text;
 
-                //string key = "";
+                    //string key = "";
 
-                if (key.Equals(null) || key.Equals(""))
-                    key = "DefaultPassword";
+                    if (key.Equals(null) || key.Equals(""))
+                        key = "DefaultPassword";
 
-                tb_message.Text = DecryptStringAES(cipherText, key);
+                    tb_message.Text = DecryptStringAES(cipherText, key);
 
-                alert_placeholder.Visible = false;
+                    alert_placeholder.Visible = false;
+                }
+                catch
+                {
+                    alert_placeholder.Visible = true;
+                    alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
+                    alertText.Text = "Wrong password! Please try again.";
+                }
             }
-            catch
+            else
             {
                 alert_placeholder.Visible = true;
                 alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
-                alertText.Text = "Wrong password! Please try again.";
+                alertText.Text = "File format not supported!";
             }
-            
         }
 
         protected void btn_cancel_Click(object sender, EventArgs e)
