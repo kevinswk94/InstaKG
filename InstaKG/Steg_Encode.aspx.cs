@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Drawing;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace InstaKG
 {
     public partial class Steg_Encode : System.Web.UI.Page
     {
+        private static byte[] _salt = Encoding.ASCII.GetBytes("jasdh7834y8hfeur73rsharks214");
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -19,24 +18,57 @@ namespace InstaKG
 
         protected void btn_submit_Click(object sender, EventArgs e)
         {
-            System.Drawing.Bitmap bmpImage = new System.Drawing.Bitmap(fu_Image.PostedFile.InputStream);
-            string message = tb_message.Text;
+            string fileExtension = System.IO.Path.GetExtension(fu_Image.FileName.ToLower());
 
-            Bitmap stegoedImage = embedText(bmpImage, message);
-            MemoryStream bitmapStream = new MemoryStream();
-            stegoedImage.Save(bitmapStream, ImageFormat.Png);
+            if (fileExtension.Equals(".jpg") || fileExtension.Equals(".jpeg") || fileExtension.Equals(".png") || fileExtension.Equals(".bmp"))
+            {
+                System.Drawing.Bitmap bmpImage = new System.Drawing.Bitmap(fu_Image.PostedFile.InputStream);
 
-            byte[] bitmapBytes = bitmapStream.ToArray();
+                int maxMessageSize = bmpImage.Height * bmpImage.Width;
+                string message = tb_message.Text;
+                string key = tb_key.Text;
 
-            Response.Clear();
-            Response.Buffer = true;
-            Response.Charset = "";
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.ContentType = "image/png";
-            Response.AppendHeader("Content-Disposition", "attachment; filename=" + Path.GetFileNameWithoutExtension(fu_Image.FileName) + ".png");
-            Response.BinaryWrite(bitmapBytes);
-            Response.Flush();
-            Response.End();
+                //string key = "";
+
+                if (key.Equals(null) || key.Equals(""))
+                    key = "DefaultPassword";
+
+                string encryptedMessage = EncryptStringAES(message, key);
+
+                if (encryptedMessage.Length < maxMessageSize)
+                {
+                    //Response.Write("Can Fit");
+
+                    Bitmap stegoedImage = embedText(bmpImage, encryptedMessage);
+                    MemoryStream bitmapStream = new MemoryStream();
+                    stegoedImage.Save(bitmapStream, ImageFormat.Png);
+
+                    byte[] bitmapBytes = bitmapStream.ToArray();
+
+                    Response.Clear();
+                    Response.Buffer = true;
+                    Response.Charset = "";
+                    Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                    Response.ContentType = "image/png";
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=" + Path.GetFileNameWithoutExtension(fu_Image.FileName) + ".png");
+                    Response.BinaryWrite(bitmapBytes);
+                    Response.Flush();
+                    Response.End();
+                }
+                else
+                {
+                    alert_placeholder.Visible = true;
+                    alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
+                    alertText.Text = "Selected image too small to hide message!";
+                }
+            }
+            else
+            {
+                alert_placeholder.Visible = true;
+                alert_placeholder.Attributes["class"] = "alert alert-danger alert-dismissable";
+                alertText.Text = "File format not supported!";
+            }
+
         }
 
         protected void btn_cancel_Click(object sender, EventArgs e)
@@ -171,6 +203,56 @@ namespace InstaKG
                 }
             }
             return bmp;
+        }
+
+        private static string EncryptStringAES(string plainText, string sharedSecret)
+        {
+            //if (string.IsNullOrEmpty(plainText))
+            //    throw new ArgumentNullException("plainText");
+            //if (string.IsNullOrEmpty(sharedSecret))
+            //    throw new ArgumentNullException("sharedSecret");
+
+            string outStr = null;                       // Encrypted string to return
+            RijndaelManaged aesAlg = null;              // RijndaelManaged object used to encrypt the data.
+
+            try
+            {
+                // generate the key from the shared secret and the salt
+                Rfc2898DeriveBytes key = new Rfc2898DeriveBytes(sharedSecret, _salt);
+
+                // Create a RijndaelManaged object
+                aesAlg = new RijndaelManaged();
+                aesAlg.Key = key.GetBytes(aesAlg.KeySize / 8);
+
+                // Create a decryptor to perform the stream transform.
+                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+                // Create the streams used for encryption.
+                using (MemoryStream msEncrypt = new MemoryStream())
+                {
+                    // prepend the IV
+                    msEncrypt.Write(BitConverter.GetBytes(aesAlg.IV.Length), 0, sizeof(int));
+                    msEncrypt.Write(aesAlg.IV, 0, aesAlg.IV.Length);
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                        {
+                            //Write all data to the stream.
+                            swEncrypt.Write(plainText);
+                        }
+                    }
+                    outStr = Convert.ToBase64String(msEncrypt.ToArray());
+                }
+            }
+            finally
+            {
+                // Clear the RijndaelManaged object.
+                if (aesAlg != null)
+                    aesAlg.Clear();
+            }
+
+            // Return the encrypted bytes from the memory stream.
+            return outStr;
         }
     }
 }
